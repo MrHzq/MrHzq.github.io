@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="20、JS 的依赖管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20、JS 的依赖管理">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E5%8D%A1%E7%89%87/20%E3%80%81JS%20%E7%9A%84%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="20、JS 的依赖管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708326900266-e5945ce6-6ccd-46af-bd96-2184f2d324fd.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708327666447-f4262553-4bc5-4160-81df-51c05eedc98a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708328628344-e1dbd3b5-f312-4138-a728-13e5ffb6fa4a.png">
+<meta property="article:published_time" content="2024-02-03T16:33:50.000Z">
+<meta property="article:modified_time" content="2024-03-23T16:33:50.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="每日知识卡片">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1708326900266-e5945ce6-6ccd-46af-bd96-2184f2d324fd.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>20、JS 的依赖管理 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="20、JS 的依赖管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-03 16:33" pubdate>
+          2024年2月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">20、JS 的依赖管理</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-23T16:33:50+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="依赖文件：package-json"><a href="#依赖文件：package-json" class="headerlink" title="依赖文件：package.json"></a>依赖文件：package.json</h1><p>依赖版本：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;antd&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3.1.2&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;react&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~16.0.1&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;redux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.7.2&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;lodash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;*&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>&quot;react&quot;: &quot;~16.0.1&quot;</code>版本格式：[范围符号]主版本.次版本.修订版本</p>
+<ul>
+<li>主版本：不兼容的更改；平时不建议升级</li>
+<li>次版本：兼容的功能性新增；平时可以升级</li>
+<li>修订版本：兼容的问题修复；平时可以升级</li>
+</ul>
+<p>范围符号：</p>
+<ul>
+<li>*：升级到最新版本</li>
+<li>^：升级次版本和修订版本</li>
+<li>~：只升级修订版本</li>
+</ul>
+<p>因此上述的版本范围为</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;antd&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3.1.2&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// === 3.1.2</span><br>  <span class="hljs-attr">&quot;react&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~16.0.1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// [16.0.1, 16.1.0)</span><br>  <span class="hljs-attr">&quot;redux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.7.2&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// [3.7.2, 4.0.0)</span><br>  <span class="hljs-attr">&quot;lodash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;*&quot;</span> <span class="hljs-comment">// 永远最新</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="依赖管理工具：npm、yarn、cnpm、pnpm-等"><a href="#依赖管理工具：npm、yarn、cnpm、pnpm-等" class="headerlink" title="依赖管理工具：npm、yarn、cnpm、pnpm 等"></a>依赖管理工具：npm、yarn、cnpm、pnpm 等</h1><h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><ul>
+<li>v1：依赖嵌套，依赖的依赖放在各依赖下面，比如下面这样</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">node_modules<br>├── A@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>│   └── node_modules<br>│       └── B@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>├── C@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>│   └── node_modules<br>│       └── B@<span class="hljs-number">2.0</span><span class="hljs-number">.0</span><br>└── D@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>    └── node_modules<br>        └── B@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br><br>优点：简单明了<br>缺点：嵌套太深，重复依赖；<br>B@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span> 存了两份<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>v3：扁平模式，相同的放在根层，冲突的还是放在依赖下面。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json">node_modules<br>├── A@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>├── B@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>└── C@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br>    └── node_modules<br>        └── B@<span class="hljs-number">2.0</span><span class="hljs-number">.0</span><br>├── D@<span class="hljs-number">1.0</span><span class="hljs-number">.0</span><br><br>require(&#x27;A&#x27;) 时，首先会在当前路径下搜索 node_modules 目录中是否存在该依赖，<br>如果不存在则往上查找，也就是继续查找该路径的上一层目录下的 node_modules<br><br>优点：避免嵌套太深，消除重复依赖<br>缺点：该版本还缺少 lock 文件，不确定性<br>什么是确定性？始终得到相同的 node_modules 目录结构<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>v5：node_modules 目录结构跟 v3 一样，但新增了<code>package-lock.json</code>文件，保证依赖的确定性</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;redux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.7.2&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>对应的<code>package-lock.json</code>，记录了每一个依赖的确定版本</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;redux&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;lockfileVersion&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;requires&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;packages&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;redux&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ISC&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;redux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.7.2&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/js-tokens&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;4.0.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/lodash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;4.17.21&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/lodash-es&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;4.17.21&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/loose-envify&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.4.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;js-tokens&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.0.0 || ^4.0.0&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;bin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;loose-envify&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cli.js&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/redux&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3.7.2&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/redux/-/redux-3.7.2.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;lodash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.2.1&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;lodash-es&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.2.1&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;loose-envify&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.1.0&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;symbol-observable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.0.3&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;node_modules/symbol-observable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.2.0&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;resolved&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.2.0.tgz&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;integrity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;engines&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&gt;=0.10.0&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1708326900266-e5945ce6-6ccd-46af-bd96-2184f2d324fd.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h2><p>yarn 发布时是为了解决 npm v3 的问题<br>yarn 生成的 node_modules 目录结构和 npm v5 是相同的，同时默认生成一个 yarn.lock 文件。<br>特点：yarn.lock 文件里仍然会出现语义化版本范围符号(~^*)</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs json"># THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.<br># yarn lockfile v1<br><br><br><span class="hljs-attr">&quot;js-tokens@^3.0.0 || ^4.0.0&quot;</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;4.0.0&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499&quot;</span><br>  integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==<br><br>lodash-es@^<span class="hljs-number">4.2</span><span class="hljs-number">.1</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;4.17.21&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee&quot;</span><br>  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==<br><br>lodash@^<span class="hljs-number">4.2</span><span class="hljs-number">.1</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;4.17.21&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c&quot;</span><br>  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==<br><br>loose-envify@^<span class="hljs-number">1.1</span><span class="hljs-number">.0</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;1.4.0&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf&quot;</span><br>  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==<br>  dependencies<span class="hljs-punctuation">:</span><br>    js-tokens <span class="hljs-string">&quot;^3.0.0 || ^4.0.0&quot;</span><br><br>redux@^<span class="hljs-number">3.7</span><span class="hljs-number">.2</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;3.7.2&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/redux/-/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b&quot;</span><br>  integrity sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/<span class="hljs-number">00</span>g0hD6w+A==<br>  dependencies<span class="hljs-punctuation">:</span><br>    lodash <span class="hljs-string">&quot;^4.2.1&quot;</span><br>    lodash-es <span class="hljs-string">&quot;^4.2.1&quot;</span><br>    loose-envify <span class="hljs-string">&quot;^1.1.0&quot;</span><br>    symbol-observable <span class="hljs-string">&quot;^1.0.3&quot;</span><br><br>symbol-observable@^<span class="hljs-number">1.0</span><span class="hljs-number">.3</span><span class="hljs-punctuation">:</span><br>  version <span class="hljs-string">&quot;1.2.0&quot;</span><br>  resolved <span class="hljs-string">&quot;https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804&quot;</span><br>  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="cnpm"><a href="#cnpm" class="headerlink" title="cnpm"></a>cnpm</h2><p>它使用链接 link 的安装方式，提高了安装速度。<br>它生成的 node_modules 目录采用的是以 版本号 @包名 命名，然后再做软链接到只以包名命名的文件夹上。<br><img src="/img/images/2024/1708327666447-f4262553-4bc5-4160-81df-51c05eedc98a.png" srcset="/img/loading.gif" lazyload></p>
+<p>优点：按照速度快<br>缺点：不会生成 lock 文件；生成的 node_modules 目录不一致</p>
+<h2 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h2><p>使用内容寻址存储来存储依赖包，相同的包(不论被多少个项目所使用)只会在存储中存储一次<br>它生成的 node_modules 目录如下：直接依赖放在根目录，依赖的依赖放在 .pnpm 文件夹内<br><img src="/img/images/2024/1708328628344-e1dbd3b5-f312-4138-a728-13e5ffb6fa4a.png" srcset="/img/loading.gif" lazyload><br>默认生成一个 pnpm-lock.yaml 文件。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">lockfileVersion:</span> <span class="hljs-number">5.4</span><br><br><span class="hljs-attr">specifiers:</span><br>  <span class="hljs-attr">redux:</span> <span class="hljs-string">^3.7.2</span><br><br><span class="hljs-attr">dependencies:</span><br>  <span class="hljs-attr">redux:</span> <span class="hljs-number">3.7</span><span class="hljs-number">.2</span><br><br><span class="hljs-attr">packages:</span><br><br>  <span class="hljs-string">/js-tokens/4.0.0:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==</span>&#125;<br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-string">/lodash-es/4.17.21:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==</span>&#125;<br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-string">/lodash/4.17.21:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==</span>&#125;<br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-string">/loose-envify/1.4.0:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==</span>&#125;<br>    <span class="hljs-attr">hasBin:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">dependencies:</span><br>      <span class="hljs-attr">js-tokens:</span> <span class="hljs-number">4.0</span><span class="hljs-number">.0</span><br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-string">/redux/3.7.2:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==</span>&#125;<br>    <span class="hljs-attr">dependencies:</span><br>      <span class="hljs-attr">lodash:</span> <span class="hljs-number">4.17</span><span class="hljs-number">.21</span><br>      <span class="hljs-attr">lodash-es:</span> <span class="hljs-number">4.17</span><span class="hljs-number">.21</span><br>      <span class="hljs-attr">loose-envify:</span> <span class="hljs-number">1.4</span><span class="hljs-number">.0</span><br>      <span class="hljs-attr">symbol-observable:</span> <span class="hljs-number">1.2</span><span class="hljs-number">.0</span><br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br>  <span class="hljs-string">/symbol-observable/1.2.0:</span><br>    <span class="hljs-attr">resolution:</span> &#123;<span class="hljs-attr">integrity:</span> <span class="hljs-string">sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==</span>&#125;<br>    <span class="hljs-attr">engines:</span> &#123;<span class="hljs-attr">node:</span> <span class="hljs-string">&#x27;&gt;=0.10.0&#x27;</span>&#125;<br>    <span class="hljs-attr">dev:</span> <span class="hljs-literal">false</span><br><br></code></pre></td></tr></table></figure>
+
+<p><strong>循环依赖：</strong><br>A 依赖 B，B 依赖 A</p>
+<p><strong>幽灵依赖：</strong><br>项目中用了的包，但未在 package.json 中定义。<br>这是因为依赖提升造成的副作用</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E5%8D%A1%E7%89%87/" class="category-chain-item">每日知识卡片</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E5%8D%A1%E7%89%87/" class="print-no-link">#每日知识卡片</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>20、JS 的依赖管理</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/每日知识卡片/20、JS 的依赖管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E5%8D%A1%E7%89%87/21%E3%80%81%E7%B1%BB%E6%95%B0%E7%BB%84%E8%BD%AC%E6%95%B0%E7%BB%84/" title="21、类数组转数组">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">21、类数组转数组</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E6%AF%8F%E6%97%A5%E7%9F%A5%E8%AF%86%E5%8D%A1%E7%89%87/1%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B_%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F/" title="1、浏览器进_线程有哪些？">
+                        <span class="hidden-mobile">1、浏览器进_线程有哪些？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

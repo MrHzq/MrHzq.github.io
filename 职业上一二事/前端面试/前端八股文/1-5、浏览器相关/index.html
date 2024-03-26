@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="1-5、浏览器相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-5、浏览器相关">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-5%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="1-5、浏览器相关">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1700839080722-ef70fbb2-e965-42f3-94c7-37b86e445d94.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1700839577150-7e14fbfc-b484-4ecb-ae97-defecf120f13.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1700838902797-c1c66fe7-c4e8-461f-9f2a-5edddb1a526f.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1700838990916-7580e0bb-2199-45f3-95a8-e0dec0e7da82.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1700840240071-0a20d8df-77ed-4ac7-9883-854e4ca063a6.png">
+<meta property="article:published_time" content="2024-01-13T23:32:30.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:30.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2023/1700839080722-ef70fbb2-e965-42f3-94c7-37b86e445d94.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>1-5、浏览器相关 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1-5、浏览器相关"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">1-5、浏览器相关</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:30+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>原理知识：<a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-3%E3%80%81Promise%E7%9F%A5%E8%AF%86%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="1-3、Promise知识与使用">1-3、Promise知识与使用</a><br></p>
+<h1 id="浏览器下的-JS"><a href="#浏览器下的-JS" class="headerlink" title="浏览器下的 JS"></a>浏览器下的 JS</h1><p>包含：</p>
+<ul>
+<li>ECMAScript：基础逻辑与数据处理 <code>const a = [1,2,3].map(i =&gt; i*2)</code></li>
+<li>BOM：对浏览器功能的处理 <code>location.href = &#39;www.a.com&#39;</code></li>
+<li>DOM：HTML 文本的操作 <code>document.title = &#39;hello&#39;</code></li>
+</ul>
+<blockquote>
+<p>JS 与 ES 的区别：ES 是普通话，JS 是方言；<br>官方话术：ECMAScript 是一种语言标准，而 JavaScript 是对这个标准的一种具体实现(额外扩展了一些浏览器交互操作)。</p>
+</blockquote>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="location"><a href="#location" class="headerlink" title="location"></a>location</h2><p>与浏览器的地址相关的</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>举例：<br>location.href &#x3D; <code>https://www.yuque.com/u53094/ux9b3x/frct1y9u1fppzpqf?q=1#aXLrY</code></p>
+<h4 id="location-组成"><a href="#location-组成" class="headerlink" title="location 组成"></a>location 组成</h4><ul>
+<li>协议 protocol &#x3D;&gt; location.protocol，<code>https:</code></li>
+<li>域名 host &#x3D;&gt; location.host&#x2F;location.hostname，<code>www.yuque.com</code></li>
+<li>端口 port &#x3D;&gt; location.port，<code>&#39;&#39;</code></li>
+<li>路径 path &#x3D;&gt; location.pathname，<code>/u53094/ux9b3x/frct1y9u1fppzpqf</code></li>
+<li>参数 query &#x3D;&gt; location.search，<code>[?</code>,<code>#)</code>之间的，<code>?q=1</code></li>
+<li>锚点 anchor &#x3D;&gt; location.hash，<code>[#</code>之后的，<code>#aXLrY</code></li>
+</ul>
+<h3 id="进阶知识"><a href="#进阶知识" class="headerlink" title="进阶知识"></a>进阶知识</h3><h4 id="location-assgin-url"><a href="#location-assgin-url" class="headerlink" title="location.assgin(url)"></a>location.assgin(url)</h4><p>跳转到指定页面，会创建新的浏览器历史，跟<code>location.href</code>效果一样</p>
+<h4 id="location-replace-url"><a href="#location-replace-url" class="headerlink" title="location.replace(url)"></a>location.replace(url)</h4><p>跳转到指定页面，不会创建新的浏览器历史，并将之前地址的历史替换为新地址</p>
+<h4 id="location-reload"><a href="#location-reload" class="headerlink" title="location.reload()"></a>location.reload()</h4><p>刷新当前页面</p>
+<h4 id="location-toString"><a href="#location-toString" class="headerlink" title="location.toString()"></a>location.toString()</h4><p>获取当前地址，等价于<code>location.href</code>的值</p>
+<h3 id="面试常问"><a href="#面试常问" class="headerlink" title="面试常问"></a>面试常问</h3><ol>
+<li>location 的 API</li>
+<li>路由相关：跳转、参数、操作等</li>
+<li>实际场景分析：<ol>
+<li>项目路由模式：<ol>
+<li>history：<code>https://www.example.com/user/profile</code>地址不带<code>#</code>；需要服务器支持(因为<code>/user/profile</code>是直接访问服务器资源的，所以需要服务器处理通配让项目只访问主 html 文件)</li>
+<li>hash：<code>https://www.example.com/#/user/profile</code>地址带<code>#</code>；不需要服务器支持(因为<code>#</code>后面的不会发送给服务器，所以可以永远只访问主 html)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>url 的处理<ol>
+<li>如何将地址参数转为对象？</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">getQueryObject</span>(<span class="hljs-params">search = location.search</span>)&#123;<br>    <span class="hljs-keyword">const</span> searchObj = &#123;&#125;<br><br>    <span class="hljs-keyword">if</span>(!search) <span class="hljs-keyword">return</span> searchObj<br><br>    <span class="hljs-keyword">const</span> searchSplitArray = search.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>).<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;&amp;&#x27;</span>)<br>    searchSplitArray.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">const</span> [key, value] = item.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;=&#x27;</span>)<br>        searchObj[key] = value<br>    &#125;)<br>    <span class="hljs-keyword">return</span> searchObj<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用正则判断是否为 url？<ol>
+<li>核心是要知道<code>location</code>的组成，然后一步步判断即可</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isURL</span>(<span class="hljs-params">str</span>) &#123;<br>  <span class="hljs-comment">// 使用正则表达式进行 URL 验证</span><br>  <span class="hljs-comment">// 这个正则表达式并不涵盖所有可能的情况，但对于一般的 URL 验证已经足够</span><br>  <span class="hljs-keyword">const</span> urlRegex = <span class="hljs-regexp">/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/</span>;<br>  <span class="hljs-keyword">return</span> urlRegex.<span class="hljs-title function_">test</span>(str);<br>&#125;<br><br><span class="hljs-comment">// 示例用法</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">isURL</span>(<span class="hljs-string">&quot;https://www.example.com&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">isURL</span>(<span class="hljs-string">&quot;ftp://file.example.com&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">isURL</span>(<span class="hljs-string">&quot;invalid-url&quot;</span>)); <span class="hljs-comment">// false</span><br><br><span class="hljs-comment">// ^: 开始位置</span><br><span class="hljs-comment">// (https?|ftp): 匹配 &quot;http&quot;, &quot;https&quot;, 或 &quot;ftp&quot;</span><br><span class="hljs-comment">// :\/\/: 匹配 &quot;://&quot;</span><br><span class="hljs-comment">// [^\s/$.?#]: 匹配任何非空白字符、&quot;/&quot;、&quot;$&quot;、&quot;.&quot;、&quot;?&quot;&quot;、&quot;#&quot;</span><br><span class="hljs-comment">// .*: 匹配零个或多个任意字符</span><br><span class="hljs-comment">// $: 结束位置</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="监听地址的变化"><a href="#监听地址的变化" class="headerlink" title="监听地址的变化"></a>监听地址的变化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;hashchange&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) &#123;<br>  <span class="hljs-comment">// 当哈希值变化时执行的代码</span><br>  <span class="hljs-keyword">var</span> newHash = <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">hash</span>; <span class="hljs-comment">// 获取新的哈希值</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hash changed to: &quot;</span>, newHash);<br><br>  <span class="hljs-comment">// 根据新的哈希值进行相应的操作，如更新菜单状态、滚动到特定位置等</span><br>  <span class="hljs-comment">// ...</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="history"><a href="#history" class="headerlink" title="history"></a>history</h2><p>与浏览器的地址历史相关的，允许你在浏览器的历史记录中向前和向后导航，以及在历史记录中添加新的条目。</p>
+<h3 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p><code>history.length</code>返回历史记录的数量，<code>number</code>类型<br><code>history.state</code>返回当前页面状态，<code>object</code>类型，值为<code>null</code>或</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>history.back()</code>跳转到历史记录上一页，等价于浏览器后退一步的操作<br><code>history.forward()</code>跳转到历史记录下一页，等价于浏览器前进一步的操作<br><code>history.go(n)</code>跳转到历史记录的第 n 页，n 为正数表示向前，负数表示向后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">history.<span class="hljs-title function_">go</span>(-<span class="hljs-number">2</span>); <span class="hljs-comment">// 后退两页</span><br>history.<span class="hljs-title function_">go</span>(<span class="hljs-number">3</span>);  <span class="hljs-comment">// 前进三页</span><br></code></pre></td></tr></table></figure>
+
+<p><code>history.pushState(state, title, url)</code>跳转到指定 url，并新增历史记录。不会触发页面的重新加载，<strong>history 路由模式使用它来进行页面跳转的</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">history.<span class="hljs-title function_">pushState</span>(&#123;<span class="hljs-attr">page</span>: <span class="hljs-number">1</span>&#125;, <span class="hljs-string">&quot;Page 1&quot;</span>, <span class="hljs-string">&quot;/page-1&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><code>history.replaceState(state, title, url)</code>跳转到指定 url，不会新增历史记录，并将之前地址的历史替换为新地址。不会触发页面的重新加载</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">history.<span class="hljs-property">history</span>.<span class="hljs-title function_">replaceStat</span>(&#123;<span class="hljs-attr">page</span>: <span class="hljs-number">2</span>&#125;, <span class="hljs-string">&quot;Page 2&quot;</span>, <span class="hljs-string">&quot;/page-1&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="监听地址的变化-1"><a href="#监听地址的变化-1" class="headerlink" title="监听地址的变化"></a>监听地址的变化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// pushState/replaceState 不会触发 popstate</span><br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;popstate&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) &#123;<br>  <span class="hljs-comment">// 当浏览器历史记录变化时执行的代码</span><br><br>  <span class="hljs-comment">// 可以获取当前历史状态对象，如果使用了pushState或replaceState方法设置的话</span><br>  <span class="hljs-keyword">var</span> currentState = history.<span class="hljs-property">state</span>;<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Navigated to: &quot;</span>, <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">href</span>);<br><br>  <span class="hljs-comment">// 根据新的URL进行相应的操作，如重新渲染页面内容、更新UI等</span><br>  <span class="hljs-comment">// ...</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h2><p>包含浏览器信息的对象</p>
+<h3 id="基础知识-2"><a href="#基础知识-2" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h4><p><code>navigator.userAgent</code>返回浏览器信息，<code>string</code>类型，包含浏览器类型、版本、操作系统信息等</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title class_">Mozilla</span>/<span class="hljs-number">5.0</span> (<span class="hljs-title class_">Macintosh</span>; <span class="hljs-title class_">Intel</span> <span class="hljs-title class_">Mac</span> <span class="hljs-variable constant_">OS</span> X <span class="hljs-number">10_15_7</span>)<br><span class="hljs-title class_">AppleWebKit</span>/<span class="hljs-number">537.36</span> (<span class="hljs-variable constant_">KHTML</span>, like <span class="hljs-title class_">Gecko</span>) <span class="hljs-title class_">Chrome</span>/<span class="hljs-number">119.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-title class_">Safari</span>/<span class="hljs-number">537.36</span><br><span class="hljs-title class_">Edg</span>/<span class="hljs-number">119.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><br></code></pre></td></tr></table></figure>
+
+<p><code>navigator.userAgentData</code>返回浏览器信息，<code>object</code>类型，包含浏览器类型、版本、操作系统信息等，<strong>更精确</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;brands&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Microsoft Edge&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 浏览器品牌</span><br>    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;119&quot;</span> <span class="hljs-comment">// 浏览器版本</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Chromium&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;119&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Not?A_Brand&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;24&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;mobile&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;platform&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;macOS&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>navigator.language</code>返回用户首选语言，<code>string</code>类型，我的值为<code>zh-CN</code><br><code>navigator.platform</code>返回浏览器运行的平台，<code>string</code>类型，我的值为<code>MacIntel</code><br><code>navigator.cookieEnable</code>返回浏览器是否启用了 cookie，<code>boolean</code>类型</p>
+<h3 id="面试常问-1"><a href="#面试常问-1" class="headerlink" title="面试常问"></a>面试常问</h3><ol>
+<li>UA 的获取与解读<ol>
+<li>获取：<code>navigator.userAgent</code>或<code>navigator.userAgentData</code></li>
+<li>解读：按需解读即可，也可以借鉴 <a target="_blank" rel="noopener" href="https://github.com/bestiejs/platform.js/">platform.js</a> 库</li>
+</ol>
+</li>
+<li>如何获取剪切板的内容？<ol>
+<li>借用 <code>navigator.clipbord</code>实现读取剪切板：<code>readText()</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p><code>navigation</code>通常出现在 Web APIs 中，用于提供有关浏览器导航的信息。一个常见的使用场景是在 Service Worker 中使用</p>
+<h2 id="screen-有可视化经历必问"><a href="#screen-有可视化经历必问" class="headerlink" title="screen(有可视化经历必问)"></a>screen(有可视化经历必问)</h2><p>浏览器设备的屏幕相关的</p>
+<h3 id="基础知识-3"><a href="#基础知识-3" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h4><p><code>screen.height/screen.width</code>：电脑屏幕的宽高，随浏览器设备的分辨率变化<br><code>screen.availHeight/screen.availWidth</code>：电脑屏幕的可用宽高（减去了 mac&#x2F;window 系统的上下任务栏的高度），随浏览器设备的分辨率变化<br><code>screen.orientation</code>：屏幕方向对象，如<code>screen.orientation.type</code>横向（landscape）或纵向（portrait）<br>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6901352015222276104">如何在 JavaScript 中获取屏幕，窗口和网页大小 - 掘金</a></p>
+<h3 id="进阶知识-1"><a href="#进阶知识-1" class="headerlink" title="进阶知识"></a>进阶知识</h3><h4 id="获取屏幕的大小有哪些方式？"><a href="#获取屏幕的大小有哪些方式？" class="headerlink" title="获取屏幕的大小有哪些方式？"></a>获取屏幕的大小有哪些方式？</h4><ul>
+<li>使用<code>screen.width/screen.height</code>获取电脑屏幕的宽高，随浏览器设备的分辨率变化</li>
+<li>使用<code>window.innerWidth/window.innerHeight</code>获取浏览器窗口的宽高(包括滚动条)，随浏览器窗口大小而变化</li>
+<li>使用<code>document.documentElement.clientWidth/document.documentElement.clientHeight</code>获取 <strong>html</strong>元素的宽高(不包括滚动条)</li>
+<li>使用<code>document.body.clientWidth/document.body.clientHeight</code>获取 <strong>body</strong> 元素的宽高(不包括滚动条)</li>
+</ul>
+<h4 id="这几个值之间的关系？"><a href="#这几个值之间的关系？" class="headerlink" title="这几个值之间的关系？"></a>这几个值之间的关系？</h4><p><code>1</code>&gt;&#x3D;<code>2</code>&#x3D;&#x3D;<code>3</code>&#x3D;&#x3D;<code>4</code></p>
+<h4 id="这几个值分别受什么影响？"><a href="#这几个值分别受什么影响？" class="headerlink" title="这几个值分别受什么影响？"></a>这几个值分别受什么影响？</h4><p><code>1</code>受设备分辨率影响<br><code>2</code>受浏览器窗口大小影响<br><code>3</code>受给 <strong>html</strong>元素设置的 CSS 宽高影响<br><code>4</code>受给 <strong>body</strong>元素设置的 CSS 宽高影响</p>
+<h4 id="如何监听浏览器的大小变化？"><a href="#如何监听浏览器的大小变化？" class="headerlink" title="如何监听浏览器的大小变化？"></a>如何监听浏览器的大小变化？</h4><p>监听 resize 事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;resize&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-comment">// 获取窗口当前的大小</span><br>  <span class="hljs-keyword">const</span> currentWidth = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>;<br>  <span class="hljs-keyword">const</span> currentHeight = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerHeight</span>;<br>  <span class="hljs-comment">// 其他逻辑判...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="offsetWidth-offsetHeight与clientWidth-clientHeight的关系"><a href="#offsetWidth-offsetHeight与clientWidth-clientHeight的关系" class="headerlink" title="offsetWidth/offsetHeight与clientWidth/clientHeight的关系"></a><code>offsetWidth/offsetHeight</code>与<code>clientWidth/clientHeight</code>的关系</h4><p><code>clientWidth/clientHeight</code>&#x3D;元素可视区域的宽&#x2F;高 + padding(若有)-滚动条(若有)<br><img src="/img/images/2023/1700839080722-ef70fbb2-e965-42f3-94c7-37b86e445d94.png" srcset="/img/loading.gif" lazyload><br><code>offsetWidth/offsetHieght</code>&#x3D;<code>clientWidth/clientHeight</code>+边框(若有)+滚动条(若有)<br><img src="/img/images/2023/1700839577150-7e14fbfc-b484-4ecb-ae97-defecf120f13.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="滚动条宽高计算方式有哪些？"><a href="#滚动条宽高计算方式有哪些？" class="headerlink" title="滚动条宽高计算方式有哪些？"></a>滚动条宽高计算方式有哪些？</h4><h5 id="全局入手"><a href="#全局入手" class="headerlink" title="全局入手"></a>全局入手</h5><p><code>window.innerWidth</code>(浏览器宽度+滚动条(若有)) - <code>document.documentElement.clientWidth</code>(浏览器宽度)</p>
+<h5 id="元素入手-1-自己想的"><a href="#元素入手-1-自己想的" class="headerlink" title="元素入手-1(自己想的)"></a>元素入手-1(自己想的)</h5><p>元素(无边框+无 padding+可滚动时).offsetWidth - 元素(无边框+无 padding+可滚动时).clientWidth</p>
+<h5 id="元素入手-2-iView-的做法"><a href="#元素入手-2-iView-的做法" class="headerlink" title="元素入手-2(iView 的做法)"></a>元素入手-2(iView 的做法)</h5><p>元素(可滚动时).offsetWidth - 元素(未滚动前).offsetWidth</p>
+<h4 id="常见的scroll-属性"><a href="#常见的scroll-属性" class="headerlink" title="常见的scroll*属性"></a>常见的<code>scroll*</code>属性</h4><h5 id="scrollWidth-scrollHeight"><a href="#scrollWidth-scrollHeight" class="headerlink" title="scrollWidth/scrollHeight"></a><code>scrollWidth/scrollHeight</code></h5><p>元素的实际宽高，非可视区域的<br>若无滚动条，则等于<code>clientWidth/clientHeight</code><br>若有滚动条，则等于<code>实际内容宽高(一般跟子元素宽高有关)</code>+<code>padding(若有)</code><img src="/img/images/2023/1700838902797-c1c66fe7-c4e8-461f-9f2a-5edddb1a526f.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="scrollLeft-scrollTop"><a href="#scrollLeft-scrollTop" class="headerlink" title="scrollLeft/scrollTop"></a><code>scrollLeft/scrollTop</code></h5><p>元素最左端&#x2F;最上端与窗口最左端&#x2F;最上端的距离，即滚动条左&#x2F;上滚的距离<br><img src="/img/images/2023/1700838990916-7580e0bb-2199-45f3-95a8-e0dec0e7da82.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="scrollX-scrollY-pageXOffset-pageYOffset"><a href="#scrollX-scrollY-pageXOffset-pageYOffset" class="headerlink" title="scrollX/scrollY&#x3D;&#x3D;&#x3D;pageXOffset/pageYOffset"></a><code>scrollX/scrollY</code>&#x3D;&#x3D;&#x3D;<code>pageXOffset/pageYOffset</code></h5><p>返回元素滚动了的距离<br>举例：<code>window.scrollX</code>&#x3D;&#x3D;&#x3D;<code>pageXOffset</code>&#x3D;&#x3D;&#x3D;<code>document.documentElement.scrollLeft</code></p>
+<h4 id="offsetLeft-offsetTop"><a href="#offsetLeft-offsetTop" class="headerlink" title="offsetLeft/offsetTop"></a><code>offsetLeft/offsetTop</code></h4><p>返回元素的左&#x2F;上端与最近定位元素(默认为 body)的左&#x2F;上边的距离<br><img src="/img/images/2023/1700840240071-0a20d8df-77ed-4ac7-9883-854e4ca063a6.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="如何元素监听滚动事件？"><a href="#如何元素监听滚动事件？" class="headerlink" title="如何元素监听滚动事件？"></a>如何元素监听滚动事件？</h4><p>一般滚动的 HTML 结构为：父元素高度小于子元素高度并且父元素允许滚动，这样才能滚动<br>所以监听的滚动事件是设置在父元素上面的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">父元素.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>  <span class="hljs-keyword">const</span> &#123; scrollTop &#125; = <span class="hljs-variable language_">this</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="如何判断元素是否在可视区域内？"><a href="#如何判断元素是否在可视区域内？" class="headerlink" title="如何判断元素是否在可视区域内？"></a>如何判断元素是否在可视区域内？</h4><h5 id="计算法-父元素为任意元素"><a href="#计算法-父元素为任意元素" class="headerlink" title="计算法-父元素为任意元素"></a>计算法-父元素为任意元素</h5><p>对比<code>父元素.scrollTop</code>与<code>子元素.offsetTop+子元素.offsetHeight(若需要)</code>的差值，大于 0 表明还在，小于 0 表明不在</p>
+<h5 id="计算法-getBoundingClientRect-父元素仅为窗口"><a href="#计算法-getBoundingClientRect-父元素仅为窗口" class="headerlink" title="计算法(getBoundingClientRect)-父元素仅为窗口"></a>计算法(getBoundingClientRect)-父元素仅为窗口</h5><p><code>元素.getBoundingClientRect()</code>获取元素与可视窗口(body 0,0)之间的关系，返回值为<code>object</code>类型</p>
+<ul>
+<li>width：元素宽度</li>
+<li>height：元素高度</li>
+<li>left：元素左边与可视窗口的左边距离</li>
+<li>right：元素右边与可视窗口的左边距离 &#x3D; left + width</li>
+<li>top：元素上边与可视窗口的上边距离</li>
+<li>botton：元素下边与可视窗口的上边距离 &#x3D; top + height</li>
+<li>x：元素鼠标的 X 坐标，等价于 left</li>
+<li>y：元素鼠标的 Y 坐标，等价于 top</li>
+<li>兼容性问题：IE 会多出 2px(边框计算有差异)</li>
+</ul>
+<p>当元素同时满足以下 4 个条件时，则表明在可视窗口内：</p>
+<ol>
+<li><code>元素.left</code> &gt;&#x3D; 0</li>
+<li><code>元素.top</code> &gt;&#x3D; 0</li>
+<li><code>元素.right</code> &lt;&#x3D;<code>窗口宽度(document.body.clientWidth)</code></li>
+<li><code>元素.bottom</code> &lt;&#x3D;<code>窗口高度(document.body.clientHeight)</code></li>
+</ol>
+<h5 id="API-法-IntersectionObserver-性能最好"><a href="#API-法-IntersectionObserver-性能最好" class="headerlink" title="API 法-IntersectionObserver(性能最好)"></a>API 法-IntersectionObserver(性能最好)</h5><p>采用<code>IntersectionObserver</code>来观察两个元素是否重叠<br>基本语法：<code>new IntersectionObserver(callback, options)</code>，其中的 callback 将会在满足和不满足重叠时分别调用一次</p>
+<blockquote>
+<p>官网文档：<br>Intersection Observer API：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API">Intersection Observer API - Web API 接口参考 | MDN</a><br>IntersectionObserver：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver">IntersectionObserver - Web API 接口参考 | MDN</a><br>entry 对象：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserverEntry">IntersectionObserverEntry - Web API 接口参考 | MDN</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Observer</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">IntersectionObserver</span>(<span class="hljs-function">(<span class="hljs-params">entries, oberver</span>) =&gt;</span>&#123;<br>  <span class="hljs-comment">// entries：所有子元素的数组，下面 observe() 每次调用时，该数组就会新增长度</span><br>  <span class="hljs-comment">// oberver：完整的 options 对象</span><br>  entries.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">entry</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> &#123;<br>      isIntersecting <span class="hljs-comment">// 是否满足设置的 threshold 重叠，返回 boolean 值</span><br>    &#125; = entry<br><br>    <span class="hljs-keyword">if</span>(isIntersecting) &#123;<br>      <span class="hljs-comment">// do something....</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// do otherthing....</span><br>    &#125;<br>  &#125;)<br>&#125;,<br>&#123;<br>  <span class="hljs-attr">root</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">// 监听的父元素，默认为视口，null||ElementDom</span><br>  <span class="hljs-attr">threshold</span>: <span class="hljs-number">1</span> <span class="hljs-comment">// 表示两个元素的重叠比例，number||number[]</span><br>&#125;)<br><br><span class="hljs-title class_">Observer</span>.<span class="hljs-title function_">observe</span>(childrenEl) <span class="hljs-comment">// 调用 observe 触发观察，参数为 ElementDom 类型</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="面试常问-2"><a href="#面试常问-2" class="headerlink" title="面试常问"></a>面试常问</h3><h4 id="如何-Tab-实现吸顶效果"><a href="#如何-Tab-实现吸顶效果" class="headerlink" title="如何 Tab 实现吸顶效果"></a>如何 Tab 实现吸顶效果</h4><p>思路：监听父元素的滚动事件，实时判断父元素的 scrollTop 是否大于 Tab 的 offsetTop 高度，若大于则说明该 Tab 将滚出可视区域了，所以马上设置固定定位，定位的 Top&#x2F;Left 需要根据父元素的 offsetLeft&#x2F;offsetTop</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">parentEl.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;scroll&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> &#123; scrollTop &#125; = <span class="hljs-variable language_">this</span>;<br>  <span class="hljs-keyword">const</span> &#123; offsetTop &#125; = tabEl;<br><br>  <span class="hljs-keyword">if</span> (scrollTop &gt;= offsetTop) &#123;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&quot;fixed&quot;</span>;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = element.<span class="hljs-property">offsetTop</span> + <span class="hljs-string">&quot;px&quot;</span>;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = element.<span class="hljs-property">offsetLeft</span> + <span class="hljs-string">&quot;px&quot;</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">position</span> = <span class="hljs-string">&quot;relative&quot;</span>;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">top</span> = <span class="hljs-number">0</span>;<br>    tabEl.<span class="hljs-property">style</span>.<span class="hljs-property">left</span> = <span class="hljs-number">0</span>;<br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h1 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h1><blockquote>
+<p>常说的事件队列、EventLoop 是 JS 语言的机制</p>
+</blockquote>
+<h2 id="普通浏览器"><a href="#普通浏览器" class="headerlink" title="普通浏览器"></a>普通浏览器</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>而这里的浏览器事件模型讲的是：浏览器处理事件传播的方式，分为三个阶段</p>
+<ul>
+<li>捕获：先从文档根节点向下传播到目标元素</li>
+<li>目标：到达目标元素，触发其绑定的事件(若有)</li>
+<li>冒泡：最后再从目标元素向上传播到文档根节点</li>
+</ul>
+<h3 id="事件注册"><a href="#事件注册" class="headerlink" title="事件注册"></a>事件注册</h3><p>使用 DOM Level 0 事件处理程序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.<span class="hljs-property">onclick</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123; <span class="hljs-comment">// event 事件对象</span><br>  <span class="hljs-comment">// 这里的 this 指向全局对象（window）</span><br>  <span class="hljs-comment">// event 参数是通过函数参数传递的事件对象(包含事件类型、触发元素、按键等)</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);   <span class="hljs-comment">// 输出全局对象（window）</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);  <span class="hljs-comment">// 输出事件对象</span><br><br>  <span class="hljs-comment">// do something.....</span><br>&#125;<br><br><span class="hljs-comment">// 优点：</span><br><span class="hljs-comment">// 1、简单粗暴的赋值</span><br><br><span class="hljs-comment">// 缺点：</span><br><span class="hljs-comment">// 1、this 指向 window，因为是作为普通函数在全局声明的，this 就被指向 window，无法通过 this</span><br><span class="hljs-comment">// 直接获取到触发的元素，需要加形参表示事件对象</span><br><span class="hljs-comment">// 2、只支持冒泡</span><br></code></pre></td></tr></table></figure>
+
+<p>使用 DOM Level 2 事件处理程序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 这里的 this 指向触发的元素(dom)</span><br>  <span class="hljs-comment">// event 参数是通过函数参数传递的事件对象(包含事件类型、触发元素、按键等)</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>);   <span class="hljs-comment">// 输出触发的元素(dom)</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);   <span class="hljs-comment">// 输出事件对象</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">target</span> === <span class="hljs-variable language_">this</span>);   <span class="hljs-comment">// 输出 true</span><br><br>  <span class="hljs-comment">// do something.....</span><br><br>&#125;, <span class="hljs-literal">false</span>) <span class="hljs-comment">// true：捕获时触发，false：冒泡时触发(不传默认)</span><br><br><span class="hljs-comment">// 优点：</span><br><span class="hljs-comment">// 1、同一个元素可以绑定多个相同事件</span><br><span class="hljs-comment">// 2、第三个参数可以控制事件的触发阶段：冒泡或捕获</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="事件解绑"><a href="#事件解绑" class="headerlink" title="事件解绑"></a>事件解绑</h3><p>使用 DOM Level 0 事件处理程序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.<span class="hljs-property">onclick</span> = <span class="hljs-literal">null</span><br></code></pre></td></tr></table></figure>
+
+<p>使用 DOM Level 2 事件处理程序：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, callback)<br><span class="hljs-comment">// callback 必须与 addEventListener 的一致，否则将无法解绑</span><br><br><span class="hljs-comment">// 为了避免这种请情况，一般将 callback 单独抽出来写</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="阻止事件传播"><a href="#阻止事件传播" class="headerlink" title="阻止事件传播"></a>阻止事件传播</h3><h4 id="event-stopPropagation"><a href="#event-stopPropagation" class="headerlink" title="event.stopPropagation()"></a><code>event.stopPropagation()</code></h4><p>阻止当前元素上的所有本事件的传播，不在触发捕获与冒泡，但已注册未执行的事件都会按序触发<br>白话：我自己执行完后，只是断掉传播，别人的还是能执行<br>假设：一个元素上绑定了 3 个 click 事件，若在之一写了<code>event.stopPropagation()</code>，其他两个的 click 事件会正常触发，但都没法传播了，但其他事件(scroll)不受影响</p>
+<h4 id="event-stopImmediatePropagation"><a href="#event-stopImmediatePropagation" class="headerlink" title="event.stopImmediatePropagation()"></a><code>event.stopImmediatePropagation()</code></h4><p>阻止当前元素上的所有本事件的传播，不在触发捕获与冒泡，并且已注册未执行的事件不会再触发<br>白话：我自己执行完后，不仅要断掉传播，并且让别人也没法执行，做事更绝。<br>假设：一个元素上绑定了 3 个 click 事件，若在之一写了<code>event.stopImmediatePropagation()</code>，其他未执行的 click 事件不会正常触发，并且从我开始阻断传播，但其他事件(scroll)不受影响</p>
+<h2 id="IE-浏览器-了解即可"><a href="#IE-浏览器-了解即可" class="headerlink" title="IE 浏览器(了解即可)"></a>IE 浏览器(了解即可)</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>IE 8 及更早版本只支持事件冒泡，不支持事件捕获。</li>
+<li>IE 9 及之后的版本开始支持事件冒泡和捕获</li>
+</ul>
+<h3 id="事件注册-1"><a href="#事件注册-1" class="headerlink" title="事件注册"></a>事件注册</h3><p><code>element.attachEvent(&#39;onclick&#39;, callback)</code>，必须带上<code>on</code><br>attachEvent 是后绑定先执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.<span class="hljs-title function_">attachEvent</span>(<span class="hljs-string">&#x27;onclick&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> event = <span class="hljs-variable language_">window</span>.<span class="hljs-property">event</span>; <span class="hljs-comment">// 这样访问事件对象</span><br>&#125;) <span class="hljs-comment">// 默认为冒泡</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="事件解绑-1"><a href="#事件解绑-1" class="headerlink" title="事件解绑"></a>事件解绑</h3><p><code>element.detachEvent(&#39;onclick&#39;, callback)</code>，必须带上<code>on</code>，并且 callback 必须与 attachEvent 的一致，否则将无法解绑</p>
+<h3 id="阻止事件传播-1"><a href="#阻止事件传播-1" class="headerlink" title="阻止事件传播"></a>阻止事件传播</h3><p><code>event.cancelBubble = true</code></p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>事件代理：<ol>
+<li>基于冒泡，可将列表 item 的点击事件绑定到父级上，在父级上通过<code>event.target</code>获取到触发事件的元素，然后进行对应操作。节省子元素的 item 的获取与绑定效率</li>
+</ol>
+</li>
+</ol>
+<h2 id="面试常问-3"><a href="#面试常问-3" class="headerlink" title="面试常问"></a>面试常问</h2><h3 id="区分不同的阻止"><a href="#区分不同的阻止" class="headerlink" title="区分不同的阻止"></a>区分不同的阻止</h3><p><code>event.stopPropagation()</code>&#x2F;<code>event.stopImmediatePropagation()</code>&#x2F;<code>event.preventDefault()</code></p>
+<h3 id="手写多浏览器兼容的事件注册、解绑、阻止等"><a href="#手写多浏览器兼容的事件注册、解绑、阻止等" class="headerlink" title="手写多浏览器兼容的事件注册、解绑、阻止等"></a>手写多浏览器兼容的事件注册、解绑、阻止等</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">EventModal</span> = &#123;<br>  <span class="hljs-comment">// 事件注册</span><br>  <span class="hljs-title function_">addEventListener</span>(element, eventType, callback, useCaption) =&gt; &#123;<br>    <span class="hljs-keyword">if</span>(element.<span class="hljs-property">addEventListener</span>) &#123;<br>      <span class="hljs-comment">// 普通浏览器</span><br>      element.<span class="hljs-title function_">addEventListener</span>(eventType, callback, useCaption)<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(element.<span class="hljs-property">attachEvent</span>) &#123;<br>      <span class="hljs-comment">// IE7/8</span><br>      element.<span class="hljs-title function_">attachEvent</span>(<span class="hljs-string">&#x27;on&#x27;</span> + eventType, callback)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      element[<span class="hljs-string">&#x27;on&#x27;</span> + eventType] = callback<br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 事件解绑</span><br>  <span class="hljs-title function_">removeEventListener</span>(element, eventType, callback) =&gt; &#123;<br>    <span class="hljs-keyword">if</span>(element.<span class="hljs-property">removeEventListener</span>) &#123;<br>      <span class="hljs-comment">// 普通浏览器</span><br>      element.<span class="hljs-title function_">removeEventListener</span>(eventType, callback, useCaption)<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(element.<span class="hljs-property">detachEvent</span>) &#123;<br>      <span class="hljs-comment">// IE7/8</span><br>      element.<span class="hljs-title function_">detachEvent</span>(<span class="hljs-string">&#x27;on&#x27;</span> + eventType, callback)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      element[<span class="hljs-string">&#x27;on&#x27;</span> + eventType] = <span class="hljs-literal">null</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 事件传播阻止</span><br>  <span class="hljs-title function_">stopPropagation</span>(event) =&gt; &#123;<br>    <span class="hljs-keyword">if</span>(event.<span class="hljs-property">stopPropagation</span>) &#123;<br>      <span class="hljs-comment">// 普通浏览器</span><br>      event.<span class="hljs-title function_">stopPropagation</span>()<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// IE7/8</span><br>      event.<span class="hljs-property">cancalBubble</span> = <span class="hljs-literal">true</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 默认事件阻止</span><br>  <span class="hljs-title function_">preventDefault</span>(event) =&gt; &#123;<br>    <span class="hljs-keyword">if</span>(event.<span class="hljs-property">preventDefault</span>) &#123;<br>      <span class="hljs-comment">// 普通浏览器</span><br>      event.<span class="hljs-title function_">preventDefault</span>()<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// IE7/8</span><br>      event.<span class="hljs-property">returnValue</span> = <span class="hljs-literal">false</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="ajax-XMLHttpRequest-对象"><a href="#ajax-XMLHttpRequest-对象" class="headerlink" title="ajax - XMLHttpRequest 对象"></a>ajax - XMLHttpRequest 对象</h2><p>Async JavaScript adn XML：通过异步方式与服务器进行数据交互</p>
+<h3 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 1、创建对象</span><br><span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>()<br><br><span class="hljs-comment">// 2、创建链接(不会发送)：指定类型、请求地址、是否异步(默认异步)</span><br>xhr.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;POST&#x27;</span>, <span class="hljs-string">&#x27;https://www.xxx.com/api/user1&#x27;</span>)<br><br><span class="hljs-comment">// 3、指定回调</span><br>xhr.<span class="hljs-property">onreadystatechange</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span>(xhr.<span class="hljs-property">readyState</span> == <span class="hljs-number">4</span> &amp;&amp; xhr.<span class="hljs-property">status</span> == <span class="hljs-number">200</span>) &#123;<br>    <span class="hljs-comment">// 请求成功回调</span><br>    <span class="hljs-keyword">const</span> data = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(xhr.<span class="hljs-property">responseText</span>)<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 4、发送请求</span><br>xhr.<span class="hljs-title function_">send</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="进阶设置"><a href="#进阶设置" class="headerlink" title="进阶设置"></a>进阶设置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 超时时间</span><br>xhr.<span class="hljs-property">timeout</span> = <span class="hljs-number">2000</span> <span class="hljs-comment">// 单位毫秒</span><br><span class="hljs-comment">// 超时触发事件</span><br>xhr. ontimeout = <span class="hljs-function">() =&gt;</span> &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="详细解释"><a href="#详细解释" class="headerlink" title="详细解释"></a>详细解释</h3><p><code>xhr.readyState</code>的状态有：</p>
+<ul>
+<li>0：未初始化，尚未调用<code>open</code>方法</li>
+<li>1：启动，<code>open</code>方法已调用</li>
+<li>2：发送，<code>send</code>方法已调用</li>
+<li>3：接收，正在接收服务器数据</li>
+<li>4：完成，数据接收完毕，可以在浏览器用了</li>
+</ul>
+<p><code>xhr.status</code>HTTP 的状态码，服务器返回的</p>
+<ul>
+<li>1xx：提示信息</li>
+<li>2xx：成功，200(请求成功)</li>
+<li>3xx：重定向，301(永久重定向)，302(临时重定向)</li>
+<li>4xx：客户端错误，400(请求语法有错)，401(请求未授权)，403(服务器拒绝服务)，404(请求资源不存在)</li>
+<li>5xx：服务器错误，500(服务器错误)，503(服务器已不能处理请求)</li>
+</ul>
+<h3 id="自行封装"><a href="#自行封装" class="headerlink" title="自行封装"></a>自行封装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 使用方式：</span><br><span class="hljs-title function_">ajax</span>(&#123;<br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http:www.xxx.com/api/xx&#x27;</span>,<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">userId</span>: <span class="hljs-number">1</span><br>  &#125;,<br>  <span class="hljs-attr">timeout</span>: <span class="hljs-number">3000</span>,<br>&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功：&#x27;</span>, res)<br>&#125;,<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败：&#x27;</span>, err)<br>&#125;)<br><br><span class="hljs-comment">// 补充完下面的函数</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">ajax</span> = (<span class="hljs-params">options</span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> &#123; url, method, data, timeout &#125; = options<br>    <span class="hljs-keyword">const</span> _method = method.<span class="hljs-title function_">toUpperCase</span>()<br>    <span class="hljs-keyword">let</span> _data = <span class="hljs-literal">null</span><br>    <span class="hljs-keyword">let</span> _url = url<br><br>    <span class="hljs-keyword">if</span>(_method === <span class="hljs-string">&#x27;GET&#x27;</span>) &#123;<br>      <span class="hljs-comment">// 参数字符串处理</span><br>      <span class="hljs-keyword">const</span> queryString = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(data||&#123;&#125;).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_">encodeURLComponent</span>(key) + <span class="hljs-string">&#x27;=&#x27;</span> + <span class="hljs-title function_">encodeURLComponent</span>(data[key])<br>      &#125;).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;&amp;&#x27;</span>)<br><br>      _url += <span class="hljs-string">&#x27;?&#x27;</span> + queryString<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      _data = data || <span class="hljs-literal">null</span><br><br>      <span class="hljs-keyword">if</span>(_data) &#123;<br>        _data = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(_data)<br><br>        xhr.<span class="hljs-title function_">setRequestHeader</span>(<span class="hljs-string">&#x27;Content-type&#x27;</span>, <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>)<br>      &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 1、创建对象</span><br>    <span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>()<br><br>    <span class="hljs-comment">// 2、创建连接</span><br>    xhr.<span class="hljs-title function_">open</span>(_method, _url)<br><br>    <span class="hljs-comment">// 3、成功触发事件</span><br>    xhr.<span class="hljs-property">onreadystatechange</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span>(xhr.<span class="hljs-property">readyState</span> === <span class="hljs-number">4</span>) &#123;<br>        <span class="hljs-keyword">if</span>(xhr.<span class="hljs-property">status</span> === <span class="hljs-number">200</span>) &#123;<br>          <span class="hljs-keyword">const</span> data = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(xhr.<span class="hljs-property">responseText</span>)<br>          resolve &amp;&amp; <span class="hljs-title function_">resolve</span>(data)<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>          reject &amp;&amp; <span class="hljs-title function_">reject</span>()<br>        &#125;<br>      &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 4、发送请求</span><br>    xhr.<span class="hljs-title function_">send</span>(_data)<br><br>    <span class="hljs-comment">// 5、超时时间</span><br>    xhr.<span class="hljs-property">timeout</span> = timeout<br><br>    <span class="hljs-comment">// 6、超时触发事件</span><br>    xhr.<span class="hljs-property">ontimeout</span> = <span class="hljs-function">() =&gt;</span> reject &amp;&amp; <span class="hljs-title function_">reject</span>(<span class="hljs-string">&#x27;超时&#x27;</span>)<br><br>    <span class="hljs-comment">// 7、失败触发事件</span><br>    xhr.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> reject &amp;&amp; <span class="hljs-title function_">reject</span>(err)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><p>访问资源时，不必重新请求。</p>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>明确告知浏览器一定时间内使用本地缓存<br><code>Cach-Control</code></p>
+<ul>
+<li>max-age: 定义资源被认为是新鲜的最长时间（秒）。</li>
+<li>s-maxage: 覆盖 max-age，但仅适用于共享缓存（比如代理服务器）。</li>
+<li>public: 允许所有内容缓存，包括代理服务器。</li>
+<li>private: 仅允许终端用户缓存。</li>
+</ul>
+<p><code>Expries</code>资源过期时间，服务器返回的 HTTP 头</p>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>浏览器向服务器发请求验证缓存是否有效</p>
+<ul>
+<li>Last-Modified &#x2F; If-Modified-Since：<ul>
+<li>服务器通过 Last-Modified 头告诉浏览器资源的最后修改时间。</li>
+<li>浏览器通过 If-Modified-Since 头将最后的修改时间发送给服务器，如果时间仍然一致，服务器返回 304，表示资源未被修改，可以使用本地缓存。</li>
+</ul>
+</li>
+<li>ETag &#x2F; If-None-Match：<ul>
+<li>服务器通过 ETag 头生成一个唯一的标识符（通常是文件内容的哈希值）。</li>
+<li>浏览器通过 If-None-Match 头将该标识符发送给服务器，如果标识符仍然一致，服务器返回 304。</li>
+</ul>
+</li>
+</ul>
+<h2 id="面试常问-4"><a href="#面试常问-4" class="headerlink" title="面试常问"></a>面试常问</h2><h3 id="RESTFUL-请求的区别-GET、POST、DELETE、PUT、OPTION"><a href="#RESTFUL-请求的区别-GET、POST、DELETE、PUT、OPTION" class="headerlink" title="RESTFUL 请求的区别 - GET、POST、DELETE、PUT、OPTION"></a>RESTFUL 请求的区别 - GET、POST、DELETE、PUT、OPTION</h3><table>
+<thead>
+<tr>
+<th>GET</th>
+<th>POST</th>
+<th>DELETE</th>
+<th>PUT</th>
+<th>OPTION</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>获取数据</td>
+<td>提交数据</td>
+<td>删除数据</td>
+<td>更新数据</td>
+<td>预检，询问服务器支持哪些请求类型，通常在 CORS 请求中进行预检</td>
+</tr>
+<tr>
+<td>参数在 url 上，有长度限制</td>
+<td>参数在请求体上，浏览器&#x2F;服务器有大小限制</td>
+<td>参数在 url 上，有长度限制</td>
+<td>参数在请求体上，浏览器&#x2F;服务器有大小限制</td>
+<td>无参数</td>
+</tr>
+</tbody></table>
+<h3 id="跨域问题"><a href="#跨域问题" class="headerlink" title="跨域问题"></a>跨域问题</h3><p>同源策略：协议、域名、端口都一致<br>跨域的原因是：浏览器的同源策略导致的，非同源的不允许访问<br>解决办法：</p>
+<ol>
+<li>本地环境：可配置代理</li>
+<li>生产环境：服务端设置响应头，允许跨域(CORS-Cross Origin Resource Share)</li>
+</ol>
+<h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><h2 id="window-requestIdleCallback-callback-options"><a href="#window-requestIdleCallback-callback-options" class="headerlink" title="window.requestIdleCallback(callback,options)"></a><code>window.requestIdleCallback(callback,options)</code></h2><p>允许在浏览器空闲时执行一些任务，以避免阻塞用户界面的流畅性。通常用于拆分大型任务(任务分片)，确保不会在主线程执行太久而导致影响用户体验<br>用之前检查兼容性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestIdleCallback</span>(callback, options);<br><span class="hljs-comment">// callback 是一个在浏览器空闲时执行的函数。</span><br><span class="hljs-comment">// options 是一个配置对象，可选，包含以下属性：</span><br> <span class="hljs-comment">// timeout：一个时间，指定在执行回调前等待的最长时间。</span><br> <span class="hljs-comment">// 如果空闲时间小于 timeout，则会立即执行回调。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">myIdleCallback</span>(<span class="hljs-params">deadline</span>) &#123;<br>  <span class="hljs-comment">// deadline 是一个对象，包含有关浏览器何时认为它将再次空闲的信息</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`剩余空闲时间：<span class="hljs-subst">$&#123;deadline.timeRemaining()&#125;</span>ms`</span>);<br><br>  <span class="hljs-comment">// 执行一些任务</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;<br>    <span class="hljs-comment">// 一些计算密集的操作</span><br>  &#125;<br><br>  <span class="hljs-comment">// 如果任务未完成，可以请求下一次空闲回调</span><br>  <span class="hljs-keyword">if</span> (deadline.<span class="hljs-title function_">timeRemaining</span>() &gt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestIdleCallback</span>(myIdleCallback);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 启动第一次空闲回调</span><br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestIdleCallback</span>(myIdleCallback);<br></code></pre></td></tr></table></figure>
+
+<p>实际场景举例：</p>
+<ul>
+<li>性能监测和分析：空闲时可以做</li>
+<li>自动保存和同步：空闲时可以做</li>
+<li>前端性能优化：空闲时预加载资源、图片等</li>
+</ul>
+<h2 id="window-requestAnimationFrame-callback"><a href="#window-requestAnimationFrame-callback" class="headerlink" title="window.requestAnimationFrame(callback)"></a><code>window.requestAnimationFrame(callback)</code></h2><p>可在浏览器下一次重绘之前执行指定的回调函数，以确保动画的平滑运行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">animate</span>(<span class="hljs-params">timestamp</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(timestamp); <span class="hljs-comment">// timestamp 回调被触发的时间戳(动画开始时的时间)</span><br><br>  <span class="hljs-comment">// 在这里执行动画相关的操作</span><br>  <span class="hljs-comment">// do something.......</span><br><br>  <span class="hljs-comment">// 继续下一帧动画</span><br>  <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestAnimationFrame</span>(animate);<br>&#125;<br><br><span class="hljs-comment">// 启动动画</span><br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestAnimationFrame</span>(animate);<br></code></pre></td></tr></table></figure>
+
+<h2 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件"></a>阻止默认事件</h2><p><code>event.preventDefault()</code>阻止浏览器的默认行为，比如：a 标签点击后会默认跳转<br><code>envnt.returnValue = false</code>IE 阻止浏览器的默认行为</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1-5、浏览器相关</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/1-5、浏览器相关/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-6%E3%80%81JS%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="1-6、JS 性能优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1-6、JS 性能优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-4%E3%80%81JS%20%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AF%A6%E8%A7%A3/" title="1-4、JS 模块化详解">
+                        <span class="hidden-mobile">1-4、JS 模块化详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="6-1、工程化实战之前端脚手架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-1、工程化实战之前端脚手架">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/6-1%E3%80%81%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E6%88%98%E4%B9%8B%E5%89%8D%E7%AB%AF%E8%84%9A%E6%89%8B%E6%9E%B6/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="6-1、工程化实战之前端脚手架">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710120389136-2ec910cf-c328-4ab8-afea-054c8e79afc6.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710121633421-641c5d4c-d39d-4d91-9443-f3dc9aac5a7e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710122273244-2c861cae-d846-4b7f-8c47-b1654fc9a238.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710125557267-02c6c311-78c9-4f47-b87d-42d3ccd8c5bb.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710126802172-c093e66a-68e7-4e74-8d54-6ad2cf2c3c46.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710127381286-410baa2f-b496-460b-a2f3-353bb5192664.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710128244896-dfcde708-835a-4b76-a692-4d12f087149b.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710128530726-003dd194-1093-4b51-8c63-da44ad14d032.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710128912582-472390d5-1ceb-446a-95a8-d8d12d962d18.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710129096770-3c871ba9-24e4-4731-b91d-32e7d23170a1.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710132072864-ad1bd688-9402-44e5-b7d7-43eaecb33465.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710144632547-3d93d6de-b6bb-413d-8a88-d5aae1d5047d.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710144639652-ff69cffe-a75b-4d76-a36d-1b3990f1c599.png">
+<meta property="article:published_time" content="2024-01-13T23:32:56.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:56.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1710120389136-2ec910cf-c328-4ab8-afea-054c8e79afc6.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>6-1、工程化实战之前端脚手架 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="6-1、工程化实战之前端脚手架"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">6-1、工程化实战之前端脚手架</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:56+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="工程化定义"><a href="#工程化定义" class="headerlink" title="工程化定义"></a>工程化定义</h1><p>狭义上：基于研发流程的，包含：分支管理、开发环境、单元测试&#x2F;自动化测试、部署(CI&#x2F;CD)、等<br>广义上：开始写代码到发布、运维、bugfix、安全生产等，广义上就是很大的领域。<br><img src="/img/images/2024/1710120389136-2ec910cf-c328-4ab8-afea-054c8e79afc6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="AST"><a href="#AST" class="headerlink" title="AST"></a>AST</h1><p>Abstract Syntax Tree：抽象语法树，是源代码的抽象语法结构的树状表示。<br>常见的 JS AST，效果如下：<br><img src="/img/images/2024/1710121633421-641c5d4c-d39d-4d91-9443-f3dc9aac5a7e.png" srcset="/img/loading.gif" lazyload><br>前端构建的基石就是它(Webpack、Babel、Eslint、Prettier)，从 Webpack 来说，它会去加载对应的模块(*.js)，然后解析为 AST，最后再转为处理过的 JS（压缩&#x2F;Tree-shake 等）<br>所以我们可以在这个过程中，基于 AST 去改动某点，这样最后生成的代码也就会有我们想要的“功能”。</p>
+<p>转换为 AST 的过程为：解析(词法、语法) -&gt; 转换(特定转换规则) -&gt; 生成(对应语言代码字符串)<br>1、获取到源代码，通过<strong>词法分析</strong>，分成一个个“单词”(token)，一个 JSON 结构，特性：无语法信息，无法体现代码执行顺序<br><img src="/img/images/2024/1710122273244-2c861cae-d846-4b7f-8c47-b1654fc9a238.png" srcset="/img/loading.gif" lazyload><br>2、基于 token 进行<strong>语法分析</strong>，将其转换为 AST，这是一个具有“语法”的树结构，每一层有相同的字段<br>3、基于语法分析所得的 AST，进行转换(二次加工)，基于<strong>自定义的转换规则</strong>对节点进行增删改查等操作<br>4、最后基于转换后的 AST，生成对应语言的代码字符串</p>
+<h1 id="脚手架开发"><a href="#脚手架开发" class="headerlink" title="脚手架开发"></a>脚手架开发</h1><p>定义：快速、自动化的搭建、启动项目的工具<br>使用：通过命令行就能创建基于模板的项目</p>
+<blockquote>
+<p>vue-cli 的脚手架流程是：1、收集用户选项；2、去 github 拉取官方配好基础的模板；3、最后通过【选项+基础模板】生成完整的可用项目；最难的就是第 3 点</p>
+</blockquote>
+<p>本次我们实现的脚手架是：收集用户选项，去 github 拉取我们自己的模板，然后下载即可。</p>
+<h2 id="所需依赖"><a href="#所需依赖" class="headerlink" title="所需依赖"></a>所需依赖</h2><blockquote>
+<p>脚手架开发常用的依赖有：</p>
+<ul>
+<li><strong>path</strong>：提供了<strong>处理文件和目录路径</strong>的实用工具，比如路径的解析、组合和规范化等。</li>
+<li><strong>chalk</strong>：一个流行的 Node.js 包，用于<strong>在终端输出彩色文本</strong>，有助于美化命令行输出，提升用户体验。</li>
+<li><strong>fs-extra</strong>：是对 Node.js 内置文件系统（fs）模块的扩展，提供了更方便、更强大的<strong>文件和目录操作</strong>功能，如复制、移动、删除目录及其内容等。</li>
+<li><strong>inquirer</strong>：一个命令行用户界面库，常用于<strong>创建交互式的命令行问答程序</strong>，帮助开发者在初始化项目时收集用户输入的信息。</li>
+<li><strong>commander.js</strong>：另一个命令行接口（CLI）工具库，它简化了<strong>命令行选项、子命令和参数的解析</strong>过程，便于构建复杂的命令行工具。</li>
+<li><strong>axios</strong>：是一个基于 Promise 的 HTTP 客户端，用于在 Node.js 环境中执行 HTTP 请求，这对于脚手架在初始化项目时<strong>从远程获取资源</strong></li>
+<li><strong>download-git-repo</strong>：专门用于<strong>从 GitHub 或其他 Git 仓库下载项目的库</strong>，这对于脚手架根据用户选择的模板快速拉取项目源码非常便捷。</li>
+<li><strong>ora</strong>: 用于在<strong>命令行中显示动画状态图</strong>标（spinner），在执行耗时较长的任务时，可以给用户提供正在运行中的反馈，提高用户体验。</li>
+</ul>
+</blockquote>
+<ol>
+<li>创建项目文件夹，命名自取</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir xxxxxx<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>初始化，使用 npm&#x2F;yarn&#x2F;pnpm 初始化</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">cd hzq-cli &amp;&amp; pnpm init<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装对应依赖，带特定版本号的是因为高版本不支持<code>cjs</code>了</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">pnpm add path chalk@<span class="hljs-number">4</span> fs-extra inquirer@^<span class="hljs-number">8</span> commander axios download-git-repo ora@^<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="处理工程入口"><a href="#处理工程入口" class="headerlink" title="处理工程入口"></a>处理工程入口</h2><ol start="4">
+<li>新建入口文件<code>bin/hzqCli.js</code>，命名自取</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir bin &amp;&amp; touch bin/hzqCli.<span class="hljs-property">js</span><br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>更改<code>package.json</code>的<code>main</code>为<code>bin/hzqCli.js</code></li>
+</ol>
+<p><img src="/img/images/2024/1710125557267-02c6c311-78c9-4f47-b87d-42d3ccd8c5bb.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>更改<code>package.json</code>的<code>bin</code>为<code>bin/hzqCli.js</code>（<code>bin</code>属性用于指定项目中包含的可执行脚本，并将其暴露为全局命令，全局安装此包后，就可在命令行直接运行<code>hzqCli</code>命令）</li>
+</ol>
+<p><img src="/img/images/2024/1710126802172-c093e66a-68e7-4e74-8d54-6ad2cf2c3c46.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="7">
+<li><code>bin/hzqCli.js</code>初始化编码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-meta">#! /usr/bin/env node</span><br><br><span class="hljs-comment">// 上述为 Node.js 脚本文件的行首注释，告知使用 node 来解析和执行后续的脚本内容</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;hello hzqCli&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>本地开发时，可以通过运行<code>npm link</code>，可以实现<code>全局安装</code>的效果，这样可以本地调试与测试（只需要一次即可，后面该代码后不需要重复执行哦）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">npm link<br></code></pre></td></tr></table></figure>
+
+<ol start="9">
+<li>命令行运行<code>hzqCli</code>，可以发现不会报错，并打印<code>hello hzqCli</code></li>
+</ol>
+<p><img src="/img/images/2024/1710127381286-410baa2f-b496-460b-a2f3-353bb5192664.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="功能开发"><a href="#功能开发" class="headerlink" title="功能开发"></a>功能开发</h2><p>进入<code>bin/hzqCli.js</code>，开始正式编码了，为了更容易理解编码过程，代码将采用分段形式来展示</p>
+<h3 id="bin-hzqCli-js编码：基础命令-create-的基本逻辑"><a href="#bin-hzqCli-js编码：基础命令-create-的基本逻辑" class="headerlink" title="bin/hzqCli.js编码：基础命令 create 的基本逻辑"></a><code>bin/hzqCli.js</code>编码：基础命令 create 的基本逻辑</h3><ol start="10">
+<li><code>bin/hzqCli.js</code>编码（一）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-meta">#! /usr/bin/env node</span><br><br><span class="hljs-comment">// 上述为 Node.js 脚本文件的行首注释，告知使用 node 来解析和执行后续的脚本内容</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;hello hzqCli&quot;</span>);<br><br><span class="hljs-comment">// 引入 commander 模块，官方使用文档：https://github.com/tj/commander.js/blob/HEAD/Readme_zh-CN.md</span><br><span class="hljs-keyword">const</span> &#123; program &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;commander&quot;</span>);<br><br><span class="hljs-comment">// 定义命令与参数，类似 hzqCli init、hzqCli list 等等</span><br><span class="hljs-comment">// create 的命令</span><br>program<br>  .<span class="hljs-title function_">command</span>(<span class="hljs-string">&quot;create &lt;projectName&gt;&quot;</span>)<br>  .<span class="hljs-title function_">description</span>(<span class="hljs-string">&quot;create a new project&quot;</span>)<br>  .<span class="hljs-title function_">option</span>(<span class="hljs-string">&quot;-f --force&quot;</span>, <span class="hljs-string">&quot;overwrite existed project&quot;</span>) <span class="hljs-comment">// 定义选项，同时可以附加选项的简介，短名称（-后面接单个字符）和长名称（--后面接一个或多个单词，空格分隔</span><br>  .<span class="hljs-title function_">action</span>(<span class="hljs-function">(<span class="hljs-params">projectName, options</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;create project: &quot;</span>, projectName);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;options: &quot;</span>, options);<br>  &#125;);<br><br><span class="hljs-comment">// 解析用户输入的命令和参数，第一个参数是要解析的字符串数组，第二个参数是解析选项</span><br>program.<span class="hljs-title function_">parse</span>(process.<span class="hljs-property">argv</span>); <span class="hljs-comment">// 指明，按 node 约定</span><br></code></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>命令行运行<code>hzqCli create xx -f、hzqCli create 112</code>，可以看到如下结果</li>
+</ol>
+<p><img src="/img/images/2024/1710128244896-dfcde708-835a-4b76-a692-4d12f087149b.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="lib-create-js编码：基础命令-create-调用的实际方法"><a href="#lib-create-js编码：基础命令-create-调用的实际方法" class="headerlink" title="lib/create.js编码：基础命令 create 调用的实际方法"></a><code>lib/create.js</code>编码：基础命令 create 调用的实际方法</h3><ol start="12">
+<li>新建具体执行代码文件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir lib &amp;&amp; touch lib/create.<span class="hljs-property">js</span><br></code></pre></td></tr></table></figure>
+
+<ol start="13">
+<li><code>bin/hzqCli.js</code>编码（二），引入<code>lib/create.js</code></li>
+</ol>
+<p><img src="/img/images/2024/1710128530726-003dd194-1093-4b51-8c63-da44ad14d032.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="14">
+<li><code>lib/create.js</code>编码（一）：项目路径处理</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建的流程：</span><br><span class="hljs-comment">// 1、 判断项目是否存在(可以单独写个方法 checkFileExist)</span><br><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>); <span class="hljs-comment">// 路径处理</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs-extra&quot;</span>); <span class="hljs-comment">// 文件操作</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkFileExist</span>(<span class="hljs-params">path</span>) &#123;&#125;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">projectName, options</span>) &#123;<br>  <span class="hljs-comment">// 1、判断项目是否存在</span><br><br>  <span class="hljs-comment">// 1.1 获取当前项目的完整路径：当前命令行的路径 + 项目名称</span><br>  <span class="hljs-keyword">const</span> projectPath = path.<span class="hljs-title function_">join</span>(process.<span class="hljs-title function_">cwd</span>(), projectName);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">&quot;%c [ projectPath ]-11-「create.js」&quot;</span>,<br>    <span class="hljs-string">&quot;font-size:13px; background:#9ad82a; color:#deff6e;&quot;</span>,<br>    projectPath<br>  );<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="15">
+<li>编码时，随时可运行命令<code>hzqCli create 112</code>进行调试哦，看来我们的处理获取是正确的</li>
+</ol>
+<p><img src="/img/images/2024/1710128912582-472390d5-1ceb-446a-95a8-d8d12d962d18.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="16">
+<li><code>lib/create.js</code>编码（二）：检查路径是否存在</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建的流程：</span><br><span class="hljs-comment">// 1、 判断项目是否存在(可以单独写个方法 checkFileExist)</span><br><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>); <span class="hljs-comment">// 路径处理</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs-extra&quot;</span>); <span class="hljs-comment">// 文件操作</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkFileExist</span>(<span class="hljs-params">path</span>) &#123;<br>  <span class="hljs-keyword">return</span> fs.<span class="hljs-title function_">existsSync</span>(path);<br>&#125;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">projectName, options</span>) &#123;<br>  <span class="hljs-comment">// 1、判断项目是否存在</span><br><br>  <span class="hljs-comment">// 1.1 获取当前项目的完整路径：当前命令行的路径 + 项目名称</span><br>  <span class="hljs-keyword">const</span> projectPath = path.<span class="hljs-title function_">join</span>(process.<span class="hljs-title function_">cwd</span>(), projectName);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">&quot;%c [ projectPath ]-11-「create.js」&quot;</span>,<br>    <span class="hljs-string">&quot;font-size:13px; background:#9ad82a; color:#deff6e;&quot;</span>,<br>    projectPath<br>  );<br>  <span class="hljs-keyword">const</span> isExits = <span class="hljs-keyword">await</span> <span class="hljs-title function_">checkFileExist</span>(projectPath);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[ isExits ] &gt;&quot;</span>, isExits);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="17">
+<li>运行调试</li>
+</ol>
+<p><img src="/img/images/2024/1710129096770-3c871ba9-24e4-4731-b91d-32e7d23170a1.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="18">
+<li><code>lib/create.js</code>编码（三）：针对检查路径是否存在做不同处理</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建的流程：</span><br><span class="hljs-comment">// 1、 判断项目是否存在(可以单独写个方法 checkFileExist)</span><br><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>); <span class="hljs-comment">// 路径处理</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs-extra&quot;</span>); <span class="hljs-comment">// 文件操作</span><br><span class="hljs-keyword">const</span> inquirer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;inquirer&quot;</span>); <span class="hljs-comment">// 命令行交互</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 异步检查文件是否存在</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> path 文件路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span> 返回一个布尔值，表示文件是否存在</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">checkFileExist</span>(<span class="hljs-params">path</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> fs.<span class="hljs-title function_">existsSync</span>(path);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 异步删除文件</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> path 文件路径</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span> 返回删除操作的结果</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">removeFile</span>(<span class="hljs-params">path</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> fs.<span class="hljs-title function_">removeSync</span>(path);<br>&#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">projectName, options</span>) &#123;<br>  <span class="hljs-comment">// 1、判断项目是否存在 -- start</span><br><br>  <span class="hljs-comment">// 1.1 获取当前项目的完整路径：当前命令行的路径 + 项目名称</span><br>  <span class="hljs-keyword">const</span> projectPath = path.<span class="hljs-title function_">join</span>(process.<span class="hljs-title function_">cwd</span>(), projectName);<br><br>  <span class="hljs-comment">// 1.2 判断项目是否存在</span><br>  <span class="hljs-keyword">const</span> isExits = <span class="hljs-keyword">await</span> <span class="hljs-title function_">checkFileExist</span>(projectPath);<br><br>  <span class="hljs-keyword">if</span> (isExits) &#123;<br>    <span class="hljs-comment">// 1.2.1 项目已经存在</span><br>    <span class="hljs-comment">// 再判断是否需要强制创建</span><br>    <span class="hljs-keyword">if</span> (options.<span class="hljs-property">force</span>) &#123;<br>      <span class="hljs-comment">// 1.2.1.1 强制创建：则删除已存在项目，继续走创建流程</span><br>      <span class="hljs-keyword">await</span> <span class="hljs-title function_">removeFile</span>(projectPath);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 1.2.1.2 不强制创建：则询问用户是否确认覆盖</span><br>      <span class="hljs-keyword">const</span> answer = <span class="hljs-keyword">await</span> inquirer.<span class="hljs-title function_">prompt</span>([<br>        &#123;<br>          <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;choosedForce&quot;</span>,<br>          <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;list&quot;</span>,<br>          <span class="hljs-attr">message</span>: <span class="hljs-string">`请选择是否覆盖已存在的 <span class="hljs-subst">$&#123;projectName&#125;</span> 文件？`</span>,<br>          <span class="hljs-attr">choices</span>: [<br>            &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;是（选择后将删除文件）&quot;</span>, <span class="hljs-attr">value</span>: <span class="hljs-literal">true</span> &#125;,<br>            &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;否（选择后将退出流程）&quot;</span>, <span class="hljs-attr">value</span>: <span class="hljs-literal">false</span> &#125;,<br>          ],<br>        &#125;,<br>      ]);<br><br>      <span class="hljs-keyword">if</span> (answer.<span class="hljs-property">choosedForce</span>) &#123;<br>        <span class="hljs-comment">// 1.2.1.2.1 是：则删除已存在项目，继续走创建流程</span><br>        <span class="hljs-keyword">await</span> <span class="hljs-title function_">removeFile</span>(projectPath);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 1.2.1.2.2 否：则退出</span><br>        <span class="hljs-keyword">return</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// 2、创建项目流程 -- todo</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="lib-generator-js编码：创建项目流程"><a href="#lib-generator-js编码：创建项目流程" class="headerlink" title="lib/generator.js编码：创建项目流程"></a><code>lib/generator.js</code>编码：创建项目流程</h3><ol start="19">
+<li>创建对应文件，并初始化代码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript">touch lib/generator.<span class="hljs-property">js</span><br><br><span class="hljs-comment">// 写如下代码：</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">class</span> <span class="hljs-title class_">Generator</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">projectName, projectPath</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectName</span> = projectName;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectPath</span> = projectPath;<br>  &#125;<br><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 创建文件</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[ create todo ] &gt;&quot;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectName</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectPath</span>);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="20">
+<li><code>lib/create.js</code> 引入<code>Generator</code>，最末尾加上：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// .....</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Generator</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./generator&quot;</span>); <span class="hljs-comment">// ++++++</span><br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">projectName, options</span>) &#123;<br>  <span class="hljs-comment">// .....</span><br><br>  <span class="hljs-comment">// 2、创建项目流程 -- start</span><br>  <span class="hljs-keyword">const</span> generator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Generator</span>(projectName, projectPath); <span class="hljs-comment">// ++++++</span><br>  <span class="hljs-keyword">await</span> generator.<span class="hljs-title function_">create</span>(); <span class="hljs-comment">// 创建项目 // ++++++</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="22">
+<li>运行命令<code>hzqCli create 123</code></li>
+</ol>
+<p><img src="/img/images/2024/1710132072864-ad1bd688-9402-44e5-b7d7-43eaecb33465.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="23">
+<li><code>lib/generator.js</code>编码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;util&quot;</span>); <span class="hljs-comment">// 工具库</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">DownloadGitRepo</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;download-git-repo&quot;</span>); <span class="hljs-comment">// 下载 git 仓库</span><br><span class="hljs-keyword">const</span> &#123; getRepoList, getTagList, <span class="hljs-variable constant_">OWNER</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./https&quot;</span>);<br><span class="hljs-keyword">const</span> inquirer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;inquirer&quot;</span>); <span class="hljs-comment">// 命令行交互</span><br><span class="hljs-keyword">const</span> &#123; spinner &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./log&quot;</span>);<br><br><span class="hljs-comment">// 将 DownloadGitRepo promise 化，因为它本身不是 promise 风格的</span><br><span class="hljs-keyword">const</span> downloadGitRepo = util.<span class="hljs-title function_">promisify</span>(<span class="hljs-title class_">DownloadGitRepo</span>);<br><br><span class="hljs-comment">// 封装一个 loading 函数，方便使用</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">createLoading</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">fn, msg, ...fnArgs</span>) =&gt; &#123;<br>  spinner.<span class="hljs-title function_">start</span>(msg);<br><br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">let</span> result;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> fn === <span class="hljs-string">&quot;function&quot;</span>) result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fn</span>(...fnArgs);<br><br>    spinner.<span class="hljs-title function_">succeed</span>();<br>    <span class="hljs-keyword">return</span> result;<br>  &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>    spinner.<span class="hljs-title function_">fail</span>(<span class="hljs-string">`【<span class="hljs-subst">$&#123;msg&#125;</span>】error: `</span> + error.<span class="hljs-property">message</span>);<br>    spinner.<span class="hljs-title function_">fail</span>(<span class="hljs-string">`【<span class="hljs-subst">$&#123;msg&#125;</span>】failed, please try again later.`</span>);<br>  &#125;<br>&#125;;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">class</span> <span class="hljs-title class_">Generator</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">projectName, projectFullPath</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectName</span> = projectName;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectFullPath</span> = projectFullPath;<br>  &#125;<br><br>  <span class="hljs-comment">// 核心创建流程</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">create</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 创建的流程是：</span><br>    <span class="hljs-comment">// 1、用户已选择的模板名称</span><br>    <span class="hljs-keyword">const</span> repoName = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getRepo</span>();<br><br>    <span class="hljs-keyword">if</span> (repoName) &#123;<br>      <span class="hljs-comment">// 2、用户已选择的模板版本</span><br>      <span class="hljs-keyword">const</span> tag = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getTag</span>(repoName);<br><br>      <span class="hljs-comment">// 3、下载模板到项目内</span><br>      <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">download</span>(repoName, tag);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">getRepo</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 1、从远端拉取可选择的模板数据(使用 ora 加 loading)</span><br>    <span class="hljs-comment">// 2、让用户选择模板</span><br>    <span class="hljs-comment">// 3、提供给用户选择，并得到已选的模板</span><br><br>    <span class="hljs-comment">// 1、</span><br>    <span class="hljs-keyword">const</span> repoList = <span class="hljs-keyword">await</span> <span class="hljs-title function_">createLoading</span>(getRepoList, <span class="hljs-string">&quot;Loading templates...&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!repoList?.<span class="hljs-property">length</span>) <span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-comment">// 2、</span><br>    <span class="hljs-keyword">const</span> chooseTemplateList = repoList.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.<span class="hljs-property">name</span>);<br><br>    <span class="hljs-comment">// 3、</span><br>    <span class="hljs-keyword">const</span> promptName = <span class="hljs-string">&quot;choosedTemplateName&quot;</span>;<br>    <span class="hljs-keyword">const</span> answer = <span class="hljs-keyword">await</span> inquirer.<span class="hljs-title function_">prompt</span>([<br>      &#123;<br>        <span class="hljs-attr">name</span>: promptName,<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;list&quot;</span>,<br>        <span class="hljs-attr">message</span>: <span class="hljs-string">`请选择对应模板`</span>,<br>        <span class="hljs-attr">choices</span>: chooseTemplateList,<br>      &#125;,<br>    ]);<br><br>    <span class="hljs-keyword">return</span> answer[promptName];<br>  &#125;<br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">getTag</span>(<span class="hljs-params">repoName</span>) &#123;<br>    <span class="hljs-keyword">const</span> tagList = <span class="hljs-keyword">await</span> <span class="hljs-title function_">createLoading</span>(<br>      getTagList,<br>      <span class="hljs-string">&quot;Loading versions...&quot;</span>,<br>      repoName<br>    );<br><br>    <span class="hljs-keyword">if</span> (!tagList?.<span class="hljs-property">length</span>) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br><br>    <span class="hljs-keyword">return</span> tagList[<span class="hljs-number">0</span>];<br>  &#125;<br><br>  <span class="hljs-comment">// 下载 github 仓库</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">download</span>(<span class="hljs-params">repoName, tag</span>) &#123;<br>    <span class="hljs-keyword">const</span> repoUrl = <span class="hljs-string">`<span class="hljs-subst">$&#123;OWNER&#125;</span>/<span class="hljs-subst">$&#123;repoName&#125;</span><span class="hljs-subst">$&#123;tag ? <span class="hljs-string">&quot;#&quot;</span> + tag : <span class="hljs-string">&quot;&quot;</span>&#125;</span>`</span>;<br><br>    <span class="hljs-keyword">await</span> <span class="hljs-title function_">createLoading</span>(<br>      downloadGitRepo,<br>      <span class="hljs-string">&quot;download template...&quot;</span>,<br>      repoUrl,<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">projectFullPath</span><br>    );<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="23">
+<li>新建请求工具</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs javascript">touch lib/https.<span class="hljs-property">js</span><br><br><span class="hljs-comment">// 写如下代码：</span><br><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;axios&quot;</span>);<br><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">BASEURL</span> = <span class="hljs-string">&quot;https://api.github.com&quot;</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">OWNER</span> = <span class="hljs-string">&quot;hzq-fe-template&quot;</span>;<br><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">baseURL</span> = <span class="hljs-variable constant_">BASEURL</span>;<br><br>axios.<span class="hljs-property">defaults</span>.<span class="hljs-property">headers</span>.<span class="hljs-property">common</span>[<span class="hljs-string">&quot;User-Agent&quot;</span>] = <span class="hljs-string">&quot;myTestApp&quot;</span>; <span class="hljs-comment">// 不加这个会报 403 错误</span><br><br>axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> res.<span class="hljs-property">data</span>); <span class="hljs-comment">// 处理 github api 返回的数据</span><br><br><span class="hljs-comment">// 通过调用 github API 来获取模板列表</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getRepoList</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 从 orgs/hzq-fe-template/repos 获取模板列表</span><br>  <span class="hljs-comment">// 具体 github 地址为：https://github.com/orgs/hzq-fe-template/repositories</span><br>  <span class="hljs-keyword">return</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/orgs/<span class="hljs-subst">$&#123;OWNER&#125;</span>/repos`</span>);<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getTagList</span>(<span class="hljs-params">repoName</span>) &#123;<br>  <span class="hljs-comment">// 从 repos/hzq-fe-template/$&#123;repo&#125;/tags 获取模板列表</span><br>  <span class="hljs-keyword">return</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/repos/<span class="hljs-subst">$&#123;OWNER&#125;</span>/<span class="hljs-subst">$&#123;repoName&#125;</span>/tags`</span>);<br>&#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-variable constant_">OWNER</span>,<br>  getRepoList,<br>  getTagList,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="24">
+<li>新建打印工具</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript">touch lib/log.<span class="hljs-property">js</span><br><br><span class="hljs-comment">// 写如下代码：</span><br><span class="hljs-keyword">const</span> ora = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ora&quot;</span>);<br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;chalk&quot;</span>);<br><br><span class="hljs-keyword">const</span> log = &#123;<br>  <span class="hljs-attr">successText</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-keyword">return</span> chalk.<span class="hljs-property">green</span>.<span class="hljs-title function_">bold</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;msg&#125;</span>`</span>);<br>  &#125;,<br>  <span class="hljs-attr">success</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">successText</span>(msg));<br>  &#125;,<br>  <span class="hljs-attr">errorText</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-keyword">return</span> chalk.<span class="hljs-title function_">red</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;msg&#125;</span>`</span>);<br>  &#125;,<br>  <span class="hljs-attr">error</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">msg</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">errorText</span>(msg));<br>  &#125;,<br>&#125;;<br><br><span class="hljs-comment">// 创建一个spinner实例：初始为【青色并加粗】</span><br><span class="hljs-keyword">const</span> spinner = <span class="hljs-title function_">ora</span>();<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  log,<br>  <span class="hljs-attr">spinner</span>: &#123;<br>    <span class="hljs-title function_">start</span>(<span class="hljs-params">text = <span class="hljs-string">&quot;&quot;</span></span>) &#123;<br>      spinner.<span class="hljs-title function_">start</span>(text);<br>    &#125;,<br>    <span class="hljs-title function_">succeed</span>(<span class="hljs-params">text = <span class="hljs-string">&quot;&quot;</span></span>) &#123;<br>      spinner.<span class="hljs-title function_">succeed</span>(log.<span class="hljs-title function_">successText</span>(text));<br>    &#125;,<br>    <span class="hljs-title function_">fail</span>(<span class="hljs-params">text = <span class="hljs-string">&quot;&quot;</span></span>) &#123;<br>      spinner.<span class="hljs-title function_">fail</span>(log.<span class="hljs-title function_">errorText</span>(text));<br>    &#125;,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ol start="25">
+<li>运行命令，就可以正确下载了</li>
+</ol>
+<p><img src="/img/images/2024/1710144632547-3d93d6de-b6bb-413d-8a88-d5aae1d5047d.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710144639652-ff69cffe-a75b-4d76-a36d-1b3990f1c599.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="异常情况"><a href="#异常情况" class="headerlink" title="异常情况"></a>异常情况</h3><p>由于 github API 自身的限制：<a target="_blank" rel="noopener" href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#exceeding-the-rate-limit">超过速率限制</a> 后会 403，所以不是很容易的成功……</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>讲述了前端工程化可做的事情：可从研发流程切入</li>
+<li>讲述了 AST 的基础概念</li>
+<li>通过手写实现了一个脚手架</li>
+</ol>
+<p>脚手架代码地址：<a target="_blank" rel="noopener" href="https://github.com/MrHzq/scaffold-actual-combat">https://github.com/MrHzq/scaffold-actual-combat</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>6-1、工程化实战之前端脚手架</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/6-1、工程化实战之前端脚手架/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/6-2%E3%80%81%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%AE%9E%E6%88%98%E4%B9%8B%E6%A8%A1%E5%9D%97%E5%8C%96+Webpack/" title="6-2、工程化实战之模块化+Webpack">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">6-2、工程化实战之模块化+Webpack</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/5-1%E3%80%81React%20%E5%AE%9E%E6%88%98%E4%B9%8B%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BC%80%E5%8F%91/" title="5-1、React 实战之从零到一的项目搭建与开发">
+                        <span class="hidden-mobile">5-1、React 实战之从零到一的项目搭建与开发</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

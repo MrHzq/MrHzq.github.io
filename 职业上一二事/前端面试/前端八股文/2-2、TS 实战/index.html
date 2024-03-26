@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="2-2、TS 实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2-2、TS 实战">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/2-2%E3%80%81TS%20%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="2-2、TS 实战">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-13T23:32:35.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:35.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>2-2、TS 实战 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2-2、TS 实战"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2-2、TS 实战</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:35+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="元数据"><a href="#元数据" class="headerlink" title="元数据"></a>元数据</h1><p>定义：描述数据的数据<br>通过给类、方法指定&#x2F;定义属性进一步丰富它的形态<br>元数据的使用范围通常为对象、类、方法<br>作用：</p>
+<ul>
+<li>扩展已有的属性形态</li>
+<li>不改变本身的代码逻辑</li>
+</ul>
+<p>场景举例：<br>在实际业务中，存在老业务的迭代或扩展，这种情况下可以使用<code>元数据</code>进行扩展</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 老业务：course 函数返回一个字符串，代表课程名称</span><br><span class="hljs-keyword">let</span> course = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;ts 实战&#x27;</span><br>&#125;<br><br><span class="hljs-comment">// 新业务：course 函数要拥有课程时长、上课老师等属性</span><br><br></code></pre></td></tr></table></figure>
+
+<p>扩展方法：</p>
+<ol>
+<li>采用原型链的思路来实现，通过 Function.prototype 实现<ol>
+<li>隐蔽性太高，不易查找</li>
+<li>维护成本大，协作效率低</li>
+<li>对象的操作不统一</li>
+</ol>
+</li>
+</ol>
+<p>在 JS 中，对象的操作一直都是不统一的</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 创建对象</span><br><span class="hljs-keyword">let</span> obj = &#123;&#125;<br><br><span class="hljs-comment">// 新增属性</span><br>obj.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;lisi&#x27;</span><br><br><span class="hljs-comment">// 更改属性</span><br>obj.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;张三&#x27;</span><br><br><span class="hljs-comment">// 删除属性</span><br><span class="hljs-keyword">delete</span> obj.<span class="hljs-property">name</span><br><br><span class="hljs-comment">// 获取属性</span><br>obj.<span class="hljs-property">name</span><br><br><span class="hljs-comment">// 合并对象</span><br> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(obj1, obj2)<br><br><span class="hljs-comment">// 可以发现，对象的不同操作语法是各式各样的</span><br></code></pre></td></tr></table></figure>
+
+<p>在 TS 里面，就有一种统一的操作对象的方式：<code>Reflect</code><br>元数据的实现是通过<code>Reflect + metadata</code></p>
+<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect">Reflect - JavaScript | MDN</a><br>一种统一的操作对象的方式</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> obj = &#123;&#125;<br><br><span class="hljs-comment">// 新增/更改属性；参数：目标对象，属性名称，属性描述；返回值：boolean(是否操作成功)</span><br><span class="hljs-comment">// Reflect.defineProperty(target, propertyKey, attributes)</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-string">&#x27;name&#x27;</span>, &#123; <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;lisi&#x27;</span> &#125;) <span class="hljs-comment">// true</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-string">&#x27;age&#x27;</span>, &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">27</span> &#125;) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// obj: &#123; name: &#x27;lisi&#x27;, age: 27 &#125;</span><br><span class="hljs-comment">// 其中的 name|age 是不可操作的(configurable 默认为 false)</span><br><br><span class="hljs-comment">// 新增/更改属性；参数：目标对象，属性名称，属性值；返回值：boolean(是否操作成功)</span><br><span class="hljs-comment">// Reflect.set(target, propertyKey, value)</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">set</span>(obj, <span class="hljs-string">&#x27;address&#x27;</span>, <span class="hljs-string">&#x27;四川成都&#x27;</span>)<br><span class="hljs-comment">// obj: &#123; name: &#x27;lisi&#x27;, age: 27, address: &#x27;四川成都&#x27;&#125;</span><br><span class="hljs-comment">// 其中的 address 是可操作的(configurable 默认为 true)</span><br><br><span class="hljs-comment">// 获取属性；参数：目标对象，属性名称；返回值：属性的值</span><br><span class="hljs-comment">// Reflect.get(target, propertyKey)</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">get</span>(obj, <span class="hljs-string">&#x27;name&#x27;</span>) <span class="hljs-comment">// &#x27;lisi&#x27;</span><br><br><span class="hljs-comment">// 删除属性；参数：目标对象，属性名称；返回值：boolean(是否操作成功)</span><br><span class="hljs-comment">// Reflect.deleteProperty(target, propertyKey)</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteProperty</span>(obj, <span class="hljs-string">&#x27;age&#x27;</span>) <span class="hljs-comment">// false</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteProperty</span>(obj, <span class="hljs-string">&#x27;address&#x27;</span>) <span class="hljs-comment">// true</span><br><span class="hljs-comment">// obj: &#123; name: &#x27;lisi&#x27;, age: 27&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>这样对象的所有操作都统一使用<code>Reflect</code>来完成：<br>增(<code>Reflect.set(...)</code>)、删(<code>Reflect.deleteProperty(...)</code>)、改(<code>Reflect.set(...)</code>)、查(<code>Reflect.get(...)</code>)</p>
+<h2 id="Metadata"><a href="#Metadata" class="headerlink" title="Metadata"></a>Metadata</h2><p>在 TS 中元数据的具体实现，需要引入一个第三方库<br>再次强调元数据的使用范围可以为对象、类、属性(变量&#x2F;方法)</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;reflect-metadata&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>用的前提是：tsconfig.json 开启配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;compilerOptions&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;emitDecoratorMetadata&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-attr">metadataKey</span>: <span class="hljs-built_in">any</span>,<br>  <span class="hljs-attr">metadataValue</span>: <span class="hljs-built_in">any</span>,<br>  <span class="hljs-attr">target</span>: <span class="hljs-title class_">Object</span>,<br>  <span class="hljs-attr">propertyKey</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">symbol</span><br>): <span class="hljs-built_in">void</span><br><span class="hljs-comment">// metadataKey：存储 metadata 的 Key，require</span><br><span class="hljs-comment">// metadataValue：存储 metadata 的 值，require</span><br><span class="hljs-comment">// target：metadata 要绑的目标对象，require</span><br><span class="hljs-comment">// propertyKey：目标对象的属性名，optional</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>  <span class="hljs-keyword">static</span> oldName = <span class="hljs-string">&quot;zhangsan&quot;</span>;<br><br>  <span class="hljs-keyword">static</span> <span class="hljs-title function_">sayYes</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;好的&quot;</span>;<br>  &#125;<br><br>  name = <span class="hljs-string">&quot;lisi&quot;</span>;<br><br>  <span class="hljs-title function_">sayHello</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">`你好，我是<span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>`</span>;<br>  &#125;<br>&#125;<br><br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-string">&quot;Test_metadataValue1&quot;</span>, <span class="hljs-title class_">Test</span>);<br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>,<br>  <span class="hljs-string">&quot;Test_public_metadataValue2&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;name&quot;</span><br>);<br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>,<br>  <span class="hljs-string">&quot;Test_static_metadataValue2&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;oldName&quot;</span><br>);<br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_public_metadataKey3&quot;</span>,<br>  <span class="hljs-string">&quot;Test_public_metadataValue3&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;sayHello&quot;</span><br>);<br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_static_metadataKey4&quot;</span>,<br>  <span class="hljs-string">&quot;Test_static_metadataValue4&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;sayYes&quot;</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="小细节"><a href="#小细节" class="headerlink" title="小细节"></a>小细节</h4><p>当设置<code>元数据</code>的时候，可以有两种写法：</p>
+<ol>
+<li><code>函数调用形式：Reflect.defineMetadata(...)</code></li>
+<li><code>装饰器形式：@Reflect.metatda(...)</code></li>
+</ol>
+<p>这两种写法都能设置<code>元数据</code>，但针对<code>装饰器形式设置的</code>，对应的获取时就存在一些注意事项</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">@Reflect</span>.<span class="hljs-title function_">metadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-string">&quot;Test_metadataValue1&quot;</span>)<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;&#125;<br><br><span class="hljs-comment">// @Reflect.metadata 的写法就是 2-1 TS 详解里面的&quot;类装饰器&quot;，其原理代码大致如下：</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-property">metadata</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">metadataKey: <span class="hljs-built_in">string</span>, metadataValue: <span class="hljs-built_in">any</span></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">target: <span class="hljs-built_in">Object</span>, propertyKey: <span class="hljs-built_in">string</span></span>) &#123;<br>    <span class="hljs-comment">// 具体的逻辑暂且忽略.........</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="操作类本身"><a href="#操作类本身" class="headerlink" title="操作类本身"></a>操作<code>类</code>本身</h5><h6 id="设置-1"><a href="#设置-1" class="headerlink" title="设置"></a>设置</h6><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// Reflect.defineMetadata(...) 设置</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;&#125;<br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-string">&quot;Test_metadataValue1&quot;</span>, <span class="hljs-title class_">Test</span>);<br><br><span class="hljs-comment">// @Reflect.metadata(...) 设置</span><br><span class="hljs-meta">@Reflect</span>.<span class="hljs-title function_">metadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-string">&quot;Test_metadataValue1&quot;</span>)<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;&#125;<br><br><span class="hljs-comment">// 以上两种方式是等价的，都是设置元数据到&quot;类&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h6 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h6><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 相同取法</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-title class_">Test</span>); <span class="hljs-comment">// &quot;Test_metadataValue1&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="操作类属性"><a href="#操作类属性" class="headerlink" title="操作类属性"></a>操作<code>类</code>属性</h5><h6 id="设置-2"><a href="#设置-2" class="headerlink" title="设置"></a>设置</h6><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// Reflect.defineMetadata(...) 设置</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>  <span class="hljs-keyword">static</span> oldName = <span class="hljs-string">&#x27;zhangsan&#x27;</span><br>  name = <span class="hljs-string">&quot;lisi&quot;</span><br>&#125;<br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>,<br>  <span class="hljs-string">&quot;Test_public_metadataValue2&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;name&quot;</span><br>);<br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(<br>  <span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>,<br>  <span class="hljs-string">&quot;Test_static_metadataValue2&quot;</span>,<br>  <span class="hljs-title class_">Test</span>,<br>  <span class="hljs-string">&quot;oldName&quot;</span><br>);<br><br><span class="hljs-comment">// @Reflect.metadata(...) 设置</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>  <span class="hljs-meta">@Reflect</span>.<span class="hljs-title function_">metadata</span>(<span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>, <span class="hljs-string">&quot;Test_static_metadataValue2&quot;</span>)<br>  <span class="hljs-keyword">static</span> oldName = <span class="hljs-string">&quot;zhangsan&quot;</span>;<br><br>  <span class="hljs-meta">@Reflect</span>.<span class="hljs-title function_">metadata</span>(<span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>, <span class="hljs-string">&quot;Test_public_metadataValue2&quot;</span>)<br>  name = <span class="hljs-string">&quot;lisi&quot;</span>;<br>&#125;<br><br><span class="hljs-comment">// 咋一看操作是一样的，但其取值对象是不一样</span><br></code></pre></td></tr></table></figure>
+
+<p>给<code>类</code>的<code>静态属性</code>定义了元数据，取值<code>target</code>为<code>类本身</code><br>给<code>类</code>的<code>动态属性</code>定义了元数据，取值<code>target</code>为<code>类的实例</code></p>
+<h6 id="取值-1"><a href="#取值-1" class="headerlink" title="取值"></a>取值</h6><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<br>  <span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>,<br>  <span class="hljs-title class_">Test</span>, <span class="hljs-comment">// 这里就必须为类，若为类的实例，则取值结果为 undefined</span><br>  <span class="hljs-string">&quot;oldName&quot;</span><br>); <span class="hljs-comment">// &quot;Test_static_metadataValue2&quot;</span><br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<br>  <span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>,<br>  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Test</span>(), <span class="hljs-comment">// 这里就必须为类的实例，若为类，则取值结果为 undefined</span><br>  <span class="hljs-string">&quot;name&quot;</span><br>); <span class="hljs-comment">// &quot;Test_public_metadataValue2&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<br>  <span class="hljs-attr">metadataKey</span>: <span class="hljs-built_in">any</span>,<br>  <span class="hljs-attr">target</span>: <span class="hljs-title class_">Object</span>,<br>  <span class="hljs-attr">propertyKey</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">symbol</span><br>): <span class="hljs-built_in">any</span><br><span class="hljs-comment">// metadataKey：存储 metadata 的 Key，require</span><br><span class="hljs-comment">// target：metadata 要绑的目标对象，require</span><br><span class="hljs-comment">// propertyKey：目标对象的属性名，optional</span><br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-title class_">Test</span>); <span class="hljs-comment">// &quot;Test_metadataValue1&quot;</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// &quot;Test_public_metadataValue2&quot;</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;oldName&quot;</span>); <span class="hljs-comment">// &quot;Test_static_metadataValue2&quot;</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(<span class="hljs-string">&quot;Test_public_metadataKey3&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;sayHello&quot;</span>); <span class="hljs-comment">// &quot;Test_public_metadataValue3&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteMetadata</span>(<br>  <span class="hljs-attr">metadataKey</span>: <span class="hljs-built_in">any</span>,<br>  <span class="hljs-attr">target</span>: <span class="hljs-title class_">Object</span>,<br>  <span class="hljs-attr">propertyKey</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">symbol</span><br>): <span class="hljs-built_in">boolean</span><br><span class="hljs-comment">// metadataKey：存储 metadata 的 Key，require</span><br><span class="hljs-comment">// target：metadata 要绑的目标对象，require</span><br><span class="hljs-comment">// propertyKey：目标对象的属性名，optional</span><br><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteMetadata</span>(<span class="hljs-string">&quot;Test_metadataKey1&quot;</span>, <span class="hljs-title class_">Test</span>); <span class="hljs-comment">// true</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteMetadata</span>(<span class="hljs-string">&quot;Test_public_metadataKey2&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;name&quot;</span>); <span class="hljs-comment">// true</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteMetadata</span>(<span class="hljs-string">&quot;Test_static_metadataKey2&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;oldName&quot;</span>); <span class="hljs-comment">// true</span><br><span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">deleteMetadata</span>(<span class="hljs-string">&quot;Test_public_metadataKey3&quot;</span>, <span class="hljs-title class_">Test</span>, <span class="hljs-string">&quot;sayHello&quot;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<p>通过上面的<code>设置、获取、删除</code>方法，已基本了解了<code>metadata</code>的使用，并且也成功的在不改动原本数据的情况下，扩展了新的属性与值</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="服务端场景-路由封装"><a href="#服务端场景-路由封装" class="headerlink" title="服务端场景 - 路由封装"></a>服务端场景 - 路由封装</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// app.ts</span><br><br><span class="hljs-comment">// 一个简单的 app.ts</span><br><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();<br><span class="hljs-keyword">const</span> port = <span class="hljs-number">3000</span>;<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>&#125;);<br><br>app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/xxxx&quot;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> &#123;<br>  res.<span class="hljs-title function_">send</span>(<span class="hljs-string">&quot;xxxx&quot;</span>);<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server is running at http://localhost:<span class="hljs-subst">$&#123;port&#125;</span>`</span>);<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<p>按照上述的写法，服务端的路由将会无比的多，并且臃肿和不好管理<br>封装思路：使用面向对象写法，进行更好的归类</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// user.ts</span><br><span class="hljs-comment">// 封装用户相关的接口</span><br><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Get</span>, <span class="hljs-title class_">Post</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../decorators/methods&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Path</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../decorators/path&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span> &#123;<br>  <span class="hljs-comment">// 用户查询</span><br>  <span class="hljs-meta">@Get</span><br>  <span class="hljs-meta">@Path</span>(<span class="hljs-string">&quot;/user/info&quot;</span>)<br>  <span class="hljs-title function_">info</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 接口逻辑...</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;info&quot;</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 用户登录</span><br>  <span class="hljs-meta">@Post</span><br>  <span class="hljs-meta">@Path</span>(<span class="hljs-string">&quot;/user/login&quot;</span>)<br>  <span class="hljs-title function_">login</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 接口逻辑...</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;login&quot;</span>;<br>  &#125;<br><br>  <span class="hljs-title function_">logout</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// 接口逻辑...</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;logout&quot;</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// decorators/methods.ts</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> methodsKey = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;router:methods&quot;</span>);<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">Get</span> = (<span class="hljs-params">target: <span class="hljs-built_in">Object</span>, propertyKey: <span class="hljs-built_in">string</span></span>) =&gt; &#123;<br>  <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(methodsKey, <span class="hljs-string">&quot;get&quot;</span>, target, propertyKey);<br>&#125;;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">Post</span> = (<span class="hljs-params">target: <span class="hljs-built_in">Object</span>, propertyKey: <span class="hljs-built_in">string</span></span>) =&gt; &#123;<br>  <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(methodsKey, <span class="hljs-string">&quot;post&quot;</span>, target, propertyKey);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// decorators/path.ts</span><br><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Request</span>, <span class="hljs-title class_">Response</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;express&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> pathKey = <span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&quot;router:path&quot;</span>);<br><br><span class="hljs-comment">// Path 装饰器 - 用在 类的方法 上</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">Path</span> = (<span class="hljs-attr">path</span>: <span class="hljs-built_in">string</span>): <span class="hljs-function"><span class="hljs-params">Function</span> =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params"></span></span><br><span class="hljs-params"><span class="hljs-function">    target: <span class="hljs-built_in">Object</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">    propertyKey: <span class="hljs-built_in">string</span>,</span></span><br><span class="hljs-params"><span class="hljs-function">    desicriptor: PropertyDescriptor</span></span><br><span class="hljs-params"><span class="hljs-function">  </span>) =&gt;</span> &#123;<br>    <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">defineMetadata</span>(pathKey, path, target, propertyKey);<br><br>    <span class="hljs-comment">// 1、获取方法本身，存一份</span><br>    <span class="hljs-keyword">const</span> oldMethod = desicriptor.<span class="hljs-property">value</span>;<br><br>    <span class="hljs-comment">// 2、边缘检测：无值则直接 return</span><br>    <span class="hljs-keyword">if</span> (!oldMethod) <span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-comment">// 3、覆盖原来的方法</span><br>    desicriptor.<span class="hljs-property">value</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">req: Request, res: Response</span>) &#123;<br>      <span class="hljs-comment">// a. 获取到原方法的参数</span><br>      <span class="hljs-keyword">const</span> params = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(&#123;&#125;, req.<span class="hljs-property">body</span>, req.<span class="hljs-property">query</span>);<br><br>      <span class="hljs-comment">// b. 触发原方法的调用</span><br>      <span class="hljs-keyword">const</span> result = oldMethod.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, params);<br><br>      <span class="hljs-comment">// c. 返回给客户端</span><br>      res.<span class="hljs-title function_">send</span>(result);<br>    &#125;;<br>  &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// router.ts</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">User</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./user&quot;</span>;<br><br><span class="hljs-keyword">import</span> &#123; methodsKey &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../decorators/methods&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; pathKey &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../decorators/path&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (<span class="hljs-attr">app</span>: <span class="hljs-built_in">any</span>) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>();<br><br>  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(<span class="hljs-title class_">User</span>).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// app.get(path, fun)</span><br><br>    <span class="hljs-keyword">const</span> method = <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(methodsKey, user, key);<br><br>    <span class="hljs-keyword">const</span> path = <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">getMetadata</span>(pathKey, user, key);<br><br>    app[method](path, user); <span class="hljs-comment">// 挂载完成路由监听</span><br>  &#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>最终实现的<code>user.ts</code>写法已经跟现在的 nodejs 框架<code>nest.js、midday.js</code>等类似了</p>
+<h2 id="客户端场景-倒计时器"><a href="#客户端场景-倒计时器" class="headerlink" title="客户端场景 - 倒计时器"></a>客户端场景 - 倒计时器</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 需求：写一个自定义时间的倒计时器</span><br><span class="hljs-comment">// 比如：从现在起到明天这个时间点的倒计时，11:59:59</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Countdown</span> &#123;<br>  <span class="hljs-comment">// endTime: 倒计时的终点时间</span><br>  <span class="hljs-comment">// step: 倒计时间隔，单位毫秒</span><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">endTime: <span class="hljs-built_in">number</span>, step: <span class="hljs-built_in">number</span></span>)&#123;<br>    <span class="hljs-comment">// 待补充...</span><br>  &#125;<br><br>  <span class="hljs-comment">// 待补充...</span><br>&#125;<br><br><span class="hljs-comment">// 使用</span><br><span class="hljs-keyword">const</span> countdown = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Countdown</span>(<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">12</span>, <span class="hljs-number">1000</span>)<br><br>countdown.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;running&#x27;</span>, <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// 只要倒计时还未结束，则该函数每间隔 X(初始化传入的值) 秒后会执行</span><br><br>  <span class="hljs-comment">// time: 剩余时间</span><br>  <span class="hljs-comment">// hour: 剩余小时</span><br>  <span class="hljs-comment">// minutes: 剩余分钟</span><br>  <span class="hljs-comment">// seconds: 剩余秒数</span><br>  <span class="hljs-comment">// count: 计时次数</span><br>  <span class="hljs-keyword">const</span> &#123; hour, minutes, seconds, count &#125; = time<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`还剩：<span class="hljs-subst">$&#123;hour&#125;</span>:<span class="hljs-subst">$&#123;minutes&#125;</span>:<span class="hljs-subst">$&#123;seconds&#125;</span>`</span>)<br>&#125;)<br><br><span class="hljs-comment">// 打印结果：</span><br><span class="hljs-comment">// 还剩：11:59:59</span><br><span class="hljs-comment">// 还剩：11:59:58</span><br><span class="hljs-comment">// ...</span><br><span class="hljs-comment">// 还剩：00:09:09</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 需求：写一个自定义时间的倒计时器</span><br><span class="hljs-comment">// 比如：从现在起到明天这个时间点的倒计时，11:59:59</span><br><br><span class="hljs-comment">// 发布订阅用的</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">EventEmitter</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;eventemitter3&quot;</span>;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">CountdownEventMap</span> &#123;<br>  [<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">START</span>]: [];<br>  [<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">RUNNING</span>]: [<span class="hljs-title class_">RemainTimeData</span>];<br>  [<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">STOP</span>]: [];<br>&#125;<br><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">CountdownEventName</span> &#123;<br>  <span class="hljs-variable constant_">START</span> = <span class="hljs-string">&quot;start&quot;</span>,<br>  <span class="hljs-variable constant_">STOP</span> = <span class="hljs-string">&quot;stop&quot;</span>,<br>  <span class="hljs-variable constant_">RUNNING</span> = <span class="hljs-string">&quot;running&quot;</span>,<br>&#125;<br><br><span class="hljs-keyword">enum</span> <span class="hljs-title class_">CountdownStatus</span> &#123;<br>  running,<br>  paused,<br>  stoped,<br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">RemainTimeData</span> &#123;<br>  <span class="hljs-attr">hours</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">minutes</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">seconds</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">count</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Countdown</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">EventEmitter</span>&lt;<span class="hljs-title class_">CountdownEventMap</span>&gt; &#123;<br>  <span class="hljs-attr">endTime</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">step</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">remainTime</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">count</span>: <span class="hljs-built_in">number</span>;<br>  <span class="hljs-attr">status</span>: <span class="hljs-title class_">CountdownStatus</span> = <span class="hljs-title class_">CountdownStatus</span>.<span class="hljs-property">stoped</span>;<br><br>  <span class="hljs-comment">// endTime: 倒计时的终点时间</span><br>  <span class="hljs-comment">// step: 倒计时间隔，单位毫秒</span><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">endTime: <span class="hljs-built_in">number</span>, step = <span class="hljs-number">1e3</span></span>) &#123;<br>    <span class="hljs-variable language_">super</span>();<br>    <span class="hljs-comment">// 待补充...</span><br><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">endTime</span> = endTime;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span> = step;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">remainTime</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span> = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">start</span>();<br>  &#125;<br><br>  <span class="hljs-comment">// 待补充...</span><br>  <span class="hljs-title function_">start</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">START</span>);<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">status</span> = <span class="hljs-title class_">CountdownStatus</span>.<span class="hljs-property">running</span>;<br><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">countdown</span>();<br>  &#125;<br><br>  <span class="hljs-comment">// 计时操作</span><br>  <span class="hljs-title function_">countdown</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">status</span> === <span class="hljs-title class_">CountdownStatus</span>.<span class="hljs-property">running</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">remainTime</span> = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">endTime</span> - <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>(), <span class="hljs-number">0</span>);<br><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>++;<br><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">RUNNING</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">calcRemainTimeData</span>());<br><br>      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">remainTime</span> &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">countdown</span>();<br>        &#125;, <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span>);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">stop</span>();<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-title function_">calcRemainTimeData</span>(): <span class="hljs-title class_">RemainTimeData</span> &#123;<br>    <span class="hljs-keyword">let</span> hours, minutes, seconds, count;<br><br>    count = <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>;<br><br>    <span class="hljs-comment">// 创建一个新的 Date 对象</span><br>    <span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">remainTime</span>);<br><br>    <span class="hljs-comment">// 获取小时、分钟和秒</span><br>    hours = date.<span class="hljs-title function_">getHours</span>();<br>    minutes = date.<span class="hljs-title function_">getMinutes</span>();<br>    seconds = date.<span class="hljs-title function_">getSeconds</span>();<br><br>    <span class="hljs-keyword">return</span> &#123; hours, minutes, seconds, count &#125;;<br>  &#125;<br><br>  <span class="hljs-title function_">stop</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">STOP</span>);<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">status</span> = <span class="hljs-title class_">CountdownStatus</span>.<span class="hljs-property">stoped</span>;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 使用</span><br><span class="hljs-keyword">const</span> countdown = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Countdown</span>(<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() * <span class="hljs-number">60</span> * <span class="hljs-number">60</span>, <span class="hljs-number">1000</span>);<br><br>countdown.<span class="hljs-title function_">on</span>(<span class="hljs-title class_">CountdownEventName</span>.<span class="hljs-property">RUNNING</span>, <span class="hljs-function">(<span class="hljs-params">remainTimeData: RemainTimeData</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 只要倒计时还未结束，则该函数每间隔 X(初始化传入的值) 秒后会执行</span><br><br>  <span class="hljs-comment">// remainTimeData: 剩余时间</span><br>  <span class="hljs-comment">// hours: 剩余小时</span><br>  <span class="hljs-comment">// minutes: 剩余分钟</span><br>  <span class="hljs-comment">// seconds: 剩余秒数</span><br>  <span class="hljs-comment">// count: 计时次数</span><br>  <span class="hljs-keyword">const</span> &#123; hours, minutes, seconds, count &#125; = remainTimeData;<br><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`还剩：<span class="hljs-subst">$&#123;hours&#125;</span>:<span class="hljs-subst">$&#123;minutes&#125;</span>:<span class="hljs-subst">$&#123;seconds&#125;</span>`</span>, count);<br>&#125;);<br><br><span class="hljs-comment">// 打印结果：</span><br><span class="hljs-comment">// 还剩：11:59:59</span><br><span class="hljs-comment">// 还剩：11:59:58</span><br><span class="hljs-comment">// ...</span><br><span class="hljs-comment">// 还剩：00:09:09</span><br><br></code></pre></td></tr></table></figure>
+
+<h1 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h1><h2 id="元编程"><a href="#元编程" class="headerlink" title="元编程"></a>元编程</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Meta_programming">元编程 - JavaScript | MDN</a><br>使用<code>Reflect 和 Proxy</code>，可以实现<code>元级别</code>的编程(可自定义基本语言操作（例如属性查找、赋值、枚举和函数调用等）)</p>
+<h3 id="Reflect-1"><a href="#Reflect-1" class="headerlink" title="Reflect"></a>Reflect</h3><p>官方文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect">Reflect - JavaScript | MDN</a></p>
+<h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p>官方文档：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy">Proxy - JavaScript | MDN</a><br>用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找、赋值、枚举、函数调用等），并且对应的操作也会转发到这个对象上<br>语法：<code>new Proxy(target, handler)</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> obj = &#123;&#125;<br><br><span class="hljs-keyword">const</span> handler = &#123;<br>  <span class="hljs-comment">// 代理 get 操作(取值)</span><br>  <span class="hljs-title function_">get</span>(<span class="hljs-params">target, propertyKey</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Proxy get&#x27;</span>)<br>    <span class="hljs-keyword">return</span> target[propertyKey]<br>  &#125;,<br>  <span class="hljs-comment">// 代理 set 操作(赋值)</span><br>  <span class="hljs-title function_">set</span>(<span class="hljs-params">target, propertyKey, value</span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Proxy set&#x27;</span>)<br>    target[propertyKey] = value<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Proxy</span>(obj, handler)<br>p.<span class="hljs-property">a</span> = <span class="hljs-number">1</span> <span class="hljs-comment">// 赋值，打印：Proxy set，并且赋值操作也会转发到 obj 上</span><br><span class="hljs-keyword">const</span> a = p.<span class="hljs-property">a</span> <span class="hljs-comment">// 取值，打印：Proxy get</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj) <span class="hljs-comment">// &#123; a:1 &#125;</span><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2-2、TS 实战</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/2-2、TS 实战/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/2-3%E3%80%81ES6%20%E8%AF%A6%E8%A7%A3/" title="2-3、ES6 详解">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2-3、ES6 详解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/2-1%E3%80%81TS%20%E8%AF%A6%E8%A7%A3/" title="2-1、TS 详解">
+                        <span class="hidden-mobile">2-1、TS 详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
