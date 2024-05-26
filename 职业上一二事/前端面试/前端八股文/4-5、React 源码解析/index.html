@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="4-5、React 源码解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4-5、React 源码解析">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/4-5%E3%80%81React%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="4-5、React 源码解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1706609523476-672e6a38-78b3-4fad-bb88-5c681f5ed190.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1706605368169-82142d07-4d0c-44a2-b4f6-2f163469e45a.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1706609523476-672e6a38-78b3-4fad-bb88-5c681f5ed190.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708349484074-7255f728-c9f6-4213-8b94-d258cd3b1251.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/useState-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.png">
+<meta property="article:published_time" content="2024-01-13T23:32:53.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:53.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1706609523476-672e6a38-78b3-4fad-bb88-5c681f5ed190.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>4-5、React 源码解析 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="4-5、React 源码解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">4-5、React 源码解析</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:53+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>官方源码：<a target="_blank" rel="noopener" href="https://github.com/facebook/react">https://github.com/facebook/react</a></p>
+<p>预防针：看过 Vue 源码的正常，不看 React 源码的也正常，因为它非常复杂，未必能看懂，所以看懂一部分就行了。</p>
+<p>看了 React 源码与写好 React 没啥关系。</p>
+<p>这篇文章能带来的是：<strong>搞清楚 React 的工作流程，基于 React 的 17 版本源码</strong></p>
+<h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs jsx">&lt;div&gt;<br> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> hello world <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>&#123; text &#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  &#123;<br>    list.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ChildItem</span> <span class="hljs-attr">item</span>=<span class="hljs-string">&#123;item&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ChildItem</span>&gt;</span></span>)<br>  &#125;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<p>问题：list 数据改变时，怎么最快的判断出来如何更新？<br>答案：React 为了保持运行时的灵活性，<strong>一律采用从头(根节点)遍历，然后再跟之前的对比，把有区别的更新下</strong>。<br>疑问：那若有很多 HTML，React 就比较耗性能了吧？是的！<br>方案：后续 React 的版本就一直在解决这个问题。比如采用了 fiber、使用异步可中断更新策略等等。</p>
+<h1 id="React-为什么要用-Fiber？"><a href="#React-为什么要用-Fiber？" class="headerlink" title="React 为什么要用 Fiber？"></a>React 为什么要用 Fiber？</h1><p>因为 React 采用的更新策略是<strong>从根节点递归遍历，然后再跟之前的对比，把有区别的更新下</strong><br>然后在 15 版本，采用的是 Stack Reconciler 同步更新机制，由于是同步的，则会存在阻塞，并且还不支持中断<br>在之后的版本，采用了 Fiber Reconciler 更新机制，支持异步可中断的遍历&#x2F;更新，若有优先级高的交互(输入、点击等)，则中断遍历&#x2F;更新，先去处理交互，再接着遍历&#x2F;更新</p>
+<h1 id="React-大概的版本区别"><a href="#React-大概的版本区别" class="headerlink" title="React 大概的版本区别"></a>React 大概的版本区别</h1><ul>
+<li>V15 版本，Stack Reconciler：同步更新机制</li>
+<li>16.9 ~ 17.0.2 版本，Fiber Reconciler：异步可中断更新机制<ul>
+<li>但在 17.0.2 里面只是先做了数据结构，但不稳定（可以理解为先吹了一波），有两个模式<ul>
+<li>legacy 模式：可通过 createa 脚手架创建，有 Fiber 的结构，但不会中断，源码文件为 xxx.old.js</li>
+<li>concurrent 模式：需要自己去编译，无法通过 create 脚手架创建，实现了中断，源码文件为 xxx.new.js</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>18 版本，可以理解为 concurrent 模式 ++</li>
+</ul>
+<h1 id="React-中的数据结构"><a href="#React-中的数据结构" class="headerlink" title="React 中的数据结构"></a>React 中的数据结构</h1><h2 id="v-dom-element"><a href="#v-dom-element" class="headerlink" title="v-dom &#x2F; element"></a>v-dom &#x2F; element</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br><br><span class="hljs-comment">// 经过 babel 编译后为：</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>, &#123; <span class="hljs-attr">className</span>: <span class="hljs-string">&#x27;app&#x27;</span>&#125;,<br>    <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;h2&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;hello world&#x27;</span>),<br>    <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>, &#123; <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;list&#x27;</span> &#125;,<br>      <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;ul&#x27;</span>, <span class="hljs-literal">null</span>,<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 1&#x27;</span>),<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 2&#x27;</span>),<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 3&#x27;</span>)<br>      )<br>    )<br>  )<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>那<code>React.createElement</code>到底是个啥？源码地址：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/3e58b0af0caebf5f1b507ce5f360c85cb57bf528/packages/react/src/ReactElementProd.js#L362">点这个</a><br>核心代码：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ReactElement</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>, key, ref, self, source, owner, props</span>) &#123;<br>  <span class="hljs-keyword">const</span> element = &#123;<br>    <span class="hljs-comment">// This tag allows us to uniquely identify this as a React Element</span><br>    <span class="hljs-attr">$$typeof</span>: <span class="hljs-variable constant_">REACT_ELEMENT_TYPE</span>,<br><br>    <span class="hljs-comment">// Built-in properties that belong on the element</span><br>    <span class="hljs-attr">type</span>: <span class="hljs-keyword">type</span>,<br>    <span class="hljs-attr">key</span>: key,<br>    <span class="hljs-attr">ref</span>: ref,<br>    <span class="hljs-attr">props</span>: props,<br><br>    <span class="hljs-comment">// Record the component responsible for creating this element.</span><br>    <span class="hljs-attr">_owner</span>: owner,<br>  &#125;;<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> element;<br>&#125;<br><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createElement</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>, config, children</span>) &#123;<br>  <span class="hljs-keyword">let</span> propName;<br><br>  <span class="hljs-keyword">const</span> props = &#123;&#125;;<br><br>  <span class="hljs-comment">// ⭐️ 将 config 的值放入 props 中</span><br>  <span class="hljs-keyword">if</span> (config != <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-keyword">for</span> (propName <span class="hljs-keyword">in</span> config) &#123;<br>      <span class="hljs-keyword">if</span> (<br>        hasOwnProperty.<span class="hljs-title function_">call</span>(config, propName) &amp;&amp;<br>        !<span class="hljs-variable constant_">RESERVED_PROPS</span>.<span class="hljs-title function_">hasOwnProperty</span>(propName)<br>      ) &#123;<br>        props[propName] = config[propName];<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// ⭐️ 将 children 的值放入 props.children 中</span><br>  <span class="hljs-keyword">const</span> childrenLength = <span class="hljs-variable language_">arguments</span>.<span class="hljs-property">length</span> - <span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">if</span> (childrenLength === <span class="hljs-number">1</span>) &#123;<br>    props.<span class="hljs-property">children</span> = children;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (childrenLength &gt; <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">const</span> childArray = <span class="hljs-title class_">Array</span>(childrenLength);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; childrenLength; i++) &#123;<br>      childArray[i] = <span class="hljs-variable language_">arguments</span>[i + <span class="hljs-number">2</span>];<br>    &#125;<br>    <span class="hljs-keyword">if</span> (__DEV__) &#123;<br>      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-property">freeze</span>) &#123;<br>        <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">freeze</span>(childArray);<br>      &#125;<br>    &#125;<br>    props.<span class="hljs-property">children</span> = childArray;<br>  &#125;<br><br> <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-title class_">ReactElement</span>(<br>    <span class="hljs-keyword">type</span>,<br>    key,<br>    ref,<br>    self,<br>    source,<br>    <span class="hljs-title class_">ReactCurrentOwner</span>.<span class="hljs-property">current</span>,<br>    props,<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通过上述的<code>React.createElement</code>源码可得如下结构(vDom)：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>, &#123; <span class="hljs-attr">className</span>: <span class="hljs-string">&#x27;app&#x27;</span>&#125;,<br>    <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;h2&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;hello world&#x27;</span>),<br>    <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>, &#123; <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;list&#x27;</span> &#125;,<br>      <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;ul&#x27;</span>, <span class="hljs-literal">null</span>,<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 1&#x27;</span>),<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 2&#x27;</span>),<br>        <span class="hljs-title class_">React</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;li&#x27;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&#x27;list 3&#x27;</span>)<br>      )<br>    )<br>  )<br>&#125;<br><br><span class="hljs-comment">// 得出如下结构（简版）</span><br><span class="hljs-keyword">const</span> vDom = &#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;div&quot;</span>,<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">className</span>: <span class="hljs-string">&quot;app&quot;</span>,<br>    <span class="hljs-attr">children</span>: [<br>      &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;h2&quot;</span>,<br>        <span class="hljs-attr">props</span>: &#123; <span class="hljs-attr">children</span>: <span class="hljs-string">&quot;hello world&quot;</span> &#125;,<br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;div&quot;</span>,<br>        <span class="hljs-attr">props</span>: &#123;<br>          <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;list&quot;</span>,<br>          <span class="hljs-attr">children</span>: [<br>            &#123;<br>              <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;ul&quot;</span>,<br>              <span class="hljs-attr">props</span>: &#123;<br>                <span class="hljs-attr">children</span>: [<br>                  &#123;<br>                    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;li&quot;</span>,<br>                    <span class="hljs-attr">props</span>: &#123; <span class="hljs-attr">children</span>: <span class="hljs-string">&quot;list 1&quot;</span> &#125;,<br>                  &#125;,<br>                  &#123;<br>                    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;li&quot;</span>,<br>                    <span class="hljs-attr">props</span>: &#123; <span class="hljs-attr">children</span>: <span class="hljs-string">&quot;list 2&quot;</span> &#125;,<br>                  &#125;,<br>                  &#123;<br>                    <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;li&quot;</span>,<br>                    <span class="hljs-attr">props</span>: &#123; <span class="hljs-attr">children</span>: <span class="hljs-string">&quot;list 3&quot;</span> &#125;,<br>                  &#125;,<br>                ],<br>              &#125;,<br>            &#125;,<br>          ],<br>        &#125;,<br>      &#125;,<br>    ],<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="fiber"><a href="#fiber" class="headerlink" title="fiber"></a>fiber</h2><p>本质就是一个链表形式的数据结构，用来表示 v-dom 的，大致结构如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-title class_">FiberNode</span> = &#123;<br>  tag, <span class="hljs-comment">// 标明 fiber 的类型，如函数组件、类组件等</span><br>  key, <span class="hljs-comment">// React 元素的key，用于优化更新</span><br>  elementType, <span class="hljs-comment">// 标明 React 元素的类型，即调用 createElement 时的第一个参数。</span><br>  type, <span class="hljs-comment">// 标明 DOM 元素 的类型</span><br><br>  <span class="hljs-comment">// 链表形式</span><br>  <span class="hljs-keyword">return</span>, <span class="hljs-comment">// 指向父 fiber</span><br>  child, <span class="hljs-comment">// 指向子 fiber</span><br>  sibling <span class="hljs-comment">// 指向下一个同级 fiber</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="current-Fiber、workInProgress-Fiber"><a href="#current-Fiber、workInProgress-Fiber" class="headerlink" title="current Fiber、workInProgress Fiber"></a>current Fiber、workInProgress Fiber</h3><p>current Fiber：对应当前页面中真实渲染的 DOM 的结构<br>workInProgress Fiber：更新时才创建的并已处理好变更的对应到真实 DOM 的虚拟 DOM 的 Fiber 链表<br>大致的链表结构如下：<br><img src="/img/images/2024/1706609523476-672e6a38-78b3-4fad-bb88-5c681f5ed190.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="React-的双缓存是什么？"><a href="#React-的双缓存是什么？" class="headerlink" title="React 的双缓存是什么？"></a>React 的双缓存是什么？</h4><p><code>双缓存</code>来源于：图形渲染的优化技术<br>原理为：</p>
+<ol>
+<li>在双缓存技术中，系统会在内存（通常为显存）中开辟两个区域：<ul>
+<li>前缓冲（Front Buffer）：这是与显示器相连的缓冲区，当前正在被显示的内容就存储在这里。</li>
+<li>后缓冲（Back Buffer）：这是一个独立于前缓冲的内存区域，应用程序在该区域进行所有的绘图操作。</li>
+</ul>
+</li>
+<li>应用程序会在后缓冲中完成所有的图形绘制工作，而不会直接影响到屏幕上显示的内容。</li>
+<li>当所有需要更新的画面内容都在后缓冲区绘制完成后，系统会执行一次“缓冲区交换”或“页面翻转”操作，迅速将前后缓冲区的角色互换，即将后缓冲区的内容复制到前缓冲区，并使其成为新的可见帧。</li>
+<li>由于这个交换操作通常是硬件加速且非常快速的，因此用户看到的是一个完整、无闪烁的新帧画面，而不是半成品或者绘制过程中的中间状态。</li>
+</ol>
+<p>简单理解为：预加载</p>
+<p>React 中的双缓存指的是两个 Fiber 树，一个用于当前展示(<code>current fiber</code>)，一个用于更新的(<code>workInprogress fiber</code>)，有变化时则创建<code>workInprogress fiber</code>并在其中进行比较、计算等，之后直接一次性用整个<code>workInprogress fiber</code>(或部分) 替换掉整个<code>current fiber</code>(或部分)，不用两个逐个比较与 DOM 更新，从而避免了大量的 DOM 操作带来的性能损耗。</p>
+<h1 id="React-的核心库"><a href="#React-的核心库" class="headerlink" title="React 的核心库"></a>React 的核心库</h1><ul>
+<li><code>react 库</code>1、提供虚拟 DOM 相关的 API；2、提供用户相关的 API（useState&#x2F;use* 等）</li>
+<li><code>react-dom 库</code>提供操作 DOM 相关的 API<ul>
+<li><strong>其中的核心库</strong><code>react-reconciler</code>通过调和、调度、提交等过程实现渲染<ul>
+<li>其中核心的为：<ul>
+<li>ReactFiberBeginWork.js：创建 workInProgressFiber</li>
+<li>ReactFiberCompleteWork.js：基于 workInProgressFiber 创建 EffectList</li>
+<li>ReactFiberCommitWork.js：基于 EffectList 更新界面</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="React-的整体流程（V17-版本）"><a href="#React-的整体流程（V17-版本）" class="headerlink" title="React 的整体流程（V17 版本）"></a>React 的整体流程（V17 版本）</h1><h2 id="页面代码"><a href="#页面代码" class="headerlink" title="页面代码"></a>页面代码</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br><br><span class="hljs-comment">// 入口：ReactDom.render(...)</span><br><span class="hljs-title class_">ReactDom</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<h2 id="入口：页面的ReactDom-render-，调用的源码是react-dom-库里面的render函数"><a href="#入口：页面的ReactDom-render-，调用的源码是react-dom-库里面的render函数" class="headerlink" title="入口：页面的ReactDom.render(...)，调用的源码是react-dom 库里面的render函数"></a>入口：页面的<code>ReactDom.render(...)</code>，调用的源码是<code>react-dom 库</code>里面的<code>render</code>函数</h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMLegacy.js#L287">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// react-dom 源码</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params"></span><br><span class="hljs-params">  element: React$Element&lt;<span class="hljs-built_in">any</span>&gt;,</span><br><span class="hljs-params">  container: Container,</span><br><span class="hljs-params">  callback: ?<span class="hljs-built_in">Function</span>,</span><br><span class="hljs-params"></span>)&#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">legacyRenderSubtreeIntoContainer</span>( <span class="hljs-comment">// 渲染下一级的树到 Container 中</span><br>    <span class="hljs-literal">null</span>,<br>    element,<br>    container,<br>    <span class="hljs-literal">false</span>,<br>    callback,<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="legacyRenderSubtreeIntoContainer：将子树渲染到容器中，首次渲染则调用legacyCreateRootFromDOMContainer"><a href="#legacyRenderSubtreeIntoContainer：将子树渲染到容器中，首次渲染则调用legacyCreateRootFromDOMContainer" class="headerlink" title="legacyRenderSubtreeIntoContainer：将子树渲染到容器中，首次渲染则调用legacyCreateRootFromDOMContainer"></a><code>legacyRenderSubtreeIntoContainer</code>：将子树渲染到容器中，首次渲染则调用<code>legacyCreateRootFromDOMContainer</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMLegacy.js#L175">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 作用：将子树渲染到容器中。</span><br><span class="hljs-comment">// 具体来说，它是在 React 的旧版本和新的 Fiber 架构之间进行兼容性处理的一部分。</span><br><span class="hljs-keyword">function</span>  <span class="hljs-title function_">legacyRenderSubtreeIntoContainer</span>(<span class="hljs-params"></span><br><span class="hljs-params">  parentComponent: ?React$Component&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>&gt;, <span class="hljs-comment">// 父组件（可能为null）</span></span><br><span class="hljs-params">  children: ReactNodeList, <span class="hljs-comment">// 要渲染的子节点。</span></span><br><span class="hljs-params">  container: Container, <span class="hljs-comment">// 容器，即 DOM 元素或 React 容器</span></span><br><span class="hljs-params">  forceHydrate: <span class="hljs-built_in">boolean</span>, <span class="hljs-comment">// 一个布尔值，决定是否强制进行 hydration（将服务器端渲染的HTML转换为客户端React组件）。</span></span><br><span class="hljs-params">  callback: ?<span class="hljs-built_in">Function</span>, <span class="hljs-comment">// 回调函数，在渲染完成后调用</span></span><br><span class="hljs-params"></span>): <span class="hljs-title class_">React</span>$Component&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>&gt; | <span class="hljs-title class_">PublicInstance</span> | <span class="hljs-literal">null</span> &#123;<br> <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-comment">// 从给定的容器中获取 _reactRootContainer ，这可能是根容器</span><br>  <span class="hljs-keyword">let</span> <span class="hljs-attr">root</span>: <span class="hljs-title class_">RootType</span> = (container.<span class="hljs-property">_reactRootContainer</span>: <span class="hljs-built_in">any</span>);<br>  <span class="hljs-keyword">let</span> fiberRoot;<br>  <span class="hljs-keyword">if</span> (!root) &#123; <span class="hljs-comment">// 不存在，即容器是首次渲染：</span><br>    <span class="hljs-comment">// ⭐️ Initial mount</span><br>    root = container.<span class="hljs-property">_reactRootContainer</span> = <span class="hljs-title function_">legacyCreateRootFromDOMContainer</span>(<br>      container,<br>      forceHydrate,<br>    );<br>    fiberRoot = root.<span class="hljs-property">_internalRoot</span>;<br><br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-title function_">unbatchedUpdates</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-title function_">updateContainer</span>(children, fiberRoot, parentComponent, callback);<br>    &#125;);<br>  &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 存在，即容器不是首次渲染</span><br>    fiberRoot = root.<span class="hljs-property">_internalRoot</span>;<br><br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-comment">// Update，更新容器的内容</span><br>    <span class="hljs-title function_">updateContainer</span>(children, fiberRoot, parentComponent, callback);<br>  &#125;<br><br>  <span class="hljs-comment">// 返回根容器的公共实例</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">getPublicRootInstance</span>(root);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="legacyCreateRootFromDOMContainer：用于创建-React-的根节点（FiberRoot），核心为createLegacyRoot"><a href="#legacyCreateRootFromDOMContainer：用于创建-React-的根节点（FiberRoot），核心为createLegacyRoot" class="headerlink" title="legacyCreateRootFromDOMContainer：用于创建 React 的根节点（FiberRoot），核心为createLegacyRoot"></a><code>legacyCreateRootFromDOMContainer</code>：用于创建 React 的根节点（FiberRoot），核心为<code>createLegacyRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMLegacy.js#L113">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">legacyCreateRootFromDOMContainer</span>(<span class="hljs-params"></span><br><span class="hljs-params">  container: Container,</span><br><span class="hljs-params">  forceHydrate: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">RootType</span> &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">createLegacyRoot</span>(<br>    container,<br>    shouldHydrate<br>      ? &#123;<br>          <span class="hljs-attr">hydrate</span>: <span class="hljs-literal">true</span>,<br>        &#125;<br>      : <span class="hljs-literal">undefined</span>,<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createLegacyRoot：用于创建-React-的根节点（FiberRoot），核心为ReactDOMBlockingRoot"><a href="#createLegacyRoot：用于创建-React-的根节点（FiberRoot），核心为ReactDOMBlockingRoot" class="headerlink" title="createLegacyRoot：用于创建 React 的根节点（FiberRoot），核心为ReactDOMBlockingRoot"></a><code>createLegacyRoot</code>：用于创建 React 的根节点（FiberRoot），核心为<code>ReactDOMBlockingRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMRoot.js#L195">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createLegacyRoot</span>(<span class="hljs-params"></span><br><span class="hljs-params">  container: Container,</span><br><span class="hljs-params">  options?: RootOptions,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">RootType</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ReactDOMBlockingRoot</span>(container, <span class="hljs-title class_">LegacyRoot</span>, options);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="ReactDOMBlockingRoot：核心调用createRootImpl"><a href="#ReactDOMBlockingRoot：核心调用createRootImpl" class="headerlink" title="ReactDOMBlockingRoot：核心调用createRootImpl"></a><code>ReactDOMBlockingRoot</code>：核心调用<code>createRootImpl</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMRoot.js#L66">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ReactDOMBlockingRoot</span>(<span class="hljs-params"></span><br><span class="hljs-params">  container: Container,</span><br><span class="hljs-params">  tag: RootTag,</span><br><span class="hljs-params">  options: <span class="hljs-built_in">void</span> | RootOptions,</span><br><span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">_internalRoot</span> = <span class="hljs-title function_">createRootImpl</span>(container, tag, options);<br>&#125;<br><br><span class="hljs-title class_">ReactDOMRoot</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">render</span> = <span class="hljs-title class_">ReactDOMBlockingRoot</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">render</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123; ... &#125;<br><span class="hljs-title class_">ReactDOMRoot</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">unmount</span> = <span class="hljs-title class_">ReactDOMBlockingRoot</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">unmount</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> &#123; ... &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createRootImpl：核心调用createContainer"><a href="#createRootImpl：核心调用createContainer" class="headerlink" title="createRootImpl：核心调用createContainer"></a><code>createRootImpl</code>：核心调用<code>createContainer</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMRoot.js#L120">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createRootImpl</span>(<span class="hljs-params"></span><br><span class="hljs-params">  container: Container,</span><br><span class="hljs-params">  tag: RootTag,</span><br><span class="hljs-params">  options: <span class="hljs-built_in">void</span> | RootOptions,</span><br><span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-keyword">const</span> root = <span class="hljs-title function_">createContainer</span>(container, tag, hydrate, hydrationCallbacks);<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createContainer：核心调用createFiberRoot"><a href="#createContainer：核心调用createFiberRoot" class="headerlink" title="createContainer：核心调用createFiberRoot"></a><code>createContainer</code>：核心调用<code>createFiberRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberReconciler.new.js#L241">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createContainer</span>(<span class="hljs-params"></span><br><span class="hljs-params">  containerInfo: Container,</span><br><span class="hljs-params">  tag: RootTag,</span><br><span class="hljs-params">  hydrate: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params">  hydrationCallbacks: <span class="hljs-literal">null</span> | SuspenseHydrationCallbacks,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">OpaqueRoot</span> &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">createFiberRoot</span>(containerInfo, tag, hydrate, hydrationCallbacks);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createFiberRoot：核心调用new-FiberRootNode"><a href="#createFiberRoot：核心调用new-FiberRootNode" class="headerlink" title="createFiberRoot：核心调用new FiberRootNode"></a><code>createFiberRoot</code>：核心调用<code>new FiberRootNode</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberRoot.new.js#L83">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createFiberRoot</span>(<span class="hljs-params"></span><br><span class="hljs-params">  containerInfo: <span class="hljs-built_in">any</span>,</span><br><span class="hljs-params">  tag: RootTag,</span><br><span class="hljs-params">  hydrate: <span class="hljs-built_in">boolean</span>,</span><br><span class="hljs-params">  hydrationCallbacks: <span class="hljs-literal">null</span> | SuspenseHydrationCallbacks,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">FiberRoot</span> &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">root</span>: <span class="hljs-title class_">FiberRoot</span> = (<span class="hljs-keyword">new</span> <span class="hljs-title class_">FiberRootNode</span>(containerInfo, tag, hydrate): <span class="hljs-built_in">any</span>);<br><br>  <span class="hljs-keyword">const</span> rootFiber = <span class="hljs-title function_">createHostRootFiber</span>(tag);<br>  root.<span class="hljs-property">current</span> = rootFiber; <span class="hljs-comment">// ⭐️ current Fiber</span><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="FiberRootNode：一个构造函数，生成Fiber-Root-Node的数据结构"><a href="#FiberRootNode：一个构造函数，生成Fiber-Root-Node的数据结构" class="headerlink" title="FiberRootNode：一个构造函数，生成Fiber Root Node的数据结构"></a><code>FiberRootNode</code>：一个构造函数，生成<code>Fiber Root Node</code>的数据结构</h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberRoot.new.js#L29">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">FiberRootNode</span>(<span class="hljs-params">containerInfo, tag, hydrate</span>) &#123;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">tag</span> = tag;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">containerInfo</span> = containerInfo;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingChildren</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">current</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pingCache</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">finishedWork</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">timeoutHandle</span> = noTimeout;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">context</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingContext</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">hydrate</span> = hydrate;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">callbackNode</span> = <span class="hljs-literal">null</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">callbackPriority</span> = <span class="hljs-title class_">NoLanePriority</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">eventTimes</span> = <span class="hljs-title function_">createLaneMap</span>(<span class="hljs-title class_">NoLanes</span>);<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">expirationTimes</span> = <span class="hljs-title function_">createLaneMap</span>(<span class="hljs-title class_">NoTimestamp</span>);<br><br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">suspendedLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">pingedLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">expiredLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">mutableReadLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">finishedLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br><br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">entangledLanes</span> = <span class="hljs-title class_">NoLanes</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">entanglements</span> = <span class="hljs-title function_">createLaneMap</span>(<span class="hljs-title class_">NoLanes</span>);<br><br>  <span class="hljs-keyword">if</span> (supportsHydration) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">mutableSourceEagerHydrationData</span> = <span class="hljs-literal">null</span>;<br>  &#125;<br><br>  <span class="hljs-keyword">if</span> (enableSchedulerTracing) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">interactionThreadID</span> = <span class="hljs-title function_">unstable_getThreadID</span>();<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">memoizedInteractions</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>();<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingInteractionMap</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();<br>  &#125;<br>  <span class="hljs-keyword">if</span> (enableSuspenseCallback) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">hydrationCallbacks</span> = <span class="hljs-literal">null</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结一下前面创建Fiber-Root的流程"><a href="#总结一下前面创建Fiber-Root的流程" class="headerlink" title="总结一下前面创建Fiber Root的流程"></a>总结一下前面创建<code>Fiber Root</code>的流程</h2><p><img src="/img/images/2024/1706605368169-82142d07-4d0c-44a2-b4f6-2f163469e45a.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="创建之后，后续关键调用为updateContainer，其中关键为scheduleUpdateOnFiber"><a href="#创建之后，后续关键调用为updateContainer，其中关键为scheduleUpdateOnFiber" class="headerlink" title="创建之后，后续关键调用为updateContainer，其中关键为scheduleUpdateOnFiber"></a>创建之后，后续关键调用为<code>updateContainer</code>，其中关键为<code>scheduleUpdateOnFiber</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberReconciler.new.js#L250">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">updateContainer</span>(<span class="hljs-params"></span><br><span class="hljs-params">  element: ReactNodeList,</span><br><span class="hljs-params">  container: OpaqueRoot,</span><br><span class="hljs-params">  parentComponent: ?React$Component&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>&gt;,</span><br><span class="hljs-params">  callback: ?<span class="hljs-built_in">Function</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Lane</span> &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">const</span> current = container.<span class="hljs-property">current</span>;<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">const</span> update = <span class="hljs-title function_">createUpdate</span>(eventTime, lane);<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-title function_">scheduleUpdateOnFiber</span>(current, lane, eventTime);<br><br>  <span class="hljs-keyword">return</span> lane;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="scheduleUpdateOnFiber：关键调用performSyncWorkOnRoot"><a href="#scheduleUpdateOnFiber：关键调用performSyncWorkOnRoot" class="headerlink" title="scheduleUpdateOnFiber：关键调用performSyncWorkOnRoot"></a><code>scheduleUpdateOnFiber</code>：关键调用<code>performSyncWorkOnRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L528">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">scheduleUpdateOnFiber</span>(<span class="hljs-params"></span><br><span class="hljs-params">  fiber: Fiber,</span><br><span class="hljs-params">  lane: Lane,</span><br><span class="hljs-params">  eventTime: <span class="hljs-built_in">number</span>,</span><br><span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">const</span> root = <span class="hljs-title function_">markUpdateLaneFromFiberToRoot</span>(fiber, lane);<br><br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">if</span> (lane === <span class="hljs-title class_">SyncLane</span>) &#123;<br>     <span class="hljs-comment">// ...</span><br><br>     <span class="hljs-comment">// 关键函数</span><br>      <span class="hljs-title function_">performSyncWorkOnRoot</span>(root);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-title function_">ensureRootIsScheduled</span>(root, eventTime);<br>      <span class="hljs-title function_">schedulePendingInteractions</span>(root, lane);<br>      <span class="hljs-keyword">if</span> (executionContext === <span class="hljs-title class_">NoContext</span>) &#123;<br>        <span class="hljs-comment">// Flush the synchronous work now, unless we&#x27;re already working or inside</span><br>        <span class="hljs-comment">// a batch. This is intentionally inside scheduleUpdateOnFiber instead of</span><br>        <span class="hljs-comment">// scheduleCallbackForFiber to preserve the ability to schedule a callback</span><br>        <span class="hljs-comment">// without immediately flushing it. We only do this for user-initiated</span><br>        <span class="hljs-comment">// updates, to preserve historical behavior of legacy mode.</span><br>        <span class="hljs-title function_">resetRenderTimer</span>();<br>        <span class="hljs-title function_">flushSyncCallbackQueue</span>();<br>      &#125;<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// Schedule a discrete update but only if it&#x27;s not Sync.</span><br>    <span class="hljs-keyword">if</span> (<br>      (executionContext &amp; <span class="hljs-title class_">DiscreteEventContext</span>) !== <span class="hljs-title class_">NoContext</span> &amp;&amp;<br>      <span class="hljs-comment">// Only updates at user-blocking priority or greater are considered</span><br>      <span class="hljs-comment">// discrete, even inside a discrete event.</span><br>      (priorityLevel === <span class="hljs-title class_">UserBlockingSchedulerPriority</span> ||<br>        priorityLevel === <span class="hljs-title class_">ImmediateSchedulerPriority</span>)<br>    ) &#123;<br>      <span class="hljs-comment">// This is the result of a discrete event. Track the lowest priority</span><br>      <span class="hljs-comment">// discrete update per root so we can flush them early, if needed.</span><br>      <span class="hljs-keyword">if</span> (rootsWithPendingDiscreteUpdates === <span class="hljs-literal">null</span>) &#123;<br>        rootsWithPendingDiscreteUpdates = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([root]);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        rootsWithPendingDiscreteUpdates.<span class="hljs-title function_">add</span>(root);<br>      &#125;<br>    &#125;<br>    <span class="hljs-comment">// Schedule other updates after in case the callback is sync.</span><br>    <span class="hljs-title function_">ensureRootIsScheduled</span>(root, eventTime);<br>    <span class="hljs-title function_">schedulePendingInteractions</span>(root, lane);<br>  &#125;<br><br>  <span class="hljs-comment">// We use this when assigning a lane for a transition inside</span><br>  <span class="hljs-comment">// `requestUpdateLane`. We assume it&#x27;s the same as the root being updated,</span><br>  <span class="hljs-comment">// since in the common case of a single root app it probably is. If it&#x27;s not</span><br>  <span class="hljs-comment">// the same root, then it&#x27;s not a huge deal, we just might batch more stuff</span><br>  <span class="hljs-comment">// together more than necessary.</span><br>  mostRecentlyUpdatedRoot = root;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="performSyncWorkOnRoot：关键调用renderRootSync、commitRoot"><a href="#performSyncWorkOnRoot：关键调用renderRootSync、commitRoot" class="headerlink" title="performSyncWorkOnRoot：关键调用renderRootSync、commitRoot"></a><code>performSyncWorkOnRoot</code>：关键调用<code>renderRootSync</code>、<code>commitRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L976">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">performSyncWorkOnRoot</span>(<span class="hljs-params">root</span>) &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  exitStatus = <span class="hljs-title function_">renderRootSync</span>(root, lanes);<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-title function_">commitRoot</span>(root);<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="renderRootSync：关键调用workLoopSync"><a href="#renderRootSync：关键调用workLoopSync" class="headerlink" title="renderRootSync：关键调用workLoopSync"></a><code>renderRootSync</code>：关键调用<code>workLoopSync</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1501">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderRootSync</span>(<span class="hljs-params">root: FiberRoot, lanes: Lanes</span>) &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-title function_">workLoopSync</span>();<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> workInProgressRootExitStatus;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="workLoopSync：递归调用performUnitOfWork"><a href="#workLoopSync：递归调用performUnitOfWork" class="headerlink" title="workLoopSync：递归调用performUnitOfWork"></a><code>workLoopSync</code>：递归调用<code>performUnitOfWork</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1569">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 一个递归函数，逻辑为根据最开始的页面代码来调用的</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">workLoopSync</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// Already timed out, so perform work without checking if we need to yield.</span><br>  <span class="hljs-keyword">while</span> (workInProgress !== <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-title function_">performUnitOfWork</span>(workInProgress);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 最开始的页面代码</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br><span class="hljs-comment">// 入口：ReactDom.render(...)</span><br><span class="hljs-title class_">ReactDom</span>.<span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>, <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>));<br><br>则 workLoopSync 调用 performUnitOfWork 时的参数为：<br>第①次：tag = <span class="hljs-number">3</span>，elementType = <span class="hljs-literal">null</span>，代表 container<br>第②次：tag = <span class="hljs-number">2</span>，elementType = f <span class="hljs-title class_">App</span>()，代表 <span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123; ...&#125; 函数<br>第③次：tag = <span class="hljs-number">5</span>，elementType = <span class="hljs-string">&#x27;div&#x27;</span>，代表 &lt;div className=<span class="hljs-string">&quot;app&quot;</span>&gt; 元素<br>第④次：tag = <span class="hljs-number">5</span>，elementType = <span class="hljs-string">&#x27;h2&#x27;</span>，代表 &lt;h2&gt; 元素<br>第⑤次：tag = <span class="hljs-number">5</span>，elementType = <span class="hljs-string">&#x27;div&#x27;</span>，代表 &lt;div id=<span class="hljs-string">&quot;list&quot;</span>&gt; 元素<br>...<br>第n次：tag = <span class="hljs-number">5</span>，elementType = <span class="hljs-string">&#x27;li&#x27;</span>，代表 &lt;li&gt;list <span class="hljs-number">3</span>&lt;/li&gt; 元素<br></code></pre></td></tr></table></figure>
+
+<h2 id="performUnitOfWork：被递归调用，核心调用beginWork、completeUnitOfWork"><a href="#performUnitOfWork：被递归调用，核心调用beginWork、completeUnitOfWork" class="headerlink" title="performUnitOfWork：被递归调用，核心调用beginWork、completeUnitOfWork"></a><code>performUnitOfWork</code>：被递归调用，核心调用<code>beginWork</code>、<code>completeUnitOfWork</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1653">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">performUnitOfWork</span>(<span class="hljs-params">unitOfWork: Fiber</span>): <span class="hljs-built_in">void</span> &#123;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">let</span> next;<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-comment">// 调用 beginWork 处理当前元素，返回值为子节点，没有则返回 null</span><br>  next = <span class="hljs-title function_">beginWork</span>(current, unitOfWork, subtreeRenderLanes);<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">if</span> (next === <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-comment">// 若无子节点，则完成当前任务</span><br>    <span class="hljs-title function_">completeUnitOfWork</span>(unitOfWork);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 否则继续处理子节点</span><br>    workInProgress = next;<br>  &#125;<br><br>  <span class="hljs-title class_">ReactCurrentOwner</span>.<span class="hljs-property">current</span> = <span class="hljs-literal">null</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+
+<p>所以递归逻辑为：先子级后同级（先深度后广度）<br><code>workLoopSync</code>递归调用<code>performUnitOfWork</code>处理同级，<code>performUnitOfWork</code>调用<code>beginWork</code>处理子级</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>hello world<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>list 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="递归调用逻辑图-Fiber-链表结构"><a href="#递归调用逻辑图-Fiber-链表结构" class="headerlink" title="递归调用逻辑图(Fiber 链表结构)"></a>递归调用逻辑图(Fiber 链表结构)</h3><p><img src="/img/images/2024/1706609523476-672e6a38-78b3-4fad-bb88-5c681f5ed190.jpeg" srcset="/img/loading.gif" lazyload><br>上图体现的就是<code>Fiber</code>的数据结构，核心就是：return(父)、child(子)、sibling(兄)</p>
+<h2 id="beginWork：作用是创建-workInProgressFiber"><a href="#beginWork：作用是创建-workInProgressFiber" class="headerlink" title="beginWork：作用是创建 workInProgressFiber"></a><code>beginWork</code>：作用是创建 workInProgressFiber</h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberBeginWork.new.js#L3077">点这</a><br>作用：生成<code>v-dom</code>，然后和<code>current fiber</code>对比，向下调和的过程<br>就是由 fiberRoot 按照 child 指针逐层往下调和，期间会执行：函数组件、类组件，DIFF 子节点，从而打上不同的<code>effectTag</code></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">beginWork</span>(<span class="hljs-params"></span><br><span class="hljs-params">  current: Fiber | <span class="hljs-literal">null</span>,</span><br><span class="hljs-params">  workInProgress: Fiber,</span><br><span class="hljs-params">  renderLanes: Lanes,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Fiber</span> | <span class="hljs-literal">null</span> &#123;<br>  <span class="hljs-keyword">const</span> updateLanes = workInProgress.<span class="hljs-property">lanes</span>;<br><br> <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">if</span> (current !== <span class="hljs-literal">null</span>) &#123;<br>   <span class="hljs-comment">// 初次渲染不会进</span><br><br>    <span class="hljs-comment">// 新老对比</span><br>    <span class="hljs-keyword">const</span> oldProps = current.<span class="hljs-property">memoizedProps</span>;<br>    <span class="hljs-keyword">const</span> newProps = workInProgress.<span class="hljs-property">pendingProps</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 匹配节点的 tag 类型，然后调用对应的方法去打上不同的 effectTag</span><br>  <span class="hljs-keyword">switch</span> (workInProgress.<span class="hljs-property">tag</span>) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">IndeterminateComponent</span>: &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-title function_">mountIndeterminateComponent</span>(<br>        current,<br>        workInProgress,<br>        workInProgress.<span class="hljs-property">type</span>,<br>        renderLanes,<br>      );<br>    &#125;<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">LazyComponent</span>: &#123;<br>      <span class="hljs-keyword">const</span> elementType = workInProgress.<span class="hljs-property">elementType</span>;<br>      <span class="hljs-keyword">return</span> <span class="hljs-title function_">mountLazyComponent</span>(<br>        current,<br>        workInProgress,<br>        elementType,<br>        updateLanes,<br>        renderLanes,<br>      );<br>    &#125;<br>    <span class="hljs-comment">// ...</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="completeUnitOfWork：核心调用completeWork"><a href="#completeUnitOfWork：核心调用completeWork" class="headerlink" title="completeUnitOfWork：核心调用completeWork"></a><code>completeUnitOfWork</code>：核心调用<code>completeWork</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1681">点这</a></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">completeUnitOfWork</span>(<span class="hljs-params">unitOfWork: Fiber</span>): <span class="hljs-built_in">void</span> &#123;<br>  <span class="hljs-keyword">let</span> completedWork = unitOfWork;<br>  <span class="hljs-keyword">do</span> &#123;<br>    <span class="hljs-keyword">const</span> current = completedWork.<span class="hljs-property">alternate</span>;<br>    <span class="hljs-keyword">const</span> returnFiber = completedWork.<span class="hljs-property">return</span>;<br><br>    <span class="hljs-comment">// Check if the work completed or if something threw.</span><br>    <span class="hljs-keyword">if</span> ((completedWork.<span class="hljs-property">flags</span> &amp; <span class="hljs-title class_">Incomplete</span>) === <span class="hljs-title class_">NoFlags</span>) &#123;<br>      <span class="hljs-comment">// ...</span><br><br>      <span class="hljs-comment">// ⭐️ 核心调用</span><br>      next = <span class="hljs-title function_">completeWork</span>(current, completedWork, subtreeRenderLanes);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// ...</span><br>    &#125;<br><br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="completeWork：核心调用createInstance"><a href="#completeWork：核心调用createInstance" class="headerlink" title="completeWork：核心调用createInstance"></a><code>completeWork</code>：核心调用<code>createInstance</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberCompleteWork.new.js#L800">点这</a><br><code>effectList</code>将需要更新的数据形成一个新的 Fiber 链表结构，这样就只需要去更新这些</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">completeWork</span>(<span class="hljs-params"></span><br><span class="hljs-params">  current: Fiber | <span class="hljs-literal">null</span>,</span><br><span class="hljs-params">  workInProgress: Fiber,</span><br><span class="hljs-params">  renderLanes: Lanes,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Fiber</span> | <span class="hljs-literal">null</span> &#123;<br>  <span class="hljs-keyword">const</span> newProps = workInProgress.<span class="hljs-property">pendingProps</span>;<br><br>  <span class="hljs-keyword">switch</span> (workInProgress.<span class="hljs-property">tag</span>) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">IndeterminateComponent</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">LazyComponent</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">SimpleMemoComponent</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">FunctionComponent</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">ForwardRef</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">Fragment</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">Mode</span>:<br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">ContextConsumer</span>:<br>    <span class="hljs-comment">// ...</span><br>    <span class="hljs-keyword">case</span> <span class="hljs-title class_">HostComponent</span>: &#123;<br>      <span class="hljs-comment">// ...</span><br>          <span class="hljs-keyword">const</span> instance = <span class="hljs-title function_">createInstance</span>(<br>            <span class="hljs-keyword">type</span>,<br>            newProps,<br>            rootContainerInstance,<br>            currentHostContext,<br>            workInProgress,<br>          );<br><br>          <span class="hljs-comment">// ...</span><br>  <span class="hljs-title function_">invariant</span>(<br>    <span class="hljs-literal">false</span>,<br>    <span class="hljs-string">&#x27;Unknown unit of work tag (%s). This error is likely caused by a bug in &#x27;</span> +<br>      <span class="hljs-string">&#x27;React. Please file an issue.&#x27;</span>,<br>    workInProgress.<span class="hljs-property">tag</span>,<br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createInstance：核心调用createElement"><a href="#createInstance：核心调用createElement" class="headerlink" title="createInstance：核心调用createElement"></a><code>createInstance</code>：核心调用<code>createElement</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMHostConfig.js#L262">点这</a><br>作用：调用<code>@react-dom 库里面的 createInstance</code>创建真实的 DOM(<code>document.createElement()</code>)，但还不会渲染到页面上</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createInstance</span>(<span class="hljs-params"></span><br><span class="hljs-params">  <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span>,</span><br><span class="hljs-params">  props: Props,</span><br><span class="hljs-params">  rootContainerInstance: Container,</span><br><span class="hljs-params">  hostContext: HostContext,</span><br><span class="hljs-params">  internalInstanceHandle: <span class="hljs-built_in">Object</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Instance</span> &#123;<br>  <span class="hljs-keyword">let</span> <span class="hljs-attr">parentNamespace</span>: <span class="hljs-built_in">string</span>;<br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">domElement</span>: <span class="hljs-title class_">Instance</span> = <span class="hljs-title function_">createElement</span>(<br>    <span class="hljs-keyword">type</span>,<br>    props,<br>    rootContainerInstance,<br>    parentNamespace,<br>  );<br>  <span class="hljs-title function_">precacheFiberNode</span>(internalInstanceHandle, domElement);<br>  <span class="hljs-title function_">updateFiberProps</span>(domElement, props);<br>  <span class="hljs-keyword">return</span> domElement;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="createElement：核心调用document-createElement"><a href="#createElement：核心调用document-createElement" class="headerlink" title="createElement：核心调用document.createElement"></a><code>createElement</code>：核心调用<code>document.createElement</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-dom/src/client/ReactDOMComponent.js#L401">点这</a><br>创建真实的 DOM</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createElement</span>(<span class="hljs-params"></span><br><span class="hljs-params">  <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span>,</span><br><span class="hljs-params">  props: <span class="hljs-built_in">Object</span>,</span><br><span class="hljs-params">  rootContainerElement: Element | Document,</span><br><span class="hljs-params">  parentNamespace: <span class="hljs-built_in">string</span>,</span><br><span class="hljs-params"></span>): <span class="hljs-title class_">Element</span> &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">ownerDocument</span>: <span class="hljs-title class_">Document</span> = <span class="hljs-title function_">getOwnerDocumentFromRootContainer</span>(<br>    rootContainerElement,<br>  );<br>  <span class="hljs-keyword">let</span> <span class="hljs-attr">domElement</span>: <span class="hljs-title class_">Element</span>;<br><br>  <span class="hljs-keyword">if</span> (namespaceURI === <span class="hljs-variable constant_">HTML_NAMESPACE</span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;script&#x27;</span>) &#123;<br>      <span class="hljs-keyword">const</span> div = ownerDocument.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);<br><br>      div.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&#x27;&lt;script&gt;&lt;&#x27;</span> + <span class="hljs-string">&#x27;/script&gt;&#x27;</span>; <span class="hljs-comment">// eslint-disable-line</span><br>      <span class="hljs-keyword">const</span> firstChild = ((div.<span class="hljs-property">firstChild</span>: <span class="hljs-built_in">any</span>): <span class="hljs-title class_">HTMLScriptElement</span>);<br>      domElement = div.<span class="hljs-title function_">removeChild</span>(firstChild);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> props.<span class="hljs-property">is</span> === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;<br>      domElement = ownerDocument.<span class="hljs-title function_">createElement</span>(<span class="hljs-keyword">type</span>, &#123;<span class="hljs-attr">is</span>: props.<span class="hljs-property">is</span>&#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      domElement = ownerDocument.<span class="hljs-title function_">createElement</span>(<span class="hljs-keyword">type</span>);<br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;select&#x27;</span>) &#123;<br>        <span class="hljs-keyword">const</span> node = ((<span class="hljs-attr">domElement</span>: <span class="hljs-built_in">any</span>): <span class="hljs-title class_">HTMLSelectElement</span>);<br>        <span class="hljs-keyword">if</span> (props.<span class="hljs-property">multiple</span>) &#123;<br>          node.<span class="hljs-property">multiple</span> = <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (props.<span class="hljs-property">size</span>) &#123;<br>          node.<span class="hljs-property">size</span> = props.<span class="hljs-property">size</span>;<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    domElement = ownerDocument.<span class="hljs-title function_">createElementNS</span>(namespaceURI, <span class="hljs-keyword">type</span>);<br>  &#125;<br><br>  <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> domElement;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="再总结一下前面的调用栈流程"><a href="#再总结一下前面的调用栈流程" class="headerlink" title="再总结一下前面的调用栈流程"></a>再总结一下前面的调用栈流程</h2><p><img src="/img/images/2024/1708349484074-7255f728-c9f6-4213-8b94-d258cd3b1251.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="commitRoot"><a href="#commitRoot" class="headerlink" title="commitRoot"></a><code>commitRoot</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1775">点这</a><br>当前面的<code>beginWork、completeWork</code>完成后，后续关键流程为<code>commitWork</code>，核心调用方法<code>commitRoot</code>，它其中核心调用<code>commitRootImpl</code></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">commitRoot</span>(<span class="hljs-params">root</span>) &#123;<br>  <span class="hljs-keyword">const</span> renderPriorityLevel = <span class="hljs-title function_">getCurrentPriorityLevel</span>();<br>  <span class="hljs-title function_">runWithPriority</span>(<br>    <span class="hljs-title class_">ImmediateSchedulerPriority</span>,<br>    commitRootImpl.<span class="hljs-title function_">bind</span>(<span class="hljs-literal">null</span>, root, renderPriorityLevel),<br>  );<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="commitRootImpl"><a href="#commitRootImpl" class="headerlink" title="commitRootImpl"></a><code>commitRootImpl</code></h2><p>源码位置：<a target="_blank" rel="noopener" href="https://github.com/facebook/react/blob/12adaffef7105e2714f82651ea51936c563fe15c/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1784">点这</a><br>核心调用：<code>flushPassiveEffects、commitBeforeMutationEffects、commitMutationEffects、commitLayoutEffects</code></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">commitRootImpl</span>(<span class="hljs-params">root, renderPriorityLevel</span>) &#123;<br>  <span class="hljs-keyword">do</span> &#123;<br>    <span class="hljs-comment">// ⭐️ 处理一些还未执行完毕的 useEffect</span><br>    <span class="hljs-title function_">flushPassiveEffects</span>();<br>  &#125; <span class="hljs-keyword">while</span> (rootWithPendingPassiveEffects !== <span class="hljs-literal">null</span>);<br><br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-comment">// ⭐️ 更新前</span><br>    <span class="hljs-title function_">commitBeforeMutationEffects</span>(finishedWork);<br><br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-comment">// ⭐️ 更新时</span><br>    <span class="hljs-title function_">commitMutationEffects</span>(finishedWork, root, renderPriorityLevel);<br><br>    <span class="hljs-keyword">if</span> (shouldFireAfterActiveInstanceBlur) &#123;<br>      <span class="hljs-title function_">afterActiveInstanceBlur</span>();<br>    &#125;<br>    <span class="hljs-title function_">resetAfterCommit</span>(root.<span class="hljs-property">containerInfo</span>);<br><br>    <span class="hljs-comment">// finishedWork = workInProgressFiber</span><br>    root.<span class="hljs-property">current</span> = finishedWork; <span class="hljs-comment">//  ⭐️ 实现双缓存的切换</span><br><br><br>    <span class="hljs-comment">// ⭐️ 更新后</span><br>    <span class="hljs-title function_">commitLayoutEffects</span>(root);<br><br>    <span class="hljs-comment">// ...</span><br><br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="flushPassiveEffects"><a href="#flushPassiveEffects" class="headerlink" title="flushPassiveEffects"></a>flushPassiveEffects</h3><p>处理一些还未执行完毕的 useEffect</p>
+<h3 id="commitBeforeMutationEffects（更新前）"><a href="#commitBeforeMutationEffects（更新前）" class="headerlink" title="commitBeforeMutationEffects（更新前）"></a>commitBeforeMutationEffects（更新前）</h3><p>调用<code>getSnapshotBeforeUpdate</code>生命周期</p>
+<h3 id="commitMutationEffects（更新时）"><a href="#commitMutationEffects（更新时）" class="headerlink" title="commitMutationEffects（更新时）"></a>commitMutationEffects（更新时）</h3><p>通过 Fiber 链表结构，一层层进行处理增删改</p>
+<h3 id="commitLayoutEffects（更新后）"><a href="#commitLayoutEffects（更新后）" class="headerlink" title="commitLayoutEffects（更新后）"></a>commitLayoutEffects（更新后）</h3><p>进行 Layout(布局)阶段，执行一些生命周期：<code>componentDidMount、componentWillUpdate 等</code>、执行 setState 的 callback、调用 useLayoutEffect、将 useEffect 存储起来</p>
+<h1 id="React-的异步可中断（V18-版本）"><a href="#React-的异步可中断（V18-版本）" class="headerlink" title="React 的异步可中断（V18 版本）"></a>React 的异步可中断（V18 版本）</h1><p>中断的是下一次的 beginWork</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">workLoopConcurrent</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// Perform work until Scheduler asks us to yield</span><br>  <span class="hljs-keyword">while</span> (workInProgress !== <span class="hljs-literal">null</span> &amp;&amp; !<span class="hljs-title function_">shouldYield</span>()) &#123;<br>    <span class="hljs-title function_">performUnitOfWork</span>(workInProgress);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>shouldYield</code>意思是交出执行权。</p>
+<p>浏览器的任务执行顺序：宏任务 -&gt; 微任务 -&gt; RAF(requestAnimationFrame) -&gt; render -&gt; RIC(requestIdelCallback) -&gt; <strong>新的</strong>宏任务 -&gt; <strong>新的</strong>微任务 -&gt; …</p>
+<p>当面对长任务时，React 会采用分段执行，但又需要满足可打断，先执行后面的，那可以使用的方案如下：</p>
+<ul>
+<li>setTimeout：宏任务，满足 render 后再执行，但它存在 4ms 的延迟</li>
+<li>Promise：微任务，不满足 render 后再执行，宏任务执行后就立马执行了</li>
+<li>requestIdelCallback：在浏览器空闲时期执行，满足 render 后再执行，但它执行时间不确定，兼容性差</li>
+<li>MessageChannel：浏览器创建的低延迟通信，可以创建一个宏观上的异步操作，与 render 执行无关</li>
+</ul>
+<h2 id="仿照-React-源码，模拟实现打断"><a href="#仿照-React-源码，模拟实现打断" class="headerlink" title="仿照 React 源码，模拟实现打断"></a>仿照 React 源码，模拟实现打断</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-comment">// 仿照 React 源码，模拟实现打断</span><br><br><span class="hljs-comment">// 存放 任务 的队列</span><br><span class="hljs-keyword">const</span> queue = []<br><br><span class="hljs-comment">// 存放 flush 函数的队列</span><br><span class="hljs-keyword">const</span> transition = []<br><br><span class="hljs-keyword">let</span> deadTime;<br><span class="hljs-keyword">const</span> split = <span class="hljs-number">5</span> <span class="hljs-comment">// 任务执行超过 5ms，则让出执行权</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">now</span> = (<span class="hljs-params"></span>) =&gt; performance.<span class="hljs-title function_">now</span>() <span class="hljs-comment">// 获取当前时间，计时精度更高</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">peek</span> = arr =&gt; arr[<span class="hljs-number">0</span>] <span class="hljs-comment">// 拿出数组的第一个值</span><br><br><span class="hljs-keyword">const</span> poseMessage = (()= &gt;&#123;<br><br>  <span class="hljs-keyword">const</span> &#123; port1, port2 &#125; = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MessageChannel</span>()<br>  <span class="hljs-comment">// ⭐️ 当 port2.postMessage 调用后，类似于在 setTimeout 后再执行 port1.ommessgae</span><br><br>  <span class="hljs-comment">// 恢复执行</span><br>  port1.<span class="hljs-property">ommessgae</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// 取出 transition 中的第一个 flush 并执行</span><br>    <span class="hljs-title function_">peek</span>(transition)()<br>  &#125;<br><br>  <span class="hljs-comment">// poseMessage() 执行的是这个 return 的函数</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>    port2.<span class="hljs-title function_">postMessage</span>() <span class="hljs-comment">// 让出执行权</span><br>  &#125;<br>&#125;)()<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">startTransition</span>(<span class="hljs-params">flush</span>) &#123;<br>  <span class="hljs-comment">// 将 flush 放到 transition 数组里面 &amp;&amp; 执行 poseMessage()</span><br>  transition.<span class="hljs-title function_">push</span>(flush) &amp;&amp; <span class="hljs-title function_">poseMessage</span>()<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">shouldYield</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 5ms 到了 或者 有更高优先级的操作</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">now</span>() &gt;= deadTime<br>    || navigatior.<span class="hljs-property">scheduling</span>.<span class="hljs-property">isInputPending</span> <span class="hljs-comment">// 模拟更高优先级的操作</span><br>&#125;<br><br><span class="hljs-comment">// 时间分片的函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">flush</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// 任务执行的截止时间为：当前时间 + 5ms</span><br>  deadTime = <span class="hljs-title function_">now</span>() + split<br>  <span class="hljs-keyword">const</span> task = <span class="hljs-title function_">peek</span>(queue) <span class="hljs-comment">// 拿出第一个任务，task = &#123; task &#125;</span><br>  <span class="hljs-keyword">while</span>(task &amp;&amp; !<span class="hljs-title function_">shouldYield</span>()) &#123;<br>    <span class="hljs-keyword">const</span> &#123; task &#125; = task<br>    task.<span class="hljs-property">task</span> = <span class="hljs-literal">null</span> <span class="hljs-comment">// queue[0] = &#123; task: null &#125;</span><br>    <span class="hljs-comment">// 执行任务</span><br>    <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">task</span>()<br><br>    <span class="hljs-comment">// 如果 next 是函数，则任务还未执行完，类似于 workInProgress benginWork 还未完</span><br>    <span class="hljs-keyword">if</span>(next &amp;&amp; <span class="hljs-keyword">typeof</span> next === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>      <span class="hljs-comment">// 没执行完的，重新放进去</span><br>      task.<span class="hljs-property">task</span> = next <span class="hljs-comment">// queue[0] = &#123; task: next &#125;</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 执行完了</span><br>      queue.<span class="hljs-title function_">shift</span>()<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// 代码执行到这后，就两种情况：</span><br>  <span class="hljs-comment">// 1、task 执行完了</span><br>  <span class="hljs-comment">// 2、task 还有，但 showYield() 为 true 让出执行权了</span><br>  task &amp;&amp; <span class="hljs-title function_">startTransition</span>(flush)<br>&#125;<br><br><span class="hljs-comment">// 用 schedule 来调度任务</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">schedule</span>(<span class="hljs-params">task</span>) &#123;<br>  queue.<span class="hljs-title function_">push</span>( &#123; task &#125; ) <span class="hljs-comment">// 将任务放进队列中</span><br><br>  <span class="hljs-title function_">startTransition</span>(flush)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">myTask</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">2</span>)<br><br>      <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">3</span>)<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">4</span>)<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="高优先级操作"><a href="#高优先级操作" class="headerlink" title="高优先级操作"></a>高优先级操作</h2><ul>
+<li>用户交互事件处理</li>
+<li>错误边界</li>
+<li>引发布局或绘制的操作</li>
+</ul>
+<h1 id="Suspense-组件"><a href="#Suspense-组件" class="headerlink" title="Suspense 组件"></a>Suspense 组件</h1><p>本质是一个错误边界<br>可以作为组件的异步加载，也可以将异步请求改写为同步逻辑</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchList</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-title function_">resolve</span>([<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>]);<br>    &#125;, <span class="hljs-number">1000</span>);<br>  &#125;);<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">readApi</span> = (<span class="hljs-params">fn</span>) =&gt; &#123;<br>  <span class="hljs-keyword">let</span> state = <span class="hljs-string">&quot;pending&quot;</span>;<br>  <span class="hljs-keyword">let</span> res;<br><br>  <span class="hljs-keyword">const</span> suspense = <span class="hljs-title function_">fn</span>()<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">r</span>) =&gt;</span> &#123;<br>      state = <span class="hljs-string">&quot;success&quot;</span>;<br>      res = r;<br>    &#125;)<br>    .<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>      state = <span class="hljs-string">&quot;error&quot;</span>;<br>      res = err;<br>    &#125;);<br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">read</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&quot;pending&quot;</span>) &#123;<br>      <span class="hljs-keyword">throw</span> suspense;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&quot;error&quot;</span>) &#123;<br>      <span class="hljs-keyword">throw</span> res;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state === <span class="hljs-string">&quot;success&quot;</span>) &#123;<br>      <span class="hljs-keyword">return</span> res;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> read;<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">ListApi</span> = <span class="hljs-title function_">readApi</span>(fetchList);<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">List</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-comment">// const [list, setList] = useState([]);</span><br><br>  <span class="hljs-comment">// useEffect(() =&gt; &#123;</span><br>  <span class="hljs-comment">//   fetchList().then((res) =&gt; &#123;</span><br>  <span class="hljs-comment">//     setList(res);</span><br>  <span class="hljs-comment">//   &#125;);</span><br>  <span class="hljs-comment">// &#125;, []);</span><br><br>  <span class="hljs-keyword">const</span> list = <span class="hljs-title class_">ListApi</span>();<br><br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        &#123;list.map((item) =&gt; (</span><br><span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;item&#125;</span>&gt;</span>&#123;item&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">        ))&#125;</span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">FuncComName</span>(<span class="hljs-params">props</span>) &#123;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Suspense</span> <span class="hljs-attr">fallback</span>=<span class="hljs-string">&#123;</span>&lt;<span class="hljs-attr">div</span>&gt;</span>loading...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>&#125;&gt;</span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">List</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">Suspense</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br><br><span class="hljs-comment">// 逻辑解析：当第一次加载 List 组件时，走的是这个逻辑</span><br><span class="hljs-comment">//  if (state === &quot;pending&quot;) &#123;</span><br><span class="hljs-comment">//    throw suspense;</span><br><span class="hljs-comment">//  &#125;</span><br><span class="hljs-comment">// 抛出了 suspense 错误，被 &lt;Suspense 的 fallback 捕获，所以显示 loading...</span><br><span class="hljs-comment">// 但由于 suspense 是个 Promise，所以等它执行完毕后又重新渲染 List 组件</span><br><span class="hljs-comment">// 然后走的先这个逻辑</span><br><span class="hljs-comment">//   else if (state === &quot;success&quot;) &#123;</span><br><span class="hljs-comment">//    return res;</span><br><span class="hljs-comment">//   &#125;</span><br><span class="hljs-comment">// 所以最终又正常显示了</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="简易手写"><a href="#简易手写" class="headerlink" title="简易手写"></a>简易手写</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MySuspense</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Component</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">props</span>) &#123;<br>    <span class="hljs-variable language_">super</span>(props);<br><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span> = &#123;<br>      <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span>,<br>    &#125;;<br>  &#125;<br><br>  <span class="hljs-title function_">componentDidCatch</span>(<span class="hljs-params">error</span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> error.<span class="hljs-property">then</span> === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>(&#123; <span class="hljs-attr">loading</span>: <span class="hljs-literal">true</span> &#125;);<br><br>      error.<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setState</span>(&#123; <span class="hljs-attr">loading</span>: <span class="hljs-literal">false</span> &#125;));<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">state</span>.<span class="hljs-property">loading</span> ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>.<span class="hljs-property">fallback</span> : <span class="hljs-variable language_">this</span>.<span class="hljs-property">props</span>.<span class="hljs-property">children</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h2 id="SetTimeout"><a href="#SetTimeout" class="headerlink" title="SetTimeout"></a>SetTimeout</h2><p>存在 4ms 的延迟问题<br>就算设置的是 0，但浏览器可能会因为其他任务(DOM 更新、事件处理等)，延迟执行回调函数<br>所以嵌套调用越多，时间越不准确</p>
+<h2 id="MessageChannel"><a href="#MessageChannel" class="headerlink" title="MessageChannel"></a>MessageChannel</h2><p>是浏览器提供的一个高级通信机制，它允许在不同上下文之间（比如窗口、iframe 或者 worker 线程）进行安全且异步的消息传递。</p>
+<p>适用于在两个窗口之间建立直接的通信通道。</p>
+<p><strong>创建 MessageChannel</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> messageChannel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MessageChannel</span>();<br><span class="hljs-comment">// 分别获取两个端口</span><br><span class="hljs-keyword">const</span> port1 = messageChannel.<span class="hljs-property">port1</span>;<br><span class="hljs-keyword">const</span> port2 = messageChannel.<span class="hljs-property">port2</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>发送、接受信息</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 在一个端口上接受消息</span><br>port1.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;收到的信息：&#x27;</span>, event.<span class="hljs-property">data</span>)<br>&#125;<br><br><span class="hljs-comment">// 在一个端口上发送消息</span><br>port1.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;喂喂，收得到吗？&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="BroadcastChannel"><a href="#BroadcastChannel" class="headerlink" title="BroadcastChannel"></a>BroadcastChannel</h2><p>在相同源的不同上下文之间（包括但不限于标签页）实现双向、异步通信</p>
+<p>适用于同一浏览器下的不同窗口进行广播式的通信。</p>
+<p><strong>创建 BroadcastChannel</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 创建一个频道名称为 &quot;my_channel&quot; 的 BroadcastChannel</span><br><span class="hljs-keyword">const</span> channel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BroadcastChannel</span>(<span class="hljs-string">&quot;my_channel&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><strong>发送、接受信息</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 接受消息</span><br>channel.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;收到的信息：&#x27;</span>, event.<span class="hljs-property">data</span>)<br>&#125;<br><br><span class="hljs-comment">// 发送消息</span><br>channel.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;喂喂，收得到吗？&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="什么是-Fiber？"><a href="#什么是-Fiber？" class="headerlink" title="什么是 Fiber？"></a>什么是 Fiber？</h2><p>本质是一个对象形式的数据结构：其中包含了虚拟 DOM、链表、EffectList 等数据<br>在 React 中存在 currentFiber 与 workInProgressFiber 两个 Fiber，每次的更新通过 currentFiber 与虚拟 DOM 对比去生成 workInProgressFiber，最终用 workInProgressFiber 替换掉 currentFiber，实现双缓存的替换<br>双缓存步骤：</p>
+<ul>
+<li>创建 fiberRoot 对象，将所有的 dom 串起来</li>
+<li>在通过 beginWork 的递归调用，创建出 workInProgressFiber，并打上 EffectTag</li>
+<li>然后在 completeWork 中，生成 EffectList，并创建真实的 DOM，在更新前执行一些生命周期，在更新时实现双缓存的切换，在更新后执行一些生命周期</li>
+</ul>
+<h2 id="useState-实现原理？"><a href="#useState-实现原理？" class="headerlink" title="useState 实现原理？"></a>useState 实现原理？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> useState&lt;S&gt;(<br>  <span class="hljs-attr">initialState</span>: (<span class="hljs-function">() =&gt;</span> S) | S,<br>): [S, <span class="hljs-title class_">Dispatch</span>&lt;<span class="hljs-title class_">BasicStateAction</span>&lt;S&gt;&gt;] &#123;<br>  <span class="hljs-keyword">const</span> dispatcher = <span class="hljs-title function_">resolveDispatcher</span>();<br>  <span class="hljs-keyword">return</span> dispatcher.<span class="hljs-title function_">useState</span>(initialState);<br>&#125;<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">resolveDispatcher</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> dispatcher = <span class="hljs-title class_">ReactCurrentDispatcher</span>.<span class="hljs-property">current</span>;<br>  <span class="hljs-title function_">invariant</span>(<br>    dispatcher !== <span class="hljs-literal">null</span>,<br>    <span class="hljs-string">&#x27;Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for&#x27;</span> +<br>      <span class="hljs-string">&#x27; one of the following reasons:\n&#x27;</span> +<br>      <span class="hljs-string">&#x27;1. You might have mismatching versions of React and the renderer (such as React DOM)\n&#x27;</span> +<br>      <span class="hljs-string">&#x27;2. You might be breaking the Rules of Hooks\n&#x27;</span> +<br>      <span class="hljs-string">&#x27;3. You might have more than one copy of React in the same app\n&#x27;</span> +<br>      <span class="hljs-string">&#x27;See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.&#x27;</span>,<br>  );<br>  <span class="hljs-keyword">return</span> dispatcher;<br>&#125;<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-keyword">import</span> type &#123;<span class="hljs-title class_">Dispatcher</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-reconciler/src/ReactInternalTypes&#x27;</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">ReactCurrentDispatcher</span> = &#123;<br>  <span class="hljs-attr">current</span>: (<span class="hljs-attr">null</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Dispatcher</span>),<br>&#125;;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">ReactCurrentDispatcher</span>;<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-keyword">export</span> type <span class="hljs-title class_">Dispatcher</span> = &#123;|<br>  readContext&lt;T&gt;(<br>    <span class="hljs-attr">context</span>: <span class="hljs-title class_">ReactContext</span>&lt;T&gt;,<br>    <span class="hljs-attr">observedBits</span>: <span class="hljs-keyword">void</span> | number | boolean,<br>  ): T,<br>  useState&lt;S&gt;(<span class="hljs-attr">initialState</span>: (<span class="hljs-function">() =&gt;</span> S) | S): [S, <span class="hljs-title class_">Dispatch</span>&lt;<span class="hljs-title class_">BasicStateAction</span>&lt;S&gt;&gt;],<br>  <span class="hljs-comment">// ...</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/useState-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> mountState&lt;S&gt;(<br>  <span class="hljs-attr">initialState</span>: (<span class="hljs-function">() =&gt;</span> S) | S,<br>): [S, <span class="hljs-title class_">Dispatch</span>&lt;<span class="hljs-title class_">BasicStateAction</span>&lt;S&gt;&gt;] &#123;<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 创建一个hook节点，并将其挂载到 currentlyRenderingFiber 链表的最后</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">Hook</span>&#125;</span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-keyword">const</span> hook = <span class="hljs-title function_">mountWorkInProgressHook</span>();<br><br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> initialState === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>    <span class="hljs-comment">// 若传入的是函数，则使用执行该函数后得到的结果</span><br>    initialState = <span class="hljs-title function_">initialState</span>();<br>  &#125;<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 设置该 hook 的初始值</span><br><span class="hljs-comment">   * memoizedState 用来存储当前hook要显示的数据</span><br><span class="hljs-comment">   * baseState 用来存储执行setState()的初始数据</span><br><span class="hljs-comment">   **/</span><br>  hook.<span class="hljs-property">memoizedState</span> = hook.<span class="hljs-property">baseState</span> = initialState;<br><br>  <span class="hljs-comment">// 为该 hook 添加一个 queue 结构，用来存放所有的 setState() 操作</span><br>  <span class="hljs-keyword">const</span> queue = (hook.<span class="hljs-property">queue</span> = &#123;<br>    <span class="hljs-attr">pending</span>: <span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">dispatch</span>: <span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">lastRenderedReducer</span>: basicStateReducer,<br>    <span class="hljs-attr">lastRenderedState</span>: (<span class="hljs-attr">initialState</span>: any),<br>  &#125;);<br><br>  <span class="hljs-comment">// 创建一个 dispatch() 方法，提前绑定好 currentlyRenderingFiber 和 queue，最终用它来执行 setState()</span><br>  <span class="hljs-keyword">const</span> dispatch = (queue.<span class="hljs-property">dispatch</span> = (dispatchAction.<span class="hljs-title function_">bind</span>(<br>    <span class="hljs-literal">null</span>,<br>    currentlyRenderingFiber, <span class="hljs-comment">// 当前处理的 fiber 节点</span><br>    queue, <span class="hljs-comment">// 该 hook 的 queue 结构，用来挂载 setState() 中的操作的；</span><br>  ));<br>  <span class="hljs-keyword">return</span> [hook.<span class="hljs-property">memoizedState</span>, dispatch]; <span class="hljs-comment">// useState() 返回的数据</span><br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 对当前的 state 执行的基本操作，若传入的不是函数类型，则直接返回该值，</span><br><span class="hljs-comment"> * 若传入的是函数类型，返回执行该函数的结果</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">S</span>&#125; state 当前节点的state</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">BasicStateAction&lt;S&gt;</span>&#125; action 接下来要对该state执行的操作</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns</span> &#123;<span class="hljs-type">S</span>&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">basicStateReducer</span>(<span class="hljs-params">state, action</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> action === <span class="hljs-string">&#x27;function&#x27;</span> ? <span class="hljs-title function_">action</span>(state) : action;<br>&#125;<br><br><span class="hljs-keyword">function</span> dispatchAction&lt;S, A&gt;(<br>  <span class="hljs-attr">fiber</span>: <span class="hljs-title class_">Fiber</span>,<br>  <span class="hljs-attr">queue</span>: <span class="hljs-title class_">UpdateQueue</span>&lt;S, A&gt;,<br>  <span class="hljs-attr">action</span>: A,<br>) &#123;<br>  <span class="hljs-keyword">const</span> eventTime = <span class="hljs-title function_">requestEventTime</span>();<br>  <span class="hljs-keyword">const</span> lane = <span class="hljs-title function_">requestUpdateLane</span>(fiber);<br><br>  <span class="hljs-keyword">const</span> <span class="hljs-attr">update</span>: <span class="hljs-title class_">Update</span>&lt;S, A&gt; = &#123;<br>    lane,<br>    action,<br>    <span class="hljs-attr">eagerReducer</span>: <span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">eagerState</span>: <span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">next</span>: (<span class="hljs-attr">null</span>: any),<br>  &#125;;<br><br>  <span class="hljs-comment">// Append the update to the end of the list.</span><br>  <span class="hljs-keyword">const</span> pending = queue.<span class="hljs-property">pending</span>;<br>  <span class="hljs-keyword">if</span> (pending === <span class="hljs-literal">null</span>) &#123;<br>    <span class="hljs-comment">// This is the first update. Create a circular list.</span><br>    update.<span class="hljs-property">next</span> = update;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    update.<span class="hljs-property">next</span> = pending.<span class="hljs-property">next</span>;<br>    pending.<span class="hljs-property">next</span> = update;<br>  &#125;<br>  queue.<span class="hljs-property">pending</span> = update;<br><br>  <span class="hljs-keyword">const</span> alternate = fiber.<span class="hljs-property">alternate</span>;<br>  <span class="hljs-keyword">if</span> (<br>    fiber === currentlyRenderingFiber ||<br>    (alternate !== <span class="hljs-literal">null</span> &amp;&amp; alternate === currentlyRenderingFiber)<br>  ) &#123;<br>    didScheduleRenderPhaseUpdateDuringThisPass = didScheduleRenderPhaseUpdate = <span class="hljs-literal">true</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">if</span> (<br>      fiber.<span class="hljs-property">lanes</span> === <span class="hljs-title class_">NoLanes</span> &amp;&amp;<br>      (alternate === <span class="hljs-literal">null</span> || alternate.<span class="hljs-property">lanes</span> === <span class="hljs-title class_">NoLanes</span>)<br>    ) &#123;<br>      <span class="hljs-comment">// The queue is currently empty, which means we can eagerly compute the</span><br>      <span class="hljs-comment">// next state before entering the render phase. If the new state is the</span><br>      <span class="hljs-comment">// same as the current state, we may be able to bail out entirely.</span><br>      <span class="hljs-keyword">const</span> lastRenderedReducer = queue.<span class="hljs-property">lastRenderedReducer</span>;<br>      <span class="hljs-keyword">if</span> (lastRenderedReducer !== <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">let</span> prevDispatcher;<br><br>        <span class="hljs-comment">// ...</span><br><br>        <span class="hljs-keyword">try</span> &#123;<br>          <span class="hljs-keyword">const</span> <span class="hljs-attr">currentState</span>: S = (queue.<span class="hljs-property">lastRenderedState</span>: any);<br>          <span class="hljs-comment">// 执行传入的 action（setState(action)），返回新的 state</span><br>          <span class="hljs-keyword">const</span> eagerState = <span class="hljs-title function_">lastRenderedReducer</span>(currentState, action);<br><br>          <span class="hljs-comment">// ...</span><br>      &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-comment">// ⭐️ 调用更新操作</span><br>    <span class="hljs-title function_">scheduleUpdateOnFiber</span>(fiber, lane, eventTime);<br>  &#125;<br><br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>简单理解：但调用 useState 时，会传入一个初始值，useState 会返回一个数组，数组的第一个元素是当前 state 的值，第二个元素是一个 dispatch 方法，并且会记录当前该 hook 对应当前的节点信息(Fiber)；若初始值为函数时，还会执行一下获得函数的返回值。</p>
+<p>当调用 setState 即 dispatch 方法时，会去触发对应的 Queue.dispatch，本质是执行 setState 传入的内容，然后调用 scheduleUpdateOnFiber 去触发更新逻辑</p>
+<h2 id="为什么要使用-useState？"><a href="#为什么要使用-useState？" class="headerlink" title="为什么要使用 useState？"></a>为什么要使用 useState？</h2><p>因为 react 的数据本身是不支持响应式的，因为最开始 react 关注的是数据、视图，但后来发现缺少了数据状态的管理，所以也出现了第三方的 Redux 等库来处理。</p>
+<p>最后官方意识到了，所以提供了 hooks 的形式，调用它来主动更新页面</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>4-5、React 源码解析</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/4-5、React 源码解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/4-6%E3%80%81RN%20%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/" title="4-6、RN 入门与实战">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">4-6、RN 入门与实战</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/4-4%E3%80%81React%20%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/" title="4-4、React 路由管理">
+                        <span class="hidden-mobile">4-4、React 路由管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

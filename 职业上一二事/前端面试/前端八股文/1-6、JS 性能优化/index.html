@@ -1,0 +1,1070 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="1-6、JS 性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-6、JS 性能优化">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-6%E3%80%81JS%20%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="1-6、JS 性能优化">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701758648344-20da0cb5-69ec-48be-a196-4f6d65ec7db1.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701257984318-8ae5c3d7-16b5-49b7-ac38-0ee21e61a6f2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701258303725-1fa5df58-b6c5-4954-b4e1-73019645eaeb.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701258718661-0cab995e-0d4b-4215-9886-3d4e54816db1.svg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701590974239-ecc32e2f-a0d4-46ee-bb82-e50e3f198985.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701936119520-fbbf1a71-e146-44d2-ac79-ba0f319ce398.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1701937302367-9450fa10-9df2-4899-999a-cf84f5498d69.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708435154568-2cd2d11e-f35c-422d-88e0-9e09c0c8a540.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708435208844-961d6eb6-a003-4d2f-9875-51309f857390.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708437232879-4eb369a4-5a8b-49fc-a612-9dbcef2170f5.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708437175933-62cb6328-708c-41db-99d2-f41e3c584781.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1708436954919-59f9725b-1804-4f79-9cd5-b5e62d8a8e30.png">
+<meta property="article:published_time" content="2024-01-13T23:32:31.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:31.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2023/1701758648344-20da0cb5-69ec-48be-a196-4f6d65ec7db1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>1-6、JS 性能优化 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1-6、JS 性能优化"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">1-6、JS 性能优化</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:31+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="指标"><a href="#指标" class="headerlink" title="指标"></a>指标</h1><h2 id="Performance-Timing-API"><a href="#Performance-Timing-API" class="headerlink" title="Performance Timing API"></a>Performance Timing API</h2><p><img src="/img/images/2023/1701758648344-20da0cb5-69ec-48be-a196-4f6d65ec7db1.png" srcset="/img/loading.gif" lazyload><br>浏览器的性能指标可以通过 Performance Timing API 来获取，它是一组 API 的集合，常用的有：</p>
+<ol>
+<li>Navigation Timing API：包含了从页面导航开始到页面加载完毕的一系列耗时 API(PerformanceNavigationTiming)，通过<code>window.performance.getEntries()[0]/performance.getEntriesByType(&#39;navigation&#39;)[0]</code>获取</li>
+<li>Resource Timing API：包含网页资源(脚本、样式、图片等)加载的耗时 API(PerformanceResourceTiming)，通过<code>window.performance.getEntries()[*]/performance.getEntriesByType(&#39;resource&#39;)[*]</code>获取</li>
+<li>Paint Timing API：包含网页绘制相关的耗时 API(PerformancePaintTiming)，通过<code>window.performance.getEntries()[*]/performance.getEntriesByType(&#39;paint&#39;)[*]</code></li>
+</ol>
+<p>其中<code>window.performance.getEntries()</code>获取到的是个数组，里面包含一系列 API，并且同时存在多种 API，以下是浏览器打印的结果<br><img src="/img/images/2023/1701257984318-8ae5c3d7-16b5-49b7-ac38-0ee21e61a6f2.png" srcset="/img/loading.gif" lazyload><br><code>performance.getEntriesByType(&#39;type&#39;)</code> 可根据类型获取到对应 API 数组</p>
+<h3 id="Navigation-Timing-API"><a href="#Navigation-Timing-API" class="headerlink" title="Navigation Timing API"></a>Navigation Timing API</h3><p>官方文档：<a target="_blank" rel="noopener" href="https://www.w3.org/TR/navigation-timing-2/#introduction">https://www.w3.org/TR/navigation-timing-2/#introduction</a><br>我们这主要分析<code>Navigation Timing API</code>，记录页面导航到页面 load 加载完毕的一系列事件，其中跟<code>Resource Timing API</code>也有关联<br>通过<code>window.performance.getEntries()[0]</code>获取，浏览器打印结果如下：</p>
+<ul>
+<li>name：地址栏的值</li>
+<li>entryType：值为<code>navigation</code>，表明是一个<code>PerformanceNavigationTiming</code>实例</li>
+<li>startTime：开始时间，毫秒</li>
+<li>duration：总耗时，毫秒，从导航开始到 load 加载完的时间，等价于<code>loadEventEnd - startTime</code></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.w3.org/TR/navigation-timing-2/#sec-PerformanceNavigationTiming">Navigation Timing Level 2</a><br><img src="/img/images/2023/1701258303725-1fa5df58-b6c5-4954-b4e1-73019645eaeb.png" srcset="/img/loading.gif" lazyload><br>包含的属性很多，但它们之间是存在联系的，图片来自：<a target="_blank" rel="noopener" href="https://www.w3.org/TR/navigation-timing-2/#processing-model">Navigation Timing Level 2</a><br><img src="/img/images/2023/1701258718661-0cab995e-0d4b-4215-9886-3d4e54816db1.svg" srcset="/img/loading.gif" lazyload alt="timestamp-diagram.svg"></p>
+<h3 id="流程解读"><a href="#流程解读" class="headerlink" title="流程解读"></a>流程解读</h3><h4 id="startTime"><a href="#startTime" class="headerlink" title="startTime"></a>startTime</h4><p>开始时间，一般为 0</p>
+<h4 id="Process-Unload-Event"><a href="#Process-Unload-Event" class="headerlink" title="Process Unload Event"></a>Process Unload Event</h4><p>进程解锁事件，一般是执行上一个页面的 unload 事件(若有)，记录两个时间：<code>unloadEventStart/unloadEventEnd</code></p>
+<h4 id="Redirect"><a href="#Redirect" class="headerlink" title="Redirect"></a>Redirect</h4><p>重定向事件，若有重定向则记录两个时间：<code>redirectStart/redirectEnd</code><br>同域名下时，可以直接用该值；若不是同域名，该值不太准确</p>
+<h4 id="Service-Worker-Init"><a href="#Service-Worker-Init" class="headerlink" title="Service Worker Init"></a>Service Worker Init</h4><p>初始化<code>service worker</code>，若有启动，则记录启动时间：<code>workerStart</code></p>
+<h4 id="Service-Worker-Fetch-Init"><a href="#Service-Worker-Fetch-Init" class="headerlink" title="Service Worker Fetch Init"></a>Service Worker Fetch Init</h4><p>初始化<code>service worker 的 fetch</code>，若有启动，则记录启动时间：<code>fetchStart</code><br>一般为浏览器开始获取 HTML 的时间</p>
+<h4 id="HTTP-Cache"><a href="#HTTP-Cache" class="headerlink" title="HTTP Cache"></a>HTTP Cache</h4><p>从缓存里面的找数据，这一步无计时点，但可以通过：<code>domainLookupStart - fetchStart</code>来计算缓存找数据的耗时</p>
+<h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><p>开始进行域名的查找，记录两个时间：<code>domianLookupStart/domainLookupEnd</code></p>
+<h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p>TCP 连接，记录两个时间：<code>connectStart/connectEnd</code><br>若是 HTTPS 协议，则额外有安全连接的开始时间：<code>secureConnectStart</code><br>connectStart 与 domianLookupStart 之间的差值为：类型判断的耗时，因为需要判断是 HTTP&#x2F;HTTPS、短链接&#x2F;长链接 等等</p>
+<h4 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h4><p>发起请求，记录时间：<code>requestStart</code></p>
+<h4 id="Early-Hints"><a href="#Early-Hints" class="headerlink" title="Early Hints"></a>Early Hints</h4><p>早期提示，跟 HTTP 的状态码<code>103</code>挂钩，一般告知浏览器一些子资源(JS&#x2F;CSS 等)，便于提前加载，可以记录的时间有：<code>interimResponseStart</code></p>
+<h4 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h4><p>返回响应，记录时间：<code>responseStart/responseEnd</code></p>
+<h4 id="Processing"><a href="#Processing" class="headerlink" title="Processing"></a>Processing</h4><p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState">Document: readyState property - Web APIs | MDN</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event">Document: DOMContentLoaded event - Web APIs | MDN</a><br>处理，一般指的是 HTML、CSS、JS 等资源的加载与解析，记录的时间有：<br><code>domInteractive</code>：HTML 加载、解析完成(DOM 树解析完成)，但其他资源可能还在加载<br><code>domContentLoadedEventStart/domContentLoadedEventStart</code>：HTML 加载、解析完成，并且所有延迟 JS(<code>&lt;script defer src=&quot;…&quot;&gt;</code> 和<code>&lt;script type=&quot;module&quot;&gt;</code>) 已下载并执行时触发<br><code>domComplete</code>：HTML 与所有子资源加载完(Render 树解析完成)</p>
+<h4 id="Load"><a href="#Load" class="headerlink" title="Load"></a>Load</h4><p>参考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">Window: load event - Web APIs | MDN</a><br>HTML 与所有子资源加载完后触发，记录两个时间：<code>loadEventStart/loadEventEnd</code></p>
+<h3 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h3><p><img src="/img/images/2023/1701590974239-ecc32e2f-a0d4-46ee-bb82-e50e3f198985.png" srcset="/img/loading.gif" lazyload><br>指标解读：</p>
+<ul>
+<li>Total：总时间，各项指标之合</li>
+<li>DNS：<code>domainLookupEnd - domainLookupStart</code>，DNS 查询花费的时间</li>
+<li>TCP：<code>connectEnd - connectStart</code>，TCP 建立连接花费的时间</li>
+<li>Request：<code>responseStart - requestStart</code>，请求到响应花费的时间</li>
+<li>Response：<code>responseEnd - responseStart</code>，接受响应花费的时间</li>
+<li>Processing：<code>domComplete - domInteractive</code>，渲染页面花费的时间</li>
+<li>Load：<code>loadEventEnd - loadEventStart</code>，load 阶段花费的时间</li>
+</ul>
+<h2 id="CWV：Core-Web-Vitals-核心-Web-指标-谷歌"><a href="#CWV：Core-Web-Vitals-核心-Web-指标-谷歌" class="headerlink" title="CWV：Core Web Vitals - 核心 Web 指标(谷歌)"></a>CWV：Core Web Vitals - 核心 Web 指标(谷歌)</h2><p>谷歌提出的，从：加载、交互、视觉稳定性三个方面衡量</p>
+<h3 id="加载：LCP-Largest-Contentful-Paint"><a href="#加载：LCP-Largest-Contentful-Paint" class="headerlink" title="加载：LCP - Largest Contentful Paint"></a>加载：LCP - Largest Contentful Paint</h3><p>LCP(最大内容渲染) 应该在页面首次加载后 2.5s 内发生，白话：在前 2.5s 内完成最大内容的渲染</p>
+<h4 id="LCP-的定义为"><a href="#LCP-的定义为" class="headerlink" title="LCP 的定义为"></a>LCP 的定义为</h4><ol>
+<li>图像元素的加载： 当<code>&lt;img&gt;/&lt;svg&gt;</code>元素加载并成功渲染到屏幕上。</li>
+<li>背景图像： 如果是通过 CSS 的 background-image 设置的背景图像，当该背景图像被渲染到屏幕上。</li>
+<li>文本元素： 包含大块内嵌内容的块级元素</li>
+</ol>
+<h4 id="LCP-的计算原理"><a href="#LCP-的计算原理" class="headerlink" title="LCP 的计算原理"></a>LCP 的计算原理</h4><p>浏览器有个事件，在每次渲染元素时，去找到当前“渲染面积”最大的元素计算渲染它的耗时，所以浏览器在渲染时，“渲染面积”最大的元素会一直变化。<br>可以通过 PerformanceObserver API 监听 largest-contentful-paint 事件来获取 LCP 值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;performance&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span>) &#123;<br>  <span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">list</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> list.<span class="hljs-title function_">getEntries</span>()) &#123;<br>      <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">entryType</span> === <span class="hljs-string">&#x27;largest-contentful-paint&#x27;</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;LCP:&#x27;</span>, entry.<span class="hljs-property">startTime</span>, <span class="hljs-string">&#x27;ms&#x27;</span>);<br>        <span class="hljs-comment">// 如果需要记录或上报 LCP 时间，则在此处处理</span><br>      &#125;<br>    &#125;<br>  &#125;);<br><br>  observer.<span class="hljs-title function_">observe</span>(&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;largest-contentful-paint&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span> &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107442">如何计算 LCP 指标–应用性能监控全链路版-火山引擎</a><br>可以使用：<code>web-vitals 库获取具体 LCP 值</code></p>
+<h4 id="LCP-值低的原因"><a href="#LCP-值低的原因" class="headerlink" title="LCP 值低的原因"></a>LCP 值低的原因</h4><ol>
+<li>资源问题：<ol>
+<li>加载慢：图片&#x2F;背景等都存在依赖外部资源的情况，所以可以先在<code>domContentLoadedEvent</code>内进行埋点，看看是否是服务器资源响应慢导致的</li>
+<li>下载慢：资源很快返回了，但可能由于资源太大&#x2F;链路太长，导致下载慢</li>
+</ol>
+</li>
+<li>渲染问题：<ol>
+<li>渲染被阻断了：一般是 CSS、JavaScript 阻断的</li>
+<li>单纯渲染慢：可能是客户端硬件的影响</li>
+</ol>
+</li>
+</ol>
+<h4 id="针对性改造"><a href="#针对性改造" class="headerlink" title="针对性改造"></a>针对性改造</h4><ol>
+<li>服务器优化<ol>
+<li>缓存 HTML 离线页面：将一样的部分&#x2F;资源进行离线缓存，这样就不需要再通过服务器获取了</li>
+<li>对图片的优化<ol>
+<li>不同场景使用不同格式的图片，降低图片大小，加快请求速度<ol>
+<li>JPEG：有损压缩，网站中的摄影图片、细节丰富的图片等</li>
+<li>PNG：无损压缩，网站图标、LOGO 等</li>
+<li>WebP：有损&#x2F;无损压缩，在支持 WebP 的浏览器中使用</li>
+<li>SVG：矢量图标，图标、LOGO 等</li>
+</ol>
+</li>
+<li>云资源管理</li>
+</ol>
+</li>
+<li>减少文件大小<ol>
+<li>去重、压缩、过滤等操作<ol>
+<li>Webpack、Vite 等工具可提供</li>
+</ol>
+</li>
+<li>CDN - 内容分发网络（Content Delivery Network）<ol>
+<li>物理上接近请求点，减少延迟，提高加载速度</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>客户端优化<ol>
+<li>渲染阻断的优化<ol>
+<li>CSS、JS 进行延迟处理<ol>
+<li>初次渲染做很多事情并不是很好的，所以可以先用“骨架屏”完成初次渲染，再去写请求数据之类的逻辑，最后填充数据，这样的 LCP 值更低</li>
+</ol>
+</li>
+<li>首屏优化(单页应用)<ol>
+<li>懒加载<ol>
+<li>页面模块、组织模块等</li>
+</ol>
+</li>
+<li>异步加载<ol>
+<li>组件本身、样式本身等</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>CSS 模块化</li>
+<li>SSR 服务端渲染</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="交互：FID-First-Input-Delay"><a href="#交互：FID-First-Input-Delay" class="headerlink" title="交互：FID - First Input Delay"></a>交互：FID - First Input Delay</h3><h4 id="FID-的定义"><a href="#FID-的定义" class="headerlink" title="FID 的定义"></a>FID 的定义</h4><p>FID(首次输入延迟)：用于衡量用户首次交互到浏览器能够响应的时间<br>指标：页面的 FID 应该小于 100ms</p>
+<h4 id="FID-的计算原理"><a href="#FID-的计算原理" class="headerlink" title="FID 的计算原理"></a>FID 的计算原理</h4><p>FID 发生在 FCP 和 TTI 之间。<br>可以通过 PerformanceObserver API 监听 first-input 事件来获取 FID 值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;performance&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-variable language_">window</span> &amp;&amp; <span class="hljs-string">&#x27;getEntriesByType&#x27;</span> <span class="hljs-keyword">in</span> performance) &#123;<br>  <span class="hljs-keyword">const</span> entries = performance.<span class="hljs-title function_">getEntriesByType</span>(<span class="hljs-string">&#x27;event&#x27;</span>);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> entries) &#123;<br>    <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">entryType</span> === <span class="hljs-string">&#x27;first-input&#x27;</span>) &#123;<br>      <span class="hljs-comment">// 这里的 entry.duration 就是 FID 值（以毫秒为单位）</span><br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`First Input Delay: <span class="hljs-subst">$&#123;entry.duration&#125;</span> ms`</span>);<br>      <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 只考虑第一个交互事件</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107453">如何计算 FID 和 MPFID 指标–应用性能监控全链路版-火山引擎</a><br>可以使用：<code>web-vitals 库获取具体 FID 值</code></p>
+<h4 id="FID-值低的原因"><a href="#FID-值低的原因" class="headerlink" title="FID 值低的原因"></a>FID 值低的原因</h4><ul>
+<li>执行的阻塞</li>
+</ul>
+<h4 id="针对性改造-1"><a href="#针对性改造-1" class="headerlink" title="针对性改造"></a>针对性改造</h4><ul>
+<li>减少 JS 的执行时间，因为 JS 是单线程，执行时会阻塞，大于 50ms 的被称为长任务<ul>
+<li>压缩 JS 文件，可以过滤掉多余打印，提升执行效率</li>
+<li>延迟加载不需要的 JS<ul>
+<li>模块懒加载<ul>
+<li>有些模块在首屏不需要展示时，一开始可以不用去加载</li>
+</ul>
+</li>
+<li>tree shaking<ul>
+<li>用于消除 JavaScript 中未引用代码（dead code）的术语。这个过程类似于摇动一棵树，抖落树上的枯叶，只留下需要的部分。</li>
+<li>最常见的是引入了 xx 库，但只使用了该库一些功能，则打包的时候也应该只打包已使用的功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>减少未使用的 polyfill(拦截)<ul>
+<li>通常是为了兼容低版本的浏览器，而所做的弥补性代码</li>
+<li>比如：xx 版本浏览器不支持 includes，则可以这样 polyfill</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Polyfill for Array.prototype.includes</span><br><span class="hljs-keyword">if</span>(!<span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">includes</span>)&#123;<br>  <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">includes</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">element</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">indexof</span>(element) !== -<span class="hljs-number">1</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>   plain   - 建议提前做好浏览器版本判断，高版本的话就不走 polyfill 代码逻辑了</p>
+<ul>
+<li>分解耗时任务<ul>
+<li>减少执行长的逻辑代码<ul>
+<li>比如双重数组循环，分成两个循环(虽然性能会差)，但阻塞更小</li>
+<li>比如：表格-先请求列然后再请求数据<ul>
+<li>若是请求嵌套：先列请求然后在里面请求数据，最后再赋值渲染表格</li>
+<li>若是请求串行：先列请求-赋值渲染空表格，加 loading，再请求数据-赋值渲染表格数据，这样的阻塞更小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Worker<ul>
+<li>采用 Worker，去分场景承担耗时任务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="视觉稳定性：CLS-Cumulative-Layout-Shift"><a href="#视觉稳定性：CLS-Cumulative-Layout-Shift" class="headerlink" title="视觉稳定性：CLS - Cumulative Layout Shift"></a>视觉稳定性：CLS - Cumulative Layout Shift</h3><h4 id="CLS-的定义"><a href="#CLS-的定义" class="headerlink" title="CLS 的定义"></a>CLS 的定义</h4><p>累积布局偏移，衡量页面上元素位置发生变化的频率与程度<br>指标：页面的 CLS 应该小于 0.1<br>简单来说就是页面渲染时，元素的位置是否“稳定”</p>
+<h4 id="CLS-的计算原理"><a href="#CLS-的计算原理" class="headerlink" title="CLS 的计算原理"></a>CLS 的计算原理</h4><p>可以通过 PerformanceObserver API 监听 layout-shift 事件来获取 FID 值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> clsValue = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">let</span> clsEntries = [];<br><span class="hljs-keyword">let</span> sessionValue = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">let</span> sessionEntries = [];<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">PerformanceObserver</span>(<span class="hljs-function">(<span class="hljs-params">entryList</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> entryList.<span class="hljs-title function_">getEntries</span>()) &#123;<br>        <span class="hljs-comment">// Only count layout shifts without recent user input.</span><br>        <span class="hljs-keyword">if</span> (!entry.<span class="hljs-property">hadRecentInput</span>) &#123;<br>            <span class="hljs-keyword">const</span> firstSessionEntry = sessionEntries[<span class="hljs-number">0</span>];<br>            <span class="hljs-keyword">const</span> lastSessionEntry = sessionEntries[sessionEntries.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>];<br>        <span class="hljs-comment">// If the entry occurred less than 1 second after the previous entry and</span><br>        <span class="hljs-comment">// less than 5 seconds after the first entry in the session, include the</span><br>        <span class="hljs-comment">// entry in the current session. Otherwise, start a new session.</span><br>         <span class="hljs-keyword">if</span> (sessionValue<br>         &amp;&amp; entry.<span class="hljs-property">startTime</span> - lastSessionEntry.<span class="hljs-property">startTime</span> &lt; <span class="hljs-number">1000</span><br>         &amp;&amp; entry.<span class="hljs-property">startTime</span> - firstSessionEntry.<span class="hljs-property">startTime</span> &lt; <span class="hljs-number">5000</span>) &#123;<br>             sessionValue += entry.<span class="hljs-property">value</span>;<br>             sessionEntries.<span class="hljs-title function_">push</span>(entry);<br>          &#125; <span class="hljs-keyword">else</span> &#123;<br>              sessionValue = entry.<span class="hljs-property">value</span>;<br>              sessionEntries = [entry];<br>           &#125;<br>           <span class="hljs-comment">// If the current session value is larger than the current CLS value</span><br>           <span class="hljs-comment">// update CLS and the entries contributing to it.</span><br>           <span class="hljs-keyword">if</span> (sessionValue &gt; clsValue) &#123;<br>               clsValue = sessionValue;<br>               clsEntries = sessionEntries;<br>               <span class="hljs-comment">// Log the updated value (and its entries) to the console.</span><br>               <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;CLS:&#x27;</span>, clsValue, clsEntries)<br>           &#125;<br>       &#125;<br>&#125;&#125;).<span class="hljs-title function_">observe</span>(&#123;<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;layout-shift&#x27;</span>, <span class="hljs-attr">buffered</span>: <span class="hljs-literal">true</span>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107451">如何计算 CLS 指标–应用性能监控全链路版-火山引擎</a><br>可以使用：<code>web-vitals 库获取具体 CLS 值</code></p>
+<h4 id="CLS-值低的原因"><a href="#CLS-值低的原因" class="headerlink" title="CLS 值低的原因"></a>CLS 值低的原因</h4><ul>
+<li>无尺寸的图片、视频、iframe 等</li>
+<li>动态内容插入</li>
+<li>字体的突然改变</li>
+</ul>
+<h4 id="针对性改造-2"><a href="#针对性改造-2" class="headerlink" title="针对性改造"></a>针对性改造</h4><ul>
+<li>不使用无尺寸元素<ul>
+<li>图片可以使用：srcset &amp; sizes<ul>
+<li>srcset：描述图片资源与其像素宽度</li>
+<li>sizes：设置图片在不同屏幕下要展示的宽度，默认为 100vw</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span></span><br><span class="hljs-tag">  <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;1.png&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">srcset</span>=<span class="hljs-string">&quot;1.png 200w,2.png 400w,3.png 800w&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;(max-width: 300px) 200px,</span></span><br><span class="hljs-string"><span class="hljs-tag">         (max-width: 700px) 400px,</span></span><br><span class="hljs-string"><span class="hljs-tag">         (max-width: 1000px) 800px,</span></span><br><span class="hljs-string"><span class="hljs-tag">         100vw&quot;</span></span><br><span class="hljs-tag">/&gt;</span><br><span class="hljs-comment">&lt;!-- srcset 设置后为：(0,200px],(200px,400px],(400px,800px],(800px,∞], --&gt;</span><br><span class="hljs-comment">&lt;!-- 当屏幕最大宽度为 300px 时，sizes 使用 200px，对应 srcset 里面的 1.png--&gt;</span><br><span class="hljs-comment">&lt;!-- 当屏幕最大宽度为 700px 时，sizes 使用 400px，对应 srcset 里面的 2.png--&gt;</span><br><span class="hljs-comment">&lt;!-- 当屏幕最大宽度为 1000px 时，sizes 使用 800px，对应 srcset 里面的 3.png--&gt;</span><br><span class="hljs-comment">&lt;!-- 当屏幕最大宽度大于 1000px 时，sizes 使用 100vw(根据屏幕实际宽度)，</span><br><span class="hljs-comment">最终对应 srcset 里面的还是 3.png--&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>整体化内容插入<ul>
+<li>相对集中的去完成内容的插入</li>
+</ul>
+</li>
+<li>减少动态字体插入</li>
+</ul>
+<p>CWV 谷歌浏览器插件：Core Web Vitals Annotations<br><img src="/img/images/2023/1701936119520-fbbf1a71-e146-44d2-ac79-ba0f319ce398.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="性能评估-performance"><a href="#性能评估-performance" class="headerlink" title="性能评估- performance"></a>性能评估- performance</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7294088944836968448?searchId=20231207155332D3032A05C2A261A3AD42">前端性能优化 — 保姆级 Performance 工具使用指南 - 掘金</a></p>
+<h1 id="大厂监控体系"><a href="#大厂监控体系" class="headerlink" title="大厂监控体系"></a>大厂监控体系</h1><ol>
+<li>建立<ol>
+<li>埋点上报<ol>
+<li>获取关键节点的时间</li>
+<li>点对点</li>
+<li>信息采集</li>
+</ol>
+</li>
+<li>数据处理<ol>
+<li>数据分类<ol>
+<li>请求类、渲染类、交互类等等</li>
+</ol>
+</li>
+<li>阈值设置</li>
+<li>数据重组&#x2F;分组<ol>
+<li>多维度组装数据，分析对应结果数据的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>可视化展示<ol>
+<li>自研</li>
+<li>开源：grafana(<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1807679">Grafana 中文入门教程</a>)…<img src="/img/images/2023/1701937302367-9450fa10-9df2-4899-999a-cf84f5498d69.png" srcset="/img/loading.gif" lazyload alt="grafana"></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>评估<ol>
+<li>根据数据指标进行数据圈层&#x2F;数据归档</li>
+<li>定位问题</li>
+</ol>
+</li>
+<li>修复<ol>
+<li>告警通知</li>
+<li>分派处理</li>
+</ol>
+</li>
+</ol>
+<h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><h2 id="Web-Worker"><a href="#Web-Worker" class="headerlink" title="Web Worker"></a>Web Worker</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>基于浏览器的独立线程</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>独立性：与主线程独立，有自己的全局作用域与执行环境</li>
+<li>无法访问 DOM：没法访问主线程的 DOM，适合做纯计算或数据处理</li>
+<li>通信：可以与主线程通信</li>
+</ol>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="注册-Web-Worker-A-js"><a href="#注册-Web-Worker-A-js" class="headerlink" title="注册 Web Worker(A.js)"></a>注册 Web Worker(A.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&#x27;./web-worker.js&#x27;</span>)<br><br><span class="hljs-comment">// 发送消息</span><br>worker.<span class="hljs-title function_">postMessage</span>(&#123; <span class="hljs-attr">data</span>: <span class="hljs-string">&#x27;hello web worker&#x27;</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="定义-Web-Worker-web-worker-js"><a href="#定义-Web-Worker-web-worker-js" class="headerlink" title="定义 Web Worker(web-worker.js)"></a>定义 Web Worker(web-worker.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 接收消息</span><br>self.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Message from A.js:&#x27;</span>, event.<span class="hljs-property">data</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="实际场景之斐波那契数列计算"><a href="#实际场景之斐波那契数列计算" class="headerlink" title="实际场景之斐波那契数列计算"></a>实际场景之斐波那契数列计算</h3><h4 id="注册-Web-Worker-A-js-1"><a href="#注册-Web-Worker-A-js-1" class="headerlink" title="注册 Web Worker(A.js)"></a>注册 Web Worker(A.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> webWorker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&quot;./worker/web-worker.js&quot;</span>);<br>webWorker.<span class="hljs-title function_">postMessage</span>(&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;calculateFibonacci&quot;</span>, <span class="hljs-attr">n</span>: <span class="hljs-number">10</span> &#125;);<br><br>webWorker.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> &#123; type, result &#125; = event.<span class="hljs-property">data</span>;<br><br>  <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&quot;calculateFibonacci&quot;</span>) &#123;<br>    <span class="hljs-keyword">const</span> calculateFibonacciResult = result;<br><br>    <span class="hljs-comment">// do something...</span><br><br>    <span class="hljs-comment">//   结束 Worker</span><br>    webWorker.<span class="hljs-title function_">terminate</span>();<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="定义-Web-Worker-web-worker-js-1"><a href="#定义-Web-Worker-web-worker-js-1" class="headerlink" title="定义 Web Worker(web-worker.js)"></a>定义 Web Worker(web-worker.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript">self.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) &#123;<br>  <span class="hljs-keyword">const</span> &#123; type, n &#125; = event.<span class="hljs-property">data</span>;<br><br>  <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&quot;calculateFibonacci&quot;</span>) &#123;<br>    <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">calculateFibonacci</span>(n);<br><br>    self.<span class="hljs-title function_">postMessage</span>(&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;calculateFibonacci&quot;</span>, result &#125;);<br>  &#125;<br>&#125;;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">calculateFibonacci</span>(<span class="hljs-params">n</span>) &#123;<br>  <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;<br>  <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">calculateFibonacci</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-title function_">calculateFibonacci</span>(n - <span class="hljs-number">2</span>);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>基于浏览器，但独立于网页的脚本运行容器。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>独立性：独立于网页的脚本运行，网页关闭也可运行的。</li>
+<li>网络代理：可以拦截和处理浏览器的网络请求</li>
+<li>事件驱动：可以监听浏览器的各种事件</li>
+</ol>
+<p>常用于：消息推送通知、离线缓存、拦截处理网络请求</p>
+<h3 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="注册-Service-Worker-A-js"><a href="#注册-Service-Worker-A-js" class="headerlink" title="注册 Service Worker (A.js)"></a>注册 Service Worker (A.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span>(<span class="hljs-string">&#x27;serviceWorker&#x27;</span> <span class="hljs-keyword">in</span> navigator)&#123;<br>  navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;./..../service-worker.js&#x27;</span>)<br>  .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">registration</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;注册 serviceWorker 成功&#x27;</span>, registration)<br>  &#125;)<br>  .<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;注册 serviceWorker 失败&#x27;</span>, error)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="定义-Service-Worker-service-worker-js"><a href="#定义-Service-Worker-service-worker-js" class="headerlink" title="定义 Service Worker(service-worker.js)"></a>定义 Service Worker(service-worker.js)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 监听安装事件，一般用用于设置浏览器的离线缓存</span><br>self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;install&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// do something ....</span><br>&#125;)<br><br><span class="hljs-comment">// 监听 fetch 事件，一般用于拦截和处理请求</span><br>self.<span class="hljs-title function_">addEventLinstener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// do something ....</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="实际场景之离线缓存"><a href="#实际场景之离线缓存" class="headerlink" title="实际场景之离线缓存"></a>实际场景之离线缓存</h3><h4 id="注册-Service-Worker"><a href="#注册-Service-Worker" class="headerlink" title="注册 Service Worker"></a>注册 Service Worker</h4><p>注册代码和基本使用的一致，不累赘</p>
+<h4 id="定义-Service-Worker"><a href="#定义-Service-Worker" class="headerlink" title="定义 Service Worker"></a>定义 Service Worker</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CACHE_NAME</span> = <span class="hljs-string">&#x27;myCache1&#x27;</span><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CACHE_URL</span> = [<span class="hljs-string">&#x27;/script/main.js&#x27;</span>, <span class="hljs-string">&#x27;/script/xxx.js&#x27;</span>, <span class="hljs-string">&#x27;/style/xxx.css&#x27;</span>]<br><br><span class="hljs-comment">// 监听 Service Worker 的“安装”事件：创建新缓存</span><br>self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;install&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// waitUntil表示在异步操作之前不要终止</span><br>  event.<span class="hljs-title function_">waitUntil</span>(<br>    <span class="hljs-comment">// 创建名为 CACHE_NAME 的缓存版本</span><br>    caches.<span class="hljs-title function_">open</span>(<span class="hljs-variable constant_">CACHE_NAME</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">cache</span> =&gt;</span> &#123;<br>      <span class="hljs-comment">// 指定要缓存的地址内容</span><br>      <span class="hljs-keyword">return</span> cache.<span class="hljs-title function_">addAll</span>(<span class="hljs-variable constant_">CACHE_URL</span>)<br>    &#125;)<br>  )<br>&#125;)<br><br><span class="hljs-comment">// 监听 Service Worker 的“激活”事件：清理旧缓存</span><br>self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;activate&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  event.<span class="hljs-title function_">waitUntil</span>(<br>    caches.<span class="hljs-title function_">keys</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">cacheNames</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(<br>        cacheNames.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">cacheName</span> =&gt;</span> &#123;<br>          <span class="hljs-keyword">if</span>(cacheName !== <span class="hljs-variable constant_">CACHE_NAME</span>) &#123;<br>           <span class="hljs-keyword">return</span> caches.<span class="hljs-title function_">delete</span>(cacheName)<br>          &#125;<br>        &#125;)<br>      )<br>    &#125;)<br>  )<br>&#125;)<br><br><span class="hljs-comment">// 监听 Service Worker 的“请求”事件：更新缓存</span><br>self.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>  event.<span class="hljs-title function_">respondWith</span>(<br>    caches.<span class="hljs-title function_">match</span>(event.<span class="hljs-property">request</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> response || <span class="hljs-title function_">fetch</span>(event.<span class="hljs-property">request</span>)<br>    &#125;)<br>  )<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="FP-First-Paint"><a href="#FP-First-Paint" class="headerlink" title="FP - First Paint"></a>FP - First Paint</h2><p>首次渲染，衡量白屏的时间<br>Performance 直接获取：<br><img src="/img/images/2024/1708435154568-2cd2d11e-f35c-422d-88e0-9e09c0c8a540.png" srcset="/img/loading.gif" lazyload><br><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107441">如何计算 FP 和 FCP 指标–应用性能监控全链路版-火山引擎</a></p>
+<h2 id="FCP-First-Contentful-Paint"><a href="#FCP-First-Contentful-Paint" class="headerlink" title="FCP - First Contentful Paint"></a>FCP - First Contentful Paint</h2><p>首次内容渲染，衡量用户首次看到内容的时间<br>优化点：异步加载 JS、尽早加载关键资源<br>Performance 直接获取：<img src="/img/images/2024/1708435208844-961d6eb6-a003-4d2f-9875-51309f857390.png" srcset="/img/loading.gif" lazyload><br>也可以使用：<code>web-vitals 库获取具体 FCP 值</code><br><img src="/img/images/2024/1708437232879-4eb369a4-5a8b-49fc-a612-9dbcef2170f5.png" srcset="/img/loading.gif" lazyload><br><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107441">如何计算 FP 和 FCP 指标–应用性能监控全链路版-火山引擎</a></p>
+<h2 id="FMP-First-Meaningful-Paint"><a href="#FMP-First-Meaningful-Paint" class="headerlink" title="FMP - First Meaningful Paint"></a>FMP - First Meaningful Paint</h2><p>首次有效绘制，衡量用户首次看到“有效内容”的时间<br>无标准的计算方法，一般用 LCP 代替</p>
+<p>一种计算方式：<br>DOM 结构变化的时间点可以利用 <a target="_blank" rel="noopener" href="https://dom.spec.whatwg.org/#mutationobserver">MutationObserver API</a> 来获得。<br>通过 MutationObserver 监听每一次页面整体的 DOM 变化，触发 MutationObserver 的回调，在回调计算出当前 DOM 树的分数，分数变化最剧烈的时刻，即为 FMP 的时间点。</p>
+<p><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107450">如何计算 FMP 指标–应用性能监控全链路版-火山引擎</a></p>
+<h2 id="TTI-Time-to-Interactive"><a href="#TTI-Time-to-Interactive" class="headerlink" title="TTI - Time to Interactive"></a>TTI - Time to Interactive</h2><p>可交互时间，衡量页面加载完后到用户可以交互的时间值<br>计算方式：<br><img src="/img/images/2024/1708437175933-62cb6328-708c-41db-99d2-f41e3c584781.png" srcset="/img/loading.gif" lazyload><br>参考上述示意图（图中的 First Consistently Interactive 即为 TTI ）。</p>
+<ol>
+<li>从起始点（一般选择 FCP 或 FMP）时间开始，向前搜索一个不小于 5s 的静默窗口期。静默窗口期：窗口所对应的时间内没有 Long Task，且进行中的网络请求数不超过 2 个。</li>
+<li>找到静默窗口期后，从静默窗口期向后搜索到最近的一个 Long Task，Long Task 的结束时间即为 TTI。</li>
+<li>如果没有找到 Long Task，以起始点时间作为 TTI。</li>
+<li>如果 2、3 步骤得到的 TTI &lt; DOMContentLoadedEventEnd，以 DOMContentLoadedEventEnd 作为 TTI</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107446">如何计算 TTI 指标–应用性能监控全链路版-火山引擎</a></p>
+<h2 id="TBT-Total-Blocking-Time"><a href="#TBT-Total-Blocking-Time" class="headerlink" title="TBT - Total Blocking Time"></a>TBT - Total Blocking Time</h2><p>总阻塞时间，衡量从 FCP 到 TTI 之间主线程被阻塞的总时间<br>大于 50ms 的任务被称为长任务。<br>TBT 计算的就是每个任务时长 - 50ms 后，剩余的总和<br><img src="/img/images/2024/1708436954919-59f9725b-1804-4f79-9cd5-b5e62d8a8e30.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="TTFT-Time-to-First-Byte"><a href="#TTFT-Time-to-First-Byte" class="headerlink" title="TTFT - Time to First Byte"></a>TTFT - Time to First Byte</h2><p>首次字节时间，衡量从浏览器发送请求到接收到服务器响应的第一个字节所需的时间<br>计算方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 获取所有资源加载的详细信息</span><br><span class="hljs-keyword">const</span> resourceEntries = performance.<span class="hljs-title function_">getEntriesByType</span>(<span class="hljs-string">&#x27;resource&#x27;</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> entry <span class="hljs-keyword">of</span> resourceEntries) &#123;<br>  <span class="hljs-keyword">if</span> (entry.<span class="hljs-property">initiatorType</span> === <span class="hljs-string">&#x27;fetch&#x27;</span> &amp;&amp; entry.<span class="hljs-property">name</span> === 页面<span class="hljs-variable constant_">URL</span>) &#123; <span class="hljs-comment">// 或其他匹配条件</span><br>    <span class="hljs-keyword">const</span> ttfb = entry.<span class="hljs-property">responseStart</span> - entry.<span class="hljs-property">fetchStart</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`TTFB for <span class="hljs-subst">$&#123;entry.name&#125;</span>: <span class="hljs-subst">$&#123;ttfb&#125;</span> ms`</span>);<br>    <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 如果只需要主文档的TTFB</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>可以使用：<code>web-vitals 库获取具体 TTFT 值</code></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7052918009555320839?searchId=20240220204945952BFDA3B50B6DB8145D">最全的前端性能定位总结 - 掘金</a><br><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6431/107445">如何根据页面的 timing 指标计算出各阶段值–应用性能监控全链路版-火山引擎</a><br><a target="_blank" rel="noopener" href="https://web.dev/articles/vitals?hl=zh-cn">Google Web Vitals</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1-6、JS 性能优化</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/1-6、JS 性能优化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-7%E3%80%81%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" title="1-7、函数式编程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1-7、函数式编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/1-5%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3/" title="1-5、浏览器相关">
+                        <span class="hidden-mobile">1-5、浏览器相关</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

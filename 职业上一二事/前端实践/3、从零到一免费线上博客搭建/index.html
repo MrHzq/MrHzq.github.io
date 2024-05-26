@@ -1,0 +1,1230 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="3、从零到一免费线上博客搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3、从零到一免费线上博客搭建">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="3、从零到一免费线上博客搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710761288521-c3cd0ed0-7020-4d27-921f-d768a11ef588.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710762036511-4ae62d55-073f-49e6-965b-44279156952e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710761977404-d7094fb6-d7b5-4532-932c-6c1ebe04c322.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710762326305-ba3eddf0-3a28-4554-bdd5-2e9d92ee39c9.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710762814615-e4764986-6f21-4553-932c-1a092a4f68ea.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710763532125-e024a328-3ee6-413b-bd87-aad5f39a096c.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710764255408-9dc00159-6290-4d6b-ac28-6b34b19f37b4.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710764262076-1fbef918-8729-4605-bce3-9b64997555c5.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710819197829-cc7b75e7-aea4-484c-a5a9-62cccc869860.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710819844823-b8108eea-2936-45c9-811a-eea56c849030.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710820796458-97fe828d-e505-49c5-8e1e-5fcc5c77d818.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710774562757-1853aa34-20cc-4c4c-88a2-88ebcf119f59.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710813783674-154ddb59-470a-48d9-be68-5566ce4499bc.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710820995000-3a30d581-9ce6-4997-93ce-0f7cacbb84a4.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710813544570-d4214c0b-ee95-4619-bdc1-e3dbff820ed5.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710813527111-6155efff-e14d-4b75-95fd-2a92c0963738.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710819457212-d030c9ef-6fc1-4d73-befd-6e77c28ed8e0.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710813709488-b6e28695-e4d8-4fe9-9461-8868524a7c11.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710819518464-4124d318-322a-4a9f-a346-5688403b80d8.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710831050901-a42dd0d6-7729-4767-89d9-aa9025895a25.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710831652982-d31739c1-35c2-44fc-97e4-5e93c9d6d796.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710831671117-bb688d31-f46f-4017-8ec0-2c4c26e926c2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710837755619-55d2abf6-74ed-4471-8ae9-0c455b6137b2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710830944600-d5480c39-b91d-4985-904e-7ed9c7d4ca0a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710764968046-a23c586b-b092-46ba-8015-209bff8d6e54.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710765218332-7ed91d8e-fe21-429d-be3c-86cc385b3fe6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710832988659-ef2c4026-c6f5-407b-bed1-882885096e77.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710833253106-1b9d8dc3-dc1b-4813-a896-2ca909128649.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710833335948-0e196762-5a25-49c1-8b60-d2055a82e780.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710833516879-9fd5a371-7b75-449e-a0ce-132dd134655f.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710833539937-113bd0ec-2756-4678-882c-1ddf3dc10641.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710833570211-ec002077-bf09-4bd3-89a5-db4caa3bb3ee.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710838557187-980d4762-1657-4629-a3d7-2158f58f06c7.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710850303601-919a5d6e-5be4-4544-bc95-7c07dc9bb81e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710838749773-fa61e1d0-015a-4013-87d6-dff444f6c258.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710838825557-8f3efdce-7f37-463a-94fa-a0b656463a2a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710838932410-54ac68ba-f4ac-4c67-9213-2660da58c460.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710839229924-14a1458e-50c0-40d3-bfb2-95e77f822591.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710850949420-b8fc115e-625b-44fa-bc34-50d0eb4b7e6c.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710855295841-b322ef26-0ae8-48e5-becf-76230f691e1a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710856351774-655e98d3-60d5-4ef5-8158-cce57bbf7302.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710856563762-29e17460-e427-486f-98fe-8b86cd84abd6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710856966460-cd8eda48-e2ef-46a9-8c8b-51415928d3f2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710856981668-6b299248-76e7-4c1a-a957-26e597a2eee8.png">
+<meta property="og:image" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.48.57.png">
+<meta property="og:image" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.53.06.png">
+<meta property="og:image" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.png">
+<meta property="og:image" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14_.png">
+<meta property="og:image" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0giteePages.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710901584873-62aa9f21-7dfc-4080-a897-2e0d0a9dd13e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710902932479-57a8c298-0026-4051-a5a4-86e5feb34bc6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710902963095-9cbfb854-161f-4034-9359-cdbcb8cfbb0a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903038069-2163d099-8ad3-4e54-90ba-ed93d5577295.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903098963-30db9a66-76c9-4dee-9a77-34780e1ed7d0.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903240082-08d26f07-3d5c-462d-895b-5c1fbe5a3aa1.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903274849-bb4febbd-b5bd-47ab-91ec-5a1d23e34de0.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903298139-d2be12a6-07ca-4d77-8869-fc1e366de191.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903451471-ed859bb2-2306-4360-81a6-7a1dbaab3bc2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903907276-a70dd3f4-549f-463b-9df6-117e5188fb90.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710903914792-dd1604d0-7951-4d91-833a-6581d249c887.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904061043-99bdd228-df12-4546-a58a-520f93500d63.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904098392-cb0c88a7-ead2-4446-ab98-20d098c135c0.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904156650-a92be8be-1328-4d1e-8f55-55c7f20ad4a6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904184467-c9da5b10-94f0-4a22-b9bb-1c2fa3e6647b.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904241044-39b2e2d2-2a08-4ccb-b3bd-1d27f9439d30.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904261518-1ab1ca0f-d170-4c16-a94e-c7e9f08abe46.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904551333-efb7d132-c7a3-4145-bb5c-648ee9cbf3e6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904562134-38fc0786-71db-4406-abe3-370e277cead4.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904651650-317212de-d2d4-4ddd-882e-b4ed16a3af84.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710904811982-97d1ac9a-5d6c-4f1d-a8e0-9db20da66b9a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710924962033-65c2df38-0ae8-4919-bc88-30ff7f0154dc.jpeg">
+<meta property="article:published_time" content="2024-03-13T19:10:57.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:34:10.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端实践">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1710761288521-c3cd0ed0-7020-4d27-921f-d768a11ef588.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>3、从零到一免费线上博客搭建 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3、从零到一免费线上博客搭建"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-13 19:10" pubdate>
+          2024年3月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">3、从零到一免费线上博客搭建</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:34:10+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>技术：基于 hexo 搭建博客<br>计划：使用免费提供的 Pages 的平台作为博客网址，白嫖~<br>预期：使用 github 作为第一源码，推送后通过 github actions 再次将代码推送到其他平台，实现多个平台的自动同步与部署</p>
+<h1 id="已部署成功的本人线上博客地址"><a href="#已部署成功的本人线上博客地址" class="headerlink" title="已部署成功的本人线上博客地址"></a>已部署成功的本人线上博客地址</h1><p>Gitee Pages：<a target="_blank" rel="noopener" href="https://huangzq94.gitee.io/">https://huangzq94.gitee.io/</a><br>Github Pages：<a href="https://mrhzq.github.io/">https://mrhzq.github.io/</a><br>Cloundflare Pages：<a target="_blank" rel="noopener" href="https://huangzq.pages.dev/">https://huangzq.pages.dev/</a><br>Vercel：<a target="_blank" rel="noopener" href="https://huangzq.vercel.app/">https://huangzq.vercel.app/</a></p>
+<h1 id="Hexo-搭建博客流程"><a href="#Hexo-搭建博客流程" class="headerlink" title="Hexo 搭建博客流程"></a>Hexo 搭建博客流程</h1><blockquote>
+<p>完全按照官方文档来的：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/#%E5%AE%89%E8%A3%85">安装文档</a></p>
+</blockquote>
+<h2 id="初始化安装"><a href="#初始化安装" class="headerlink" title="初始化安装"></a>初始化安装</h2><ol>
+<li>全局安装工具</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">npm i hexo-cli -g<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>看是否安装成功</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">hexo<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710761288521-c3cd0ed0-7020-4d27-921f-d768a11ef588.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>初始化：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup">建站</a></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">hexo init huangzq-blog <span class="hljs-comment">// 会帮我新建一个目录</span><br></code></pre></td></tr></table></figure>
+
+<p>创建成功后，文件内容如下：<br><img src="/img/images/2024/1710762036511-4ae62d55-073f-49e6-965b-44279156952e.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p><code>hexo init // 已有目录，目录内运行，亲测会失败</code><br><img src="/img/images/2024/1710761977404-d7094fb6-d7b5-4532-932c-6c1ebe04c322.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<ol start="4">
+<li>安装依赖，以下任选一个</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">npm i<br><span class="hljs-comment">// yarn</span><br><span class="hljs-comment">// pnpm i   // 我用的这个</span><br></code></pre></td></tr></table></figure>
+
+<p>安装成功<br><img src="/img/images/2024/1710762326305-ba3eddf0-3a28-4554-bdd5-2e9d92ee39c9.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>启动项目</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">pnpm run server<br></code></pre></td></tr></table></figure>
+
+<p>浏览器打开：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>，看到初始的页面<br><img src="/img/images/2024/1710762814615-e4764986-6f21-4553-932c-1a092a4f68ea.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="设置主题（可选）"><a href="#设置主题（可选）" class="headerlink" title="设置主题（可选）"></a>设置主题（可选）</h2><ol start="6">
+<li>更改主题：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">点这里</a>找一个你喜欢的主题</li>
+</ol>
+<blockquote>
+<p>更改主题操作说明：只要在 themes 文件夹内，新增一个任意名称的文件夹，并修改 _config.yml 内的 theme 设定，即可切换主题</p>
+</blockquote>
+<p><img src="/img/images/2024/1710763532125-e024a328-3ee6-413b-bd87-aad5f39a096c.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="7">
+<li>更改主题：去到源码，一般为 github 仓库，然后安装该主题库的使用文档操作</li>
+<li>博客目录下创建 _config.fluid.yml 文件，将主题的 <a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/_config.yml">_config.yml</a>全部配置复制过去。</li>
+<li>更改主题：下载主题（我选的这个主题源码<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">在这</a>，并且支持 npm 安装）</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">pnpm add hexo-theme-fluid<br></code></pre></td></tr></table></figure>
+
+<ol start="10">
+<li>更改主题：修改 Hexo 博客目录中的 _config.yml，改以下这两处（来自<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid?tab=readme-ov-file#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">主题使用文档</a>）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-attr">theme</span>: fluid  # 指定主题<br><br><span class="hljs-attr">language</span>: zh-<span class="hljs-variable constant_">CN</span>  # 指定语言，会影响主题显示的语言，按需修改<br></code></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>创建【关于我】页面（来自<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid?tab=readme-ov-file#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B">主题使用文档</a>）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">hexo <span class="hljs-keyword">new</span> page about<br></code></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>编辑目录下 &#x2F;source&#x2F;about&#x2F;index.md，添加如下内容</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">---<br><span class="hljs-attr">title</span>: about<br><span class="hljs-attr">layout</span>: about<br><span class="hljs-attr">date</span>: <span class="hljs-number">2024</span>-<span class="hljs-number">03</span>-<span class="hljs-number">18</span> <span class="hljs-number">20</span>:<span class="hljs-number">13</span>:<span class="hljs-number">20</span><br>---<br><br>这里写关于页的正文，支持 <span class="hljs-title class_">Markdown</span>, <span class="hljs-variable constant_">HTML</span><br></code></pre></td></tr></table></figure>
+
+<ol start="13">
+<li>重启项目：<code>pnpm run server</code>，以下是首页和关于页面的展示</li>
+</ol>
+<p><img src="/img/images/2024/1710764255408-9dc00159-6290-4d6b-ac28-6b34b19f37b4.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710764262076-1fbef918-8729-4605-bce3-9b64997555c5.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="本地开发简述（可选）"><a href="#本地开发简述（可选）" class="headerlink" title="本地开发简述（可选）"></a>本地开发简述（可选）</h2><blockquote>
+<p>hexo 项目最终是需要先打包，生成<code>public</code>文件夹，最终部署的是<code>public</code>夹内的东西。<br>就跟我们<code>vue</code>一样，开发环境启动<code>dev</code>，<code>build</code>执行打包生成<code>dist</code>然后部署它，<br>所以 hexo 也是有开发环境、生产环境的概念的</p>
+</blockquote>
+<h3 id="1、开发环境模式"><a href="#1、开发环境模式" class="headerlink" title="1、开发环境模式"></a>1、开发环境模式</h3><p>类似于 vue 的 dev 命令，只是没有热更新，最新内容需要手动刷新可看</p>
+<p>开发环境操作：直接运行命令<code>pnpm run server</code>，就会启动本地服务，网站会在 <a target="_blank" rel="noopener" href="http://localhost:4000/about/">http://localhost:4000/</a> 下启动，官网说：会<strong>监视文件变动并自动更新</strong>，无须重启服务器，每次刷新下页面就能看到最新的<br><strong>但如果是配置更新的话，就需要重启服务器再刷新才能生效，并且有时候还是需要刷新才能看到效果</strong></p>
+<h2 id="全局配置（-config-yml）"><a href="#全局配置（-config-yml）" class="headerlink" title="全局配置（_config.yml）"></a>全局配置（_config.yml）</h2><p>主要更改博客网站的一些配置：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E7%BD%91%E7%AB%99">官方文档</a><br>更改文件为<code>_config.yml</code>，我的更改项：<br><img src="/img/images/2024/1710819197829-cc7b75e7-aea4-484c-a5a9-62cccc869860.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="主题配置（-config-fluid-yml）"><a href="#主题配置（-config-fluid-yml）" class="headerlink" title="主题配置（_config.fluid.yml）"></a>主题配置（_config.fluid.yml）</h2><p>由于我们使用了主题，然后也创建了主题配置文件，这样大多数的配置就需要在这里面改<br>官方文档：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">Hexo Fluid 用户手册</a></p>
+<h3 id="页脚设置-footer"><a href="#页脚设置-footer" class="headerlink" title="页脚设置 footer"></a>页脚设置 footer</h3><blockquote>
+<p>配置关键搜索词：footer:</p>
+</blockquote>
+<p>默认为这个<img src="/img/images/2024/1710819844823-b8108eea-2936-45c9-811a-eea56c849030.png" srcset="/img/loading.gif" lazyload><br>我更改为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">content: &#x27;<br>   &lt;a href=<span class="hljs-string">&quot;/&quot;</span> rel=<span class="hljs-string">&quot;nofollow noopener&quot;</span>&gt;&lt;span&gt;黄智强&lt;/span&gt;&lt;/a&gt;<br>   &lt;i class=<span class="hljs-string">&quot;iconfont icon-love&quot;</span>&gt;&lt;/i&gt;<br>   &lt;a href=<span class="hljs-string">&quot;/2024/03/19/%E6%88%91%E6%98%AF%E8%B0%81%E5%9C%A8%E5%B9%B2%E5%95%A5/%E5%B9%B4%E6%80%BB%E7%BB%93/2023%20%E5%B9%B4%E6%80%BB%E7%BB%93%EF%BC%8C%E5%B9%B3%E4%BB%84%E5%8F%82%E5%8D%8A/2023%20%E5%B9%B4%E6%80%BB%E7%BB%93%EF%BC%8C%E5%B9%B3%E4%BB%84%E5%8F%82%E5%8D%8A/&quot;</span> rel=<span class="hljs-string">&quot;nofollow noopener&quot;</span>&gt;&lt;span&gt;<span class="hljs-number">2024</span>&lt;/span&gt;&lt;/a&gt;&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>效果如下：<br><img src="/img/images/2024/1710820796458-97fe828d-e505-49c5-8e1e-5fcc5c77d818.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="主页设置"><a href="#主页设置" class="headerlink" title="主页设置"></a>主页设置</h3><p>先改首页，下面是首页要改的<br><img src="/img/images/2024/1710774562757-1853aa34-20cc-4c4c-88a2-88ebcf119f59.png" srcset="/img/loading.gif" lazyload><br>大标题更改：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%8D%9A%E5%AE%A2%E6%A0%87%E9%A2%98">官方文档</a><br>中间标题更改：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#slogan-%E6%89%93%E5%AD%97%E6%9C%BA">官方文档</a><br>背景图更改：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E9%A1%B5%E9%9D%A2%E9%A1%B6%E9%83%A8%E5%A4%A7%E5%9B%BE">官方文档</a><br>我从 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">Fluid 演示博客</a> 里面拿了几张图，图片效果做的跟演示博客一样了</p>
+<blockquote>
+<p>具体图片链接看这：<br>首页 banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp</a><br>文章 banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp</a><br>归档:  banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/1cm6iu.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/1cm6iu.png?w=1920&fmt=webp</a><br>分类: banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/sdqryn.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/sdqryn.png?w=1920&fmt=webp</a><br>关于: banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/4xvpqo.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/4xvpqo.png?w=1920&fmt=webp</a><br>标签: banner_img: <a target="_blank" rel="noopener" href="https://fluid.s3.bitiful.net/bg/n7a9bv.png?w=1920&fmt=webp">https://fluid.s3.bitiful.net/bg/n7a9bv.png?w=1920&fmt=webp</a></p>
+</blockquote>
+<p>我最终的博客内容展示会对标 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">Fluid 演示博客</a>，然后可以照着<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-fluid-blog">Fluid 演示博客的源码</a>去修改<br><img src="/img/images/2024/1710813783674-154ddb59-470a-48d9-be68-5566ce4499bc.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="开启友情链接"><a href="#开启友情链接" class="headerlink" title="开启友情链接"></a>开启友情链接</h3><p>官方文档：<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5%E9%A1%B5">友情链接页</a>，默认是不开启的<br>然后我开启了，并且更改为“更多”，里面存放我其他平台的主页，效果如下：<br><img src="/img/images/2024/1710820995000-3a30d581-9ce6-4997-93ce-0f7cacbb84a4.png" srcset="/img/loading.gif" lazyload><br>配置更改看：<a target="_blank" rel="noopener" href="https://github.com/MrHzq/huangzq-blog/commit/f5b08322ab2edc62c2863580ee6ea3963e0c5822">feat: 友情链接页面更改</a></p>
+<h2 id="写文章的插件（可选）"><a href="#写文章的插件（可选）" class="headerlink" title="写文章的插件（可选）"></a>写文章的插件（可选）</h2><p>我是使用 VScode 来写 md 的，所以推荐一些好用的插件与包</p>
+<h3 id="VSCode-插件"><a href="#VSCode-插件" class="headerlink" title="VSCode 插件"></a>VSCode 插件</h3><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown All in One - Visual Studio Marketplace</a>：功能强大，我用它来做默认的格式化<br><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">markdownlint - Visual Studio Marketplace</a>：写 md 时提醒语法错误</p>
+<h3 id="npm-包"><a href="#npm-包" class="headerlink" title="npm 包"></a>npm 包</h3><p><a target="_blank" rel="noopener" href="https://github.com/lint-md/lint-md#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8Ccli">Lint Markdown</a>：可一键批量修复 md 语法问题，我用来批量处理其他平台导出的 md 语法问题</p>
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><p>hexo 的文章大多是 Markdown 的，它会自动读取展示出来<br>所有的文章放在<code>source</code>下面，除<code>_posts</code>文件夹之外，开头命名为 _ (下划线)的文件&#x2F;文件夹将会被忽略</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">├── source<br>|   ├── _drafts<br>|   └── _posts<br></code></pre></td></tr></table></figure>
+
+<p>hexo 官方提供的文章类型有三种，分别存放在不同文件夹内</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">post source/_posts <span class="hljs-comment">// 会展示出来，作为“文章”展示，默认是 post</span><br>page source <span class="hljs-comment">// 会展示出来，作为“页面”展示</span><br>draft source/_drafts <span class="hljs-comment">// 不会展示出来，作为草稿使用</span><br></code></pre></td></tr></table></figure>
+
+<p>分别演示下 post、page 的展示效果<br>以下是 post 展示效果<br><img src="/img/images/2024/1710813544570-d4214c0b-ee95-4619-bdc1-e3dbff820ed5.png" srcset="/img/loading.gif" lazyload><br>以下是  page 展示效果<br><img src="/img/images/2024/1710813527111-6155efff-e14d-4b75-95fd-2a92c0963738.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1、创建新的文章"><a href="#1、创建新的文章" class="headerlink" title="1、创建新的文章"></a>1、创建新的文章</h3><ol>
+<li>输入命令<code>hexo new 文章标题</code>，就会自动在<code>_posts</code>内创建一个<code>文章标题.md</code>文件</li>
+<li>里面有一些自动填充的内容，填充模板是<code>scaffolds/post.md</code>，所以你可以自行更改</li>
+<li>我将<code>scaffolds/post.md</code>改为了</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c">---<br>title: &#123;&#123; title &#125;&#125;<br>date: &#123;&#123; date &#125;&#125;<br>updated: &#123;&#123; date &#125;&#125;<br>categories: 职业<br>tags:<br>  - 技术<br>excerpt: 这是摘要，你要手动改一下<br>---<br><br>## 这是标题<br><br>这是正文，你要手动改一下<br><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>所以生成的文章默认为</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c">---<br>title: 文章标题<br>categories: 职业<br>tags:<br>  - 技术<br>excerpt: 这是摘要，你要手动改一下<br>date: <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-19</span> <span class="hljs-number">11</span>:<span class="hljs-number">35</span>:<span class="hljs-number">15</span><br>updated: <span class="hljs-number">2024</span><span class="hljs-number">-03</span><span class="hljs-number">-19</span> <span class="hljs-number">11</span>:<span class="hljs-number">35</span>:<span class="hljs-number">15</span><br>---<br><br>## 这是标题<br><br>这是正文，你要手动改一下<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>然后刷新下页面，该文章就会自动展示出来</li>
+</ol>
+<p><img src="/img/images/2024/1710819457212-d030c9ef-6fc1-4d73-befd-6e77c28ed8e0.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、塞入已有文章"><a href="#2、塞入已有文章" class="headerlink" title="2、塞入已有文章"></a>2、塞入已有文章</h3><ol>
+<li>拷贝你的 md 文件过来，放到<code>_posts</code>内，然后自己创建一些文件夹进行分类（可选）</li>
+<li>重启服务<code>pnpm run server</code>，就直接能看到效果了，很简单与“丑陋”</li>
+</ol>
+<p><img src="/img/images/2024/1710813709488-b6e28695-e4d8-4fe9-9461-8868524a7c11.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>更改该 md 文件，顶部加上这一段：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c">---<br>title: 个人简历(求职中) - <span class="hljs-number">7</span> 年前端<br>date: <span class="hljs-number">2023</span><span class="hljs-number">-11</span><span class="hljs-number">-09</span><br>category: 职业<br>tags:<br>  - 简历<br>  - 前端<br>excerpt: 这是我的求职简历，我的优势：熟练掌握 HTML、JavaScript(ES6+)、CSS、TypeScript 等常用前端技术，熟练使用 Vue 和 React 框架，了解其原理并具有多年开发经验，具有大型 ToB SaaS 前端开发经验，具有复杂前端技术方案落地经验，具备全栈开发经验，具备 Devops 之研发流程实践经验，具有 Nodejs、低代码、微前端的实践与经验，具备项目管理与团队管理经验，做过 B 端 SCRM 产品，涉及 PC/H5/小程序端<br>---<br><br><span class="hljs-comment">// 以下是 md 原内容，不用动</span><br></code></pre></td></tr></table></figure>
+
+<p>展示效果如下：<img src="/img/images/2024/1710819518464-4124d318-322a-4a9f-a346-5688403b80d8.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>字段简单说明下：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">---<br>title: 个人简历(求职中) - <span class="hljs-number">7</span> 年前端 <span class="hljs-comment">// 用于展示的文章标题</span><br>date: <span class="hljs-number">2023</span><span class="hljs-number">-11</span><span class="hljs-number">-23</span> <span class="hljs-number">19</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> <span class="hljs-comment">// 用于展示的文章时间，可任意更改</span><br>index_img: https:xxx <span class="hljs-comment">// 用于展示的文章封面，可以是本地或线上的（可选）</span><br>category: 职业 <span class="hljs-comment">// 文章的分类</span><br>tags: <span class="hljs-comment">// 文章的标签，可以多个</span><br>  - 简历<br>  - 前端<br>excerpt: 这是我的求职简历，我的优势 <span class="hljs-comment">// 文章的摘要</span><br>---<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>其中的<code>category</code>文章的分类，写了后就能在<code>分类</code>页面下看到</li>
+<li>其中的<code>tags</code>文章的标签，写了后就能在<code>标签</code>页面下看到</li>
+</ol>
+<p>至此我们的博客的基本内容、配置已 ok 了，接下来就要发到线上去了</p>
+<h1 id="静态网站托管对比"><a href="#静态网站托管对比" class="headerlink" title="静态网站托管对比"></a>静态网站托管对比</h1><table>
+<thead>
+<tr>
+<th>平台</th>
+<th>优点</th>
+<th>缺点</th>
+<th>部署博客</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/">Github</a></td>
+<td>1、部署流程简单；2、无任何限制</td>
+<td>1、国内访问慢；2、可能被墙</td>
+<td>肯定要部署一个的，已部署成功</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://gitee.com/">Gitee</a></td>
+<td>1、国内访问快</td>
+<td>1、严格的内容审核，部署博客的话会经常遇到部署失败的情况;2、仓库的最大容量和单个文件大小有限制，对仓库内容非常敏感，需要实名认证，自定义域名和自动部署都需要收费。</td>
+<td>尝试一下</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://coding.net/">Coding</a></td>
+<td>1、国内访问快</td>
+<td>1、腾讯收购，需 COS 付费使用</td>
+<td>不考虑</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://gitcode.net/">CodeChina</a></td>
+<td>1、国内访问快</td>
+<td>1、需要认证组织才能使用 Page’s 功能</td>
+<td>无法搞</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://pages.cloudflare.com/">Cloudflare Pages</a></td>
+<td>1、不限站点数、请求数和带宽，全球都拥有 CDN 节点，支持自定义域名和自动部署。</td>
+<td>1、国内访问速度和稳定性一般，经常超时，每月构建次数、文件数量和大小都有限制。</td>
+<td>可以搞一下，已部署成功</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://vercel.com/">Vercel</a></td>
+<td>1、国内访问速度比 Github Pages 和 Cloudflare Pages 要快，支持自定义域名和自动部署。</td>
+<td>1、构建次数和构建时长有限制，每月宽限制 100G;2、可能被墙</td>
+<td>可以搞一下，已部署成功</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://netlify.com/">Netlify</a></td>
+<td>1、国内访问速度比 Github Pages 和 Cloudflare Pages 要快，支持自定义域名和自动部署。</td>
+<td>1、构建次数和构建时长有限制，每月带宽限制 100G;2、可能被墙;3、要验证身份证</td>
+<td>不考虑</td>
+</tr>
+</tbody></table>
+<h1 id="GitHub-流程（已成功）"><a href="#GitHub-流程（已成功）" class="headerlink" title="GitHub 流程（已成功）"></a>GitHub 流程（已成功）</h1><p>我们是借用 Github Pages 来部署我们的博客，但 Github 根据仓库名会提供了两种 Pages<br>1、普通仓库名：比如我之前的 <a target="_blank" rel="noopener" href="https://github.com/MrHzq/random-number-system">random-number-system</a>，创建后再自己弄下 Github Pages 后，访问网址为：<a href="https://mrhzq.github.io/random-number-system/">https://mrhzq.github.io/random-number-system/</a><br>2、特殊仓库名：github 用户名.github.io，比如我创建了 MrHzq.github.io 仓库，然后就能自动通过 <a href="https://mrhzq.github.io/">https://mrhzq.github.io/</a> 来访问，这样访问网址更简短</p>
+<blockquote>
+<p>3、再补充一个特殊仓库：github 用户名，比如我创建了 MrHzq 仓库，它就可以作为 github 的主页展示<br><img src="/img/images/2024/1710831050901-a42dd0d6-7729-4767-89d9-aa9025895a25.png" srcset="/img/loading.gif" lazyload><img src="/img/images/2024/1710831652982-d31739c1-35c2-44fc-97e4-5e93c9d6d796.png" srcset="/img/loading.gif" lazyload><img src="/img/images/2024/1710831671117-bb688d31-f46f-4017-8ec0-2c4c26e926c2.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<ol>
+<li>创建两个仓库：一个普通仓库作为源代码管理<strong>（私有的）</strong>，一个特殊仓库作为博客主页用</li>
+</ol>
+<p>普通仓库：我的命名为 huangzq-blog<strong>（私有的）</strong><br><img src="/img/images/2024/1710837755619-55d2abf6-74ed-4471-8ae9-0c455b6137b2.png" srcset="/img/loading.gif" lazyload><br>特殊仓库：我的命名为  MrHzq.github.io<br><img src="/img/images/2024/1710830944600-d5480c39-b91d-4985-904e-7ed9c7d4ca0a.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>关联第一步创建的文件，命令行进入第一步创建的文件夹（我的是<code>huangzq-blog）</code>内：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">git init<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>暂存代码并提交代码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">git add . &amp;&amp; git commit -m <span class="hljs-string">&quot;Initial commit&quot;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>关联远程仓库（普通仓库哦）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">git remote add origin git@github.<span class="hljs-property">com</span>:你的用户名/仓库名.<span class="hljs-property">git</span>  # 对于<span class="hljs-variable constant_">SSH</span><br><span class="hljs-comment">// 或者</span><br>git remote add origin <span class="hljs-attr">https</span>:<span class="hljs-comment">//github.com/你的用户名/仓库名.git  # 对于HTTPS</span><br></code></pre></td></tr></table></figure>
+
+<p>我用的命令为：<code>git remote add origin https://github.com/MrHzq/huangzq-blog.git</code></p>
+<ol start="5">
+<li>推送代码到远程仓库</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">git push -u origin master  # 如果是默认分支master<br><span class="hljs-comment">// 或者</span><br>git push -u origin main    # 如果<span class="hljs-title class_">GitHub</span>默认分支是main<br></code></pre></td></tr></table></figure>
+
+<p>我用的命令为：<code>git push -u origin main</code></p>
+<ol start="6">
+<li>我运行后报错：</li>
+</ol>
+<p><img src="/img/images/2024/1710764968046-a23c586b-b092-46ba-8015-209bff8d6e54.png" srcset="/img/loading.gif" lazyload><br>原因是：我的远程仓库里面的是有文件的，而第一步创建的博客目录里面也有文件，所以<strong>正确：</strong>是要先拉取远程代码到本地，解决冲突，然后再暂存代码并提交代码，最后重新推送代码到远程仓库。但是我知道远程仓库的文件我不需要了，所以可以选择<strong>强制推送到远程</strong></p>
+<ol start="7">
+<li>报错处理：<strong>强制推送到远程</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">git push -u origin main -f<br></code></pre></td></tr></table></figure>
+
+<p>命令运行成功了，远程仓库文件也有了<br><img src="/img/images/2024/1710765218332-7ed91d8e-fe21-429d-be3c-86cc385b3fe6.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710832988659-ef2c4026-c6f5-407b-bed1-882885096e77.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="8">
+<li>还记得我们刚刚创建了一个特殊仓库吗？我们需要将博客打包后的内容推送上去，推送后就能访问了</li>
+<li>我们是通过在<code>huangzq-blog</code>里面直接推送到<code>MrHzq.github.io</code>上，所以要先在<code>huangzq-blog</code>内安装依赖：<code>pnpm add hexo-deployer-git</code></li>
+<li>更改根目录的<code>_config.yml</code>内容，仅修改<code>deploy</code>配置：</li>
+</ol>
+<p><img src="/img/images/2024/1710833253106-1b9d8dc3-dc1b-4813-a896-2ca909128649.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="11">
+<li>更改根目录的<code>package.json</code>内容：</li>
+</ol>
+<p><img src="/img/images/2024/1710833335948-0e196762-5a25-49c1-8b60-d2055a82e780.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="12">
+<li>本地运行<code>pnpm run deploy</code>，它会执行打包，并将<code>public</code>里面的内容推送到<code>MrHzq.github.io</code>上</li>
+</ol>
+<p><img src="/img/images/2024/1710833516879-9fd5a371-7b75-449e-a0ce-132dd134655f.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710833539937-113bd0ec-2756-4678-882c-1ddf3dc10641.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="13">
+<li>然后打开我们的 github 提供的主页：<a href="https://mrhzq.github.io/">https://mrhzq.github.io/</a>，就能看到有东西了</li>
+</ol>
+<p><img src="/img/images/2024/1710833570211-ec002077-bf09-4bd3-89a5-db4caa3bb3ee.png" srcset="/img/loading.gif" lazyload><br>至此 github 的流程就手动走通了，每次写文章就在<code>huangzq-blog</code>内写，写完后运行下<code>pnpm run deploy</code>就能更新我们的博客了</p>
+<p>但能不能更自动化一点呢？比如我在<code>huangzq-blog</code>内提交代码后(一篇文章)，然后自动帮我部署到<code>MrHzq.github.io</code>内，实现自动更新呢？</p>
+<p>那当然是可以的，我们借助<code>huangzq-blog</code>Github Actions 来实现</p>
+<blockquote>
+<p>什么是 Github Actions 呢？可以看我之前实践的这篇文章：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7346524071185006611#heading-2">Github Actions + Github Pages 自动发布 Vue3 + Vite 项目 - 掘金</a></p>
+</blockquote>
+<h2 id="Github-Actions"><a href="#Github-Actions" class="headerlink" title="Github Actions"></a>Github Actions</h2><p>本次的目标是：在私有仓库<code>huangzq-blog</code>内写文章，提交代码后，自动将最新内容部署到公有仓库<code>MrHzq.github.io</code>内，最终达到线上博客主页的自动更新</p>
+<ol>
+<li>进入本地的<code>huangzq-blog</code>内，创建对应文件</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">mkdir .github/workflows &amp;&amp; touch .github/workflows/deployBlog.yml<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>去 github 创建 PAT（Personal access tokens），因为我们是在 Actions 内推送代码，所以 github 需要验证你是否有推送权限，因此我们需要创建 PAT，然后 Actions 时告知给 github 我有权限</li>
+</ol>
+<p><img src="/img/images/2024/1710838557187-980d4762-1657-4629-a3d7-2158f58f06c7.png" srcset="/img/loading.gif" lazyload><br>PS：权限一定要正确，否则无法推送的<br><img src="/img/images/2024/1710850303601-919a5d6e-5be4-4544-bc95-7c07dc9bb81e.png" srcset="/img/loading.gif" lazyload alt="FireShot Capture 002 - New Fine-grained Personal Access Token - github.com.png"><br><img src="/img/images/2024/1710838749773-fa61e1d0-015a-4013-87d6-dff444f6c258.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>然后去私有仓库<code>huangzq-blog</code>创建对应的 secrets</li>
+</ol>
+<p><img src="/img/images/2024/1710838825557-8f3efdce-7f37-463a-94fa-a0b656463a2a.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710838932410-54ac68ba-f4ac-4c67-9213-2660da58c460.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710839229924-14a1458e-50c0-40d3-bfb2-95e77f822591.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>进入<code>.github/workflows/deployBlog.yml</code>内，填入下代码（不用改，直接可用）：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c"># Simple workflow <span class="hljs-keyword">for</span> deploying <span class="hljs-type">static</span> content to GitHub Pages<br>name: Deploy blog<br><br>on:<br>  # Runs on pushes targeting the <span class="hljs-keyword">default</span> branch<br>  push:<br>    branches: [<span class="hljs-string">&quot;main&quot;</span>]<br><br>  # Allows you to run this workflow manually from the Actions tab<br>  workflow_dispatch:<br><br># Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages<br>permissions:<br>  contents: read<br>  pages: write<br>  id-token: write<br><br># Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.<br># However, <span class="hljs-keyword">do</span> NOT cancel in-progress runs as we want to allow these production deployments to complete.<br>concurrency:<br>  group: <span class="hljs-string">&quot;pages&quot;</span><br>  cancel-in-progress: <span class="hljs-literal">false</span><br><br>jobs:<br>  # Single deploy job since we<span class="hljs-number">&#x27;</span>re just deploying<br>  deploy:<br>    runs-on: ubuntu-latest<br>    steps:<br>      - name: Checkout<br>        uses: actions/checkout@v4<br>      - uses: pnpm/action-setup@v2<br>        with:<br>          version: <span class="hljs-number">8</span><br><br>      - name: Setup Node<br>        uses: actions/setup-node@v3<br>        with:<br>          node-version: <span class="hljs-number">20</span><br>          cache: <span class="hljs-string">&quot;pnpm&quot;</span><br><br>      - name: Install dependencies<br>        run: pnpm install<br><br>      - name: Deploy<br>        env:<br>          DEPLOYBLOG: $&#123;&#123; secrets.DEPLOYBLOG &#125;&#125;<br>        run: |<br>          git config --global init.defaultBranch main<br>          pnpm run deploy<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>进入<code>_config.yml</code>，将<code>deploy</code>改为如下代码：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">deploy:<br>  type: git<br>  repo:<br>    url: https:<span class="hljs-comment">//github.com/MrHzq/MrHzq.github.io.git // 改为你的 userName.github.io 完整地址</span><br>    branch: main<br>    token: $DEPLOYBLOG<br>  name: githubUserName <span class="hljs-comment">// 改为你的 github 用户名，我的是 MrHzq</span><br>  email: githubUserEmail <span class="hljs-comment">// 改为你的 github 注册邮箱</span><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>然后提交代码，就会在<code>huangzq-blog</code>仓库内，自动跑 GitHub Actions 了，失败了会有邮件通知，但成功了没有，如果需要成功的通知可以这样开启：<code>Settings -&gt; Notifications</code>内</li>
+</ol>
+<p><img src="/img/images/2024/1710850949420-b8fc115e-625b-44fa-bc34-50d0eb4b7e6c.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710855295841-b322ef26-0ae8-48e5-becf-76230f691e1a.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="7">
+<li>之后每次更改后，提交代码就会自动部署到博客仓库，并且实现自动更新</li>
+</ol>
+<h1 id="Gitee-流程"><a href="#Gitee-流程" class="headerlink" title="Gitee 流程"></a>Gitee 流程</h1><p>官网：<a target="_blank" rel="noopener" href="https://gitee.com/">https://gitee.com/</a></p>
+<blockquote>
+<p>存在的缺点：严格的内容审核，部署博客的话会经常遇到部署失败的情况</p>
+</blockquote>
+<p>由于我们之前已经在 github 上面创建了私有仓库<code>huangzq-blog</code>，所以我们在<code>gitee</code>只创建公版仓库，作用跟<code>MrHzq.github.io</code>仓库一样，存放打包后的博客代码</p>
+<ol>
+<li>登录注册不多说</li>
+<li>创建个人空间地址，记住这个名称，后面会<code>https://huangzq94.gitee.io</code>访问</li>
+</ol>
+<p><img src="/img/images/2024/1710856351774-655e98d3-60d5-4ef5-8158-cce57bbf7302.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>创建同名仓库，<a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4136#article-header0">官方文档</a>，PS：要勾选【设置模板-Readme 文件】</li>
+</ol>
+<p><img src="/img/images/2024/1710856563762-29e17460-e427-486f-98fe-8b86cd84abd6.png" srcset="/img/loading.gif" lazyload><br>由于我创建时，啥都没选，所以没找到 Gitee Pages，后来发现必须要有文件才能开启……，后来我手动创建了 README 文件</p>
+<ol start="4">
+<li>仓库创建完成后，这里找到并开启 Gitee Pages</li>
+</ol>
+<p><img src="/img/images/2024/1710856966460-cd8eda48-e2ef-46a9-8c8b-51415928d3f2.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710856981668-6b299248-76e7-4c1a-a957-26e597a2eee8.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li><p>完成个人实名认证，审核要 3~4 天，这就不多说了……</p>
+</li>
+<li><p>完成后，重新找到并开启 Gitee Pages<br><img src="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.48.57.png" srcset="/img/loading.gif" lazyload><br><img src="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.53.06.png" srcset="/img/loading.gif" lazyload alt="iShot_2024-03-23_14.53.06.png"><br><img src="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>点击生成的连接，进去看看，发现已经部署成功了，访问地址为 <a target="_blank" rel="noopener" href="https://huangzq94.gitee.io/">https://huangzq94.gitee.io/</a><br><img src="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/iShot_2024-03-23_14_.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h2 id="Gitee-Actions（放弃）"><a href="#Gitee-Actions（放弃）" class="headerlink" title="Gitee Actions（放弃）"></a>Gitee Actions（放弃）</h2><p>我们已经成功部署到 Gitee Pages 了，但是每次更改后，我们都需要手动去仓库内点击<code>Settings -&gt; Pages</code>，然后重新部署一次，所以我们可以基于 Github 的 Actions 实现自动部署，这样每次在 github 更改后，我们只需要提交代码，就会自动将打包后的 public 代码同步到 Gitee 仓库上，并且再自动刷新 Gitee Pages</p>
+<ol>
+<li>放弃了，因为我处理了后，发现在<strong>同步到 Gitee</strong>的步骤一直报错，又看不到日志，我起先以为是私钥、公钥配置的问题，结果我本地手动将 public 同步到 gitee 仓库，发现仓库体积这么大，但本地的 public 只有 150MB 左右</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Total</span> <span class="hljs-number">3718</span> (delta <span class="hljs-number">934</span>), reused <span class="hljs-number">0</span> (delta <span class="hljs-number">0</span>), pack-reused <span class="hljs-number">0</span><br><span class="hljs-attr">remote</span>: <span class="hljs-title class_">Resolving</span> <span class="hljs-attr">deltas</span>: <span class="hljs-number">100</span>% (<span class="hljs-number">934</span>/<span class="hljs-number">934</span>), done.<br><span class="hljs-attr">remote</span>: <span class="hljs-title class_">Powered</span> by <span class="hljs-variable constant_">GITEE</span>.<span class="hljs-property">COM</span> [<span class="hljs-number">1.1</span><span class="hljs-number">.0</span>]<br><span class="hljs-attr">remote</span>: <span class="hljs-title class_">Set</span> trace flag af4037aa<br><span class="hljs-attr">remote</span>: <span class="hljs-title class_">Repo</span> <span class="hljs-attr">size</span>: <span class="hljs-number">1142.</span>469MB, exceeds quota 1024MB<br><span class="hljs-attr">remote</span>: <span class="hljs-title class_">You</span> only have <span class="hljs-number">3</span> push opportunities<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>所以我怀疑同步的时候，就是因为体积太大的原因导致的，所以就放弃了 Gitee 的自动同步与刷新 pages 的功能</li>
+<li>所以就需要本地进行手动同步，然后去 Gitee 仓库内，点击<code>更新</code><br><img src="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/3%E3%80%81%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80%E5%85%8D%E8%B4%B9%E7%BA%BF%E4%B8%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0giteePages.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h2 id="但我还是写一下核心用的东西，万一你们成功了呢"><a href="#但我还是写一下核心用的东西，万一你们成功了呢" class="headerlink" title="但我还是写一下核心用的东西，万一你们成功了呢"></a>但我还是写一下核心用的东西，万一你们成功了呢</h2><p>使用的开源 Actions 为：</p>
+<ol>
+<li>同步到 Gitee：<a target="_blank" rel="noopener" href="https://github.com/wearerequired/git-mirror-action">wearerequired&#x2F;git-mirror-action@master</a></li>
+<li>更新 Gitee Pages：<a target="_blank" rel="noopener" href="https://github.com/yanglbme/gitee-pages-action">yanglbme&#x2F;gitee-pages-action@main</a></li>
+</ol>
+<p>具体的使用方法，去对应的 github 项目里面找，这里就不贴了</p>
+<h1 id="Coding-流程（放弃）"><a href="#Coding-流程（放弃）" class="headerlink" title="Coding 流程（放弃）"></a>Coding 流程（放弃）</h1><p>官网：<a target="_blank" rel="noopener" href="https://coding.net/">https://coding.net/</a></p>
+<ol>
+<li>登录注册不多说，注册后会默认创建一个团队，团队名称为随机的，我的是<code>G-OPNC0413</code></li>
+<li>完成团队的实名认证，很快，这就不多说了……</li>
+<li>放弃，它的静态网站需要配合腾讯云 COS 使用，COS 是需要按量付费的，所以无法白嫖，放弃了</li>
+<li>并且弄一个仓库太复杂了，它有团队、项目、仓库、应用等概念，不适合个人</li>
+</ol>
+<h1 id="CodeChina（放弃）"><a href="#CodeChina（放弃）" class="headerlink" title="CodeChina（放弃）"></a>CodeChina（放弃）</h1><p>官网：<a target="_blank" rel="noopener" href="https://gitcode.net/dashboard/projects/home">https://gitcode.net</a>&#x2F;<br>需要认证组织才能使用 Page’s 功能<br><img src="/img/images/2024/1710901584873-62aa9f21-7dfc-4080-a897-2e0d0a9dd13e.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Cloudflare-Pages（已成功）"><a href="#Cloudflare-Pages（已成功）" class="headerlink" title="Cloudflare Pages（已成功）"></a>Cloudflare Pages（已成功）</h1><p>官网：<a target="_blank" rel="noopener" href="https://pages.cloudflare.com/">https://pages.cloudflare.com/</a></p>
+<ol>
+<li>登录注册不多说</li>
+<li>导入 github 的仓库开启 Pages，我选择的是 github 上那个公开的博客仓库<code>MrHzq.github.io</code></li>
+</ol>
+<p><img src="/img/images/2024/1710902932479-57a8c298-0026-4051-a5a4-86e5feb34bc6.png" srcset="/img/loading.gif" lazyload><img src="/img/images/2024/1710902963095-9cbfb854-161f-4034-9359-cdbcb8cfbb0a.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710903038069-2163d099-8ad3-4e54-90ba-ed93d5577295.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>导入后进行下一步</li>
+</ol>
+<p><img src="/img/images/2024/1710903098963-30db9a66-76c9-4dee-9a77-34780e1ed7d0.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>设置域名</li>
+</ol>
+<p><img src="/img/images/2024/1710903240082-08d26f07-3d5c-462d-895b-5c1fbe5a3aa1.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>开始构建</li>
+</ol>
+<p><img src="/img/images/2024/1710903274849-bb4febbd-b5bd-47ab-91ec-5a1d23e34de0.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710903298139-d2be12a6-07ca-4d77-8869-fc1e366de191.png" srcset="/img/loading.gif" lazyload><img src="/img/images/2024/1710903451471-ed859bb2-2306-4360-81a6-7a1dbaab3bc2.png" srcset="/img/loading.gif" lazyload><br>这是我的访问地址：<a target="_blank" rel="noopener" href="https://huangzq.pages.dev/">https://huangzq.pages.dev/</a>，博客内容访问到了</p>
+<h1 id="Vercel-流程"><a href="#Vercel-流程" class="headerlink" title="Vercel 流程"></a>Vercel 流程</h1><p>官网：<a target="_blank" rel="noopener" href="https://pages.cloudflare.com/">https://pages.cloudflare.com/</a></p>
+<ol>
+<li>可以使用 github 一键登录，因为我们本来就要用到 github 的博客仓库，所以直接一键登录</li>
+</ol>
+<p><img src="/img/images/2024/1710903907276-a70dd3f4-549f-463b-9df6-117e5188fb90.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710903914792-dd1604d0-7951-4d91-833a-6581d249c887.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>添加博客仓库</li>
+</ol>
+<p><img src="/img/images/2024/1710904061043-99bdd228-df12-4546-a58a-520f93500d63.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710904098392-cb0c88a7-ead2-4446-ab98-20d098c135c0.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>部署</li>
+</ol>
+<p><img src="/img/images/2024/1710904156650-a92be8be-1328-4d1e-8f55-55c7f20ad4a6.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710904184467-c9da5b10-94f0-4a22-b9bb-1c2fa3e6647b.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>找到访问网址</li>
+</ol>
+<p><img src="/img/images/2024/1710904241044-39b2e2d2-2a08-4ccb-b3bd-1d27f9439d30.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710904261518-1ab1ca0f-d170-4c16-a94e-c7e9f08abe46.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>我的访问地址为：<a target="_blank" rel="noopener" href="https://huangzq.vercel.app/">https://huangzq.vercel.app/</a>，博客内容一切正常可以看</li>
+</ol>
+<h1 id="Netlify-流程（放弃）"><a href="#Netlify-流程（放弃）" class="headerlink" title="Netlify 流程（放弃）"></a>Netlify 流程（放弃）</h1><p>官网：<a target="_blank" rel="noopener" href="https://www.netlify.com/">https://www.netlify.com/</a></p>
+<ol>
+<li>跟 Vercel，可以使用 github 一键登录</li>
+</ol>
+<p><img src="/img/images/2024/1710904551333-efb7d132-c7a3-4145-bb5c-648ee9cbf3e6.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710904562134-38fc0786-71db-4406-abe3-370e277cead4.png" srcset="/img/loading.gif" lazyload><br>会跳转到这个页面，先不用管，因为它会发一个验证邮件，需要点邮箱里面的去验证<br><img src="/img/images/2024/1710904651650-317212de-d2d4-4ddd-882e-b4ed16a3af84.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>验证手机信息，选择 CN，输入手机号、姓拼音、名拼音</li>
+</ol>
+<p><img src="/img/images/2024/1710904811982-97d1ac9a-5d6c-4f1d-a8e0-9db20da66b9a.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>验证身份证信息，需要上传身份证，放弃了</li>
+</ol>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>上面我们部署了几个平台，但我们发布文章的流程还是很简单的：github 私人仓库提交代码，自动推送打包好的代码到 github 公共仓库、gitee 公共仓库，然后其他基于 github 登录的平台(Cloudfare&#x2F;Vercel)则会自动更新；而 gitee 则需要手动去刷新下<br><img src="/img/images/2024/1710924962033-65c2df38-0ae8-4919-bc88-30ff7f0154dc.jpeg" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" class="category-chain-item">前端实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" class="print-no-link">#前端实践</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>3、从零到一免费线上博客搭建</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端实践/3、从零到一免费线上博客搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86(%E5%9C%A8%E8%81%8C%E4%B8%AD)/" title="个人简历(在职中)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">个人简历(在职中)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/JS%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5%E3%80%81%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="5、观察者模式">
+                        <span class="hidden-mobile">5、观察者模式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

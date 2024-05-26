@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="7-2、nodejs 之 Koa2 + MongoDB 简单开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7-2、nodejs 之 Koa2 + MongoDB 简单开发">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/7-2%E3%80%81nodejs%20%E4%B9%8B%20Koa2%20+%20MongoDB%20%E7%AE%80%E5%8D%95%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="7-2、nodejs 之 Koa2 + MongoDB 简单开发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710339385779-5138f40f-e4fe-43af-80ff-85c73ceda11b.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710404142375-0215bbe2-1bd2-4141-ab0d-b5d85e08403c.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710403298558-fe3c8a6f-875b-4181-9e44-76631ca36a4f.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710418720304-50a38228-8ce2-4e0a-8c50-dde23540ca1c.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710418683823-8c1de85f-f76d-447b-92ad-82076efe35e7.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710383524017-73ae5914-6292-4549-8982-200cd2a4040a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710383615891-7c180c6f-14c8-4865-9a8a-5a93ccc6e43e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710383643357-25325188-733f-4c55-a6dd-af15756d6d0f.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710397876770-9f07edd1-8bd9-4ebc-837e-a80ce982da80.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710383724208-eb29cae4-4916-4148-a3a6-a4e00ce5d3ba.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710377473943-6efe5c69-9d4f-469d-bf0d-426e127f5517.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710377527823-9fd8fc31-8c7b-43a2-aa90-fb50113ab984.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710377700572-b1e5e087-90a1-4d47-ad14-28d685ae0725.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710377727780-e8624112-c258-49f7-9d7e-01425637f2b7.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710377926930-a8ffd968-9c1e-470c-b4b6-c81893ceabe9.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710378121064-446abe55-9840-4691-9005-261a0d88901d.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710378280765-c3c00ea2-c6be-402d-b16a-e885fa771895.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710378728168-650a37dd-7669-4e01-973a-033099f495fc.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710378967002-f1f6084c-2846-46e8-9b1c-d75280e6a4d7.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710397882578-6dbe25c3-48a3-4346-9cce-704200b79dcd.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710398039512-f4e40321-c34a-4809-b88c-50d708d45800.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710382437504-9b3b0954-266e-4b37-ad9e-0bf0682794be.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710399252438-bb1749c4-9fa5-448e-9808-97d1d9e0de02.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710400621986-51cc8155-4bce-4ef4-a538-ec74b835c148.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710400640794-407ed8f0-87e1-4252-b1de-6298c9b70e12.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710400662922-ac9a8bb5-d863-4b7a-94a9-bf13c76e8e19.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710400883394-0a638d6b-9622-4b55-ad35-8ba0b158078a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710401550131-c1037525-0cc7-4882-a88a-8eef66b9898d.png">
+<meta property="article:published_time" content="2024-01-13T23:33:00.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:33:00.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1710339385779-5138f40f-e4fe-43af-80ff-85c73ceda11b.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>7-2、nodejs 之 Koa2 + MongoDB 简单开发 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="7-2、nodejs 之 Koa2 + MongoDB 简单开发"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:33" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">7-2、nodejs 之 Koa2 + MongoDB 简单开发</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:33:00+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>开发一个 Web Server 需要考虑的点有：<br>1、接受请求，解析参数，解析方法类型<br>2、处理静态资源：缓存、存储等<br>3、连接、操作数据库<br>4、登录处理：session、cookie、token 等<br>5、api 的分层、参数过滤<br>6、拦截器的开发<br>7、mq(消息队列)处理、分布式架构<br>8、websocket、webrtc(音视频通话或 P2P 通信) 实时性<br>9、并发处理、事务处理(nodejs 弱项)<br>10、SSR 渲染前端页面</p>
+<blockquote>
+<p>事务处理：白话来说就是一大堆有关联的操作的集合，若里面的任一操作有问题，则该事务就失败了，其中做了操作的还需要进行回滚。而 nodejs 本身对这块的实现很难，它是借助数据库来支持事务处理。</p>
+</blockquote>
+<h1 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h1><p>官网文档：<a target="_blank" rel="noopener" href="https://www.expressjs.com.cn/starter/installing.html">Express 中文文档</a><br>核心是：异步串行流程控制<br><img src="/img/images/2024/1710339385779-5138f40f-e4fe-43af-80ff-85c73ceda11b.jpeg" srcset="/img/loading.gif" lazyload><br>伪代码实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> tasks = [<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">A</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// .....</span><br>    <span class="hljs-title function_">next</span>()<br>  &#125;,<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">B</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// .....</span><br>    <span class="hljs-title function_">next</span>()<br>  &#125;,<br><br>  <span class="hljs-comment">// .....</span><br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">X</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-comment">// .....</span><br>    <span class="hljs-title function_">next</span>()<br>  &#125;<br>]<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">next</span>(<span class="hljs-params">err, result</span>) &#123;<br>  <span class="hljs-keyword">if</span>(err)  <span class="hljs-keyword">throw</span> err<br><br>  <span class="hljs-keyword">var</span> currentTask = tasks.<span class="hljs-title function_">shift</span>()<br>  <span class="hljs-keyword">if</span>(currentTask) <span class="hljs-title function_">currentTask</span>(result)<br><br>  <span class="hljs-title function_">next</span>() <span class="hljs-comment">// 串行调用</span><br>&#125;<br><br><span class="hljs-comment">// 首次调用</span><br><span class="hljs-title function_">next</span>()<br></code></pre></td></tr></table></figure>
+
+<h1 id="Koa2-使用"><a href="#Koa2-使用" class="headerlink" title="Koa2 使用"></a>Koa2 使用</h1><p>官网：<a target="_blank" rel="noopener" href="https://www.koajs.net/">Koa | Koa 中文文档 | Koa 中文网</a></p>
+<blockquote>
+<p>Koa 是一个很简洁的库，所以很多功能需要自己去找，在这里可以找：<a target="_blank" rel="noopener" href="https://github.com/koajs/koa/wiki">Koa 中间件</a></p>
+</blockquote>
+<h2 id="初始准备"><a href="#初始准备" class="headerlink" title="初始准备"></a>初始准备</h2><ol>
+<li>新建个文件夹，然后初始化项目</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir koa2-actual-combat &amp;&amp; cd koa2-actual-combat &amp;&amp; pnpm init<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装 koa 依赖</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">pnpm add koa<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>新建 src 文件夹与入口文件 &amp;&amp; 安装 ip 依赖(可选)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir src &amp;&amp; touch src/server.<span class="hljs-property">js</span> &amp;&amp; pnpm add ip<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><code>src/server.js</code>编码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa&quot;</span>);<br><span class="hljs-keyword">const</span> ip = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ip&quot;</span>);<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();<br><br><span class="hljs-comment">// 响应 - 中间件</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">ctx</span>) =&gt;</span> &#123;<br>  ctx.<span class="hljs-property">body</span> = <span class="hljs-string">&quot;Hello Koa&quot;</span>;<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">`server is running: http://<span class="hljs-subst">$&#123;ip.address()&#125;</span>:3000 or http://localhost:3000`</span><br>  );<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>命令行运行<code>nodemon src/server.js</code>，然后浏览器打开 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> 看效果</li>
+</ol>
+<p><img src="/img/images/2024/1710404142375-0215bbe2-1bd2-4141-ab0d-b5d85e08403c.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710403298558-fe3c8a6f-875b-4181-9e44-76631ca36a4f.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="简单开发"><a href="#简单开发" class="headerlink" title="简单开发"></a>简单开发</h2><blockquote>
+<p>完整线上项目代码：<a target="_blank" rel="noopener" href="https://github.com/MrHzq/koa2-actual-combat">https://github.com/MrHzq/koa2-actual-combat</a></p>
+</blockquote>
+<h3 id="body-参数处理"><a href="#body-参数处理" class="headerlink" title="body 参数处理"></a>body 参数处理</h3><ol start="7">
+<li>安装 <a target="_blank" rel="noopener" href="https://github.com/koajs/body-parser">koa-bodyparser</a>，用于将 string 类型的 body 参数转为 json 格式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">pnpm add @koa/bodyparser<br></code></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>使用 @koa&#x2F;bodyparser</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa&quot;</span>);<br><span class="hljs-keyword">const</span> ip = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ip&quot;</span>);<br><span class="hljs-keyword">const</span> &#123; bodyParser &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@koa/bodyparser&quot;</span>); <span class="hljs-comment">// ++++++</span><br><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();<br><br><span class="hljs-comment">// koaBodyParser: 将 string 类型的 body 参数转为 json 格式 - 中间件</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">bodyParser</span>()); <span class="hljs-comment">// ++++++</span><br><br><span class="hljs-comment">// 响应 - 中间件</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">ctx</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// ++++++ body 是放在 ctx.request.body 内的</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;[ ctx.request.body ] &gt;&quot;</span>, ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>);<br>  ctx.<span class="hljs-property">body</span> = <span class="hljs-string">&quot;Hello Koa&quot;</span>;<br>&#125;);<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">`server is running: http://<span class="hljs-subst">$&#123;ip.address()&#125;</span>:3000 or http://localhost:3000`</span><br>  );<br>&#125;);<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="路由处理"><a href="#路由处理" class="headerlink" title="路由处理"></a>路由处理</h3><ol>
+<li>安装依赖<code>[@koa/router](https://github.com/koajs/router)</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">pnpm add @koa/router<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用路由</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa&quot;</span>);<br><span class="hljs-keyword">const</span> ip = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ip&quot;</span>);<br><span class="hljs-keyword">const</span> &#123; bodyParser &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@koa/bodyparser&quot;</span>);<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@koa/router&quot;</span>);<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();<br><br><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>(&#123; <span class="hljs-attr">prefix</span>: <span class="hljs-string">&quot;/api&quot;</span> &#125;);<br><br><span class="hljs-comment">// koaBodyParser: 将 string 类型的 body 参数转为 json 格式 - 中间件</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">bodyParser</span>());<br><br>router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">ctx</span>) =&gt;</span> &#123;<br>  ctx.<span class="hljs-property">body</span> = <span class="hljs-string">&quot;helloworld&quot;</span>;<br>&#125;);<br><br>app.<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">routes</span>()).<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">allowedMethods</span>());<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">`server is running: http://<span class="hljs-subst">$&#123;ip.address()&#125;</span>:3000 or http://localhost:3000`</span><br>  );<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>路由封装</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir<br></code></pre></td></tr></table></figure>
+
+<h3 id="连接-Mongodb"><a href="#连接-Mongodb" class="headerlink" title="连接 Mongodb"></a>连接 Mongodb</h3><ol>
+<li>安装<code>mongoose</code>依赖</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">pnpm add mongoose<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建文件，写连接代码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs javascript">touch db.<span class="hljs-property">js</span><br><br><span class="hljs-comment">// 写如下代码：</span><br><span class="hljs-comment">// 1. 引入 mongodb 驱动包</span><br><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;mongoose&quot;</span>);<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">Connect</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-comment">// MongoDB 服务器的连接地址，其中可包含用户名、密码、域名、端口、数据库名等信息</span><br>  <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DB_URL</span> = <span class="hljs-string">&quot;mongodb://127.0.0.1:27017/my-test&quot;</span>;<br><br>  <span class="hljs-comment">// 2. 建立连接</span><br>  mongoose.<span class="hljs-title function_">connect</span>(<span class="hljs-variable constant_">DB_URL</span>);<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 连接成功 connected 数据库连接成功</span><br><span class="hljs-comment">   */</span><br>  mongoose.<span class="hljs-property">connection</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;connected&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Mongoose connection open to &quot;</span> + <span class="hljs-variable constant_">DB_URL</span>);<br>  &#125;);<br><br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 连接异常 error 数据库连接错误</span><br><span class="hljs-comment">   */</span><br>  mongoose.<span class="hljs-property">connection</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;error&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Mongoose connection error: &quot;</span> + err);<br>  &#125;);<br>  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 连接断开 disconnected 连接异常断开</span><br><span class="hljs-comment">   */</span><br>  mongoose.<span class="hljs-property">connection</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;disconnected&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Mongoose connection disconnected&quot;</span>);<br>  &#125;);<br>&#125;;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title class_">Connect</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建数据文件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mkdir models &amp;&amp; touch models/other.<span class="hljs-property">js</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><code>models/other.js</code>写入代码</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;mongoose&quot;</span>);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 定义一个模式(相当于传统意义的表结构)</span><br><span class="hljs-comment"> * 每个模式映射mongoDB的一个集合，</span><br><span class="hljs-comment"> * 它定义（只是定义，不是实现）这个集合里面文档的结构，就是定义这个文档有什么字段，字段类型是什么，字段默认值是什么等。</span><br><span class="hljs-comment"> * 除了定义结构外，还定义文档的实例方法，静态模型方法，复合索引，中间件等</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@type</span> &#123;<span class="hljs-type">mongoose</span>&#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">OtherSchema</span> = <span class="hljs-keyword">new</span> mongoose.<span class="hljs-title class_">Schema</span>(<br>  <span class="hljs-comment">//数据为表头数据列</span><br>  &#123;<br>    <span class="hljs-attr">username</span>: <span class="hljs-title class_">String</span>,<br>    <span class="hljs-attr">password</span>: <span class="hljs-title class_">String</span>,<br>  &#125;<br>);<br><br><span class="hljs-keyword">const</span> collationName = <span class="hljs-string">&quot;Other&quot;</span>; <span class="hljs-comment">// 集合名，相当于表名，一定要大写</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Other</span> = mongoose.<span class="hljs-title function_">model</span>(collationName, <span class="hljs-title class_">OtherSchema</span>); <span class="hljs-comment">// 当没有该集合时，自动创建该集合</span><br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title class_">Other</span><br></code></pre></td></tr></table></figure>
+
+<p>5、<code>server.js</code>引入数据库相关</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa&quot;</span>);<br><span class="hljs-keyword">const</span> ip = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ip&quot;</span>);<br><span class="hljs-keyword">const</span> &#123; bodyParser &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@koa/bodyparser&quot;</span>);<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@koa/router&quot;</span>);<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">MongooseConnect</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./db&quot;</span>); <span class="hljs-comment">// ++++++</span><br><span class="hljs-title class_">MongooseConnect</span>(); <span class="hljs-comment">// ++++++</span><br><br><span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">Other</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./models/other&quot;</span>); <span class="hljs-comment">// ++++++</span><br><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();<br><br><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>(&#123; <span class="hljs-attr">prefix</span>: <span class="hljs-string">&quot;/api&quot;</span> &#125;);<br><br><span class="hljs-comment">// koaBodyParser: 将 string 类型的 body 参数转为 json 格式 - 中间件</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">bodyParser</span>());<br><br>router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-function">(<span class="hljs-params">ctx</span>) =&gt;</span> &#123;<br>  ctx.<span class="hljs-property">body</span> = <span class="hljs-string">&quot;helloworld&quot;</span>;<br>&#125;);<br><br><span class="hljs-comment">// ++++++</span><br>router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/other/create&quot;</span>, <span class="hljs-keyword">async</span> (ctx) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> &#123; username, password &#125; = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>;<br>  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Other</span>.<span class="hljs-title function_">create</span>(&#123; username, password &#125;);<br>  ctx.<span class="hljs-property">body</span> = &#123;<br>    <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,<br>    <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;success&quot;</span>,<br>    <span class="hljs-attr">data</span>: res,<br>  &#125;;<br>&#125;);<br><br><span class="hljs-comment">// ++++++</span><br>router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/other/list&quot;</span>, <span class="hljs-keyword">async</span> (ctx) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Other</span>.<span class="hljs-title function_">findOne</span>();<br>  ctx.<span class="hljs-property">body</span> = &#123;<br>    <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,<br>    <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;success&quot;</span>,<br>    <span class="hljs-attr">data</span>: res || [<span class="hljs-string">&quot;default&quot;</span>],<br>  &#125;;<br>&#125;);<br><br>app.<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">routes</span>()).<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">allowedMethods</span>());<br><br>app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    <span class="hljs-string">`server is running: http://<span class="hljs-subst">$&#123;ip.address()&#125;</span>:3000 or http://localhost:3000`</span><br>  );<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>浏览器打开：<a target="_blank" rel="noopener" href="http://localhost:3000/api/other/list">http://localhost:3000/api/other/list</a></li>
+</ol>
+<p><img src="/img/images/2024/1710418720304-50a38228-8ce2-4e0a-8c50-dde23540ca1c.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>调用接口，插入数据</li>
+</ol>
+<p><img src="/img/images/2024/1710418683823-8c1de85f-f76d-447b-92ad-82076efe35e7.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="mac-M1-电脑安装-mongodb"><a href="#mac-M1-电脑安装-mongodb" class="headerlink" title="mac M1 电脑安装 mongodb"></a>mac M1 电脑安装 mongodb</h1><blockquote>
+<p>mongod 是用来连接到 mongodb 数据库服务器的，即服务器端。<br>mongo 是用来启动 MongoDB shell 的，是 mongodb 的命令行客户端</p>
+</blockquote>
+<h2 id="brew-安装流程（首推方式）"><a href="#brew-安装流程（首推方式）" class="headerlink" title="brew 安装流程（首推方式）"></a>brew 安装流程（首推方式）</h2><p>（可选）1、查看 xcode-select 版本，没有的话就需要安装</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">xcode-select -v<br><br>xcode-select --install <span class="hljs-comment">// 安装命令</span><br></code></pre></td></tr></table></figure>
+
+<p>（可选）2、查看 brew 版本，没有的话就需要安装</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew -v<br><br>/bin/bash -c <span class="hljs-string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span> <span class="hljs-comment">// 安装命令</span><br></code></pre></td></tr></table></figure>
+
+<p>3、安装为 MongoDB 定制的 Homebrew tap</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"> brew tap mongodb/brew<br><br><span class="hljs-comment">// 安装完后，查看情况：</span><br>brew tap<br><br><span class="hljs-comment">// caskroom/cask</span><br><span class="hljs-comment">// homebrew/cask</span><br><span class="hljs-comment">// homebrew/core</span><br><span class="hljs-comment">// homebrew/services</span><br><span class="hljs-comment">// mongodb/brew</span><br></code></pre></td></tr></table></figure>
+
+<p>4、更新 brew</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew update<br></code></pre></td></tr></table></figure>
+
+<p>5、安装 MongoDB 5.0 社区版</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew install mongodb-community@<span class="hljs-number">5.0</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710383524017-73ae5914-6292-4549-8982-200cd2a4040a.png" srcset="/img/loading.gif" lazyload><br><code>/opt/homebrew</code>下：<code>/var/mongodb</code>内存放了相关的数据；<code>/var/log/mongodb</code>内存放了相关的日志<br>运行<code>echo &#39;export PATH=&quot;/opt/homebrew/opt/mongodb-community@5.0/bin:$PATH&quot;&#39; &gt;&gt; ~/.zshrc</code>将其注入环境变量，然后再<code>source ~/.zshrc</code>一下，就可以使用<code>mongo、mongod</code>命令了<br>6、启动 mongodb</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew services start mongodb-community@<span class="hljs-number">5.0</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710383615891-7c180c6f-14c8-4865-9a8a-5a93ccc6e43e.png" srcset="/img/loading.gif" lazyload><br>7、查看启动情况</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew services list<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710383643357-25325188-733f-4c55-a6dd-af15756d6d0f.png" srcset="/img/loading.gif" lazyload><br>并且浏览器可打开：<a target="_blank" rel="noopener" href="http://127.0.0.1:27017/">http://127.0.0.1:27017</a> 查看<br><img src="/img/images/2024/1710397876770-9f07edd1-8bd9-4ebc-837e-a80ce982da80.png" srcset="/img/loading.gif" lazyload><br>8、停止 mongodb</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">brew services stop mongodb-community@<span class="hljs-number">5.0</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710383724208-eb29cae4-4916-4148-a3a6-a4e00ce5d3ba.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="压缩包安装流程（次推方式）"><a href="#压缩包安装流程（次推方式）" class="headerlink" title="压缩包安装流程（次推方式）"></a>压缩包安装流程（次推方式）</h2><blockquote>
+<p><strong>流程比较麻烦，brew 安装不成功时可以用这种方式</strong></p>
+</blockquote>
+<p>1、去官网下载压缩包：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a><br><img src="/img/images/2024/1710377473943-6efe5c69-9d4f-469d-bf0d-426e127f5517.png" srcset="/img/loading.gif" lazyload><br>2、解压下载的压缩包，解压后如下<br><img src="/img/images/2024/1710377527823-9fd8fc31-8c7b-43a2-aa90-fb50113ab984.png" srcset="/img/loading.gif" lazyload><br>3、进入<code>/usr/local</code>，打开在“访达”，快捷键：<code>cmd+shift+g</code>，输入<code>/usr/local</code><br><img src="/img/images/2024/1710377700572-b1e5e087-90a1-4d47-ad14-28d685ae0725.png" srcset="/img/loading.gif" lazyload><br>4、新建文件夹<code>mongodb</code>，然后将解压后里面的所有文件拷贝过来<br><img src="/img/images/2024/1710377727780-e8624112-c258-49f7-9d7e-01425637f2b7.png" srcset="/img/loading.gif" lazyload><br>5、配置环境变量，打开你的<code>.bash_profile or .zshrc</code>等</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">open -e ~/.<span class="hljs-property">bash_profile</span><br><span class="hljs-comment">// or</span><br>open -e ~/.<span class="hljs-property">zshrc</span><br></code></pre></td></tr></table></figure>
+
+<p>5.1、最末尾输入下面配置，我的是<code>.zshrc</code>，然后保存并关闭</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-variable constant_">PATH</span>=<span class="hljs-string">&quot;$PATH:/usr/local/mongodb/bin&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>6、然后任意打开终端，输入<code>source ~/.bash_profile</code>or<code>source ~/.zshrc</code><br>7、终端内继续输入<code>mongod -version</code>，正常情况可以看到有打印<br><img src="/img/images/2024/1710377926930-a8ffd968-9c1e-470c-b4b6-c81893ceabe9.png" srcset="/img/loading.gif" lazyload><br>8、若出现异常情况，比如提示<code>xxx不安全</code>，则“访达”进入<code>/usr/local/mongodb/bin</code>文件夹，找到<code>mongod</code>，然后右键 -&gt; 打开，之后一路都点<code>ok</code><br><img src="/img/images/2024/1710378121064-446abe55-9840-4691-9005-261a0d88901d.png" srcset="/img/loading.gif" lazyload><br>9、第 8 步完成后，再次进行第 7 步<br>10、找个目录，新建存放数据与日志的文件夹<br><img src="/img/images/2024/1710378280765-c3c00ea2-c6be-402d-b16a-e885fa771895.png" srcset="/img/loading.gif" lazyload><br>11、更改文件读写权限，打开任意终端，直接输入下面的命令，需要输入你的电脑密码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">sudo chown -R $(whoami) /<span class="hljs-title class_">Users</span>/hzq/sqldata/mongodb/data<br>sudo chown -R $(whoami) /<span class="hljs-title class_">Users</span>/hzq/sqldata/mongodb/log<br></code></pre></td></tr></table></figure>
+
+<p>12、启动 mongodb，打开任意终端，输入下面的命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">mongod --dbpath /<span class="hljs-title class_">Users</span>/hzq/sqldata/mongodb/data --logpath /<span class="hljs-title class_">Users</span>/hzq/sqldata/mongodb/log/mongo.<span class="hljs-property">log</span><br><br><span class="hljs-comment">// --dbpath 设置数据存放目录</span><br><span class="hljs-comment">// --logpath 设置日志存放目录</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710378728168-650a37dd-7669-4e01-973a-033099f495fc.png" srcset="/img/loading.gif" lazyload><br>13、查看启动情况：打开任意终端，输入下面的命令，看到启动的进程 ID 是 34030</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">ps aux | grep -v grep | grep mongod<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/images/2024/1710378967002-f1f6084c-2846-46e8-9b1c-d75280e6a4d7.png" srcset="/img/loading.gif" lazyload><br>14、查看启动情况：浏览器打开 <a target="_blank" rel="noopener" href="http://127.0.0.1:27017/">http://127.0.0.1:27017</a>，看到这个说明启动成功<br><img src="/img/images/2024/1710397882578-6dbe25c3-48a3-4346-9cce-704200b79dcd.png" srcset="/img/loading.gif" lazyload><br>15、停止服务，直接终端内<code>conrtol + c</code>可终止<br>16、若无法终止，可终端输入下面的命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 简单高效</span><br>kill mongod_PID <span class="hljs-comment">// 我的是 kill 34030</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><h3 id="官方工具（推荐安装）"><a href="#官方工具（推荐安装）" class="headerlink" title="官方工具（推荐安装）"></a>官方工具（推荐安装）</h3><p><strong>不支持 SQL 查询</strong><br>1、下载官方工具：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/compass">官网下载地址</a>，然后安装、打开，进入主页面<br>2、连接（先命令行启动 mongodb 哦）<br><img src="/img/images/2024/1710398039512-f4e40321-c34a-4809-b88c-50d708d45800.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710382437504-9b3b0954-266e-4b37-ad9e-0bf0682794be.png" srcset="/img/loading.gif" lazyload><br>3、连接后长这个样子<br><img src="/img/images/2024/1710399252438-bb1749c4-9fa5-448e-9808-97d1d9e0de02.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3><h4 id="NoSQLBooster（推荐安装）"><a href="#NoSQLBooster（推荐安装）" class="headerlink" title="NoSQLBooster（推荐安装）"></a>NoSQLBooster（推荐安装）</h4><p>支持 SQL 查询<br>1、NoSQLBooster 下载地址：<a target="_blank" rel="noopener" href="https://nosqlbooster.com/downloads">官网下载地址</a>，然后安装、打开，进入主页面<br>2、连接<br><img src="/img/images/2024/1710400621986-51cc8155-4bce-4ef4-a538-ec74b835c148.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710400640794-407ed8f0-87e1-4252-b1de-6298c9b70e12.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710400662922-ac9a8bb5-d863-4b7a-94a9-bf13c76e8e19.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710400883394-0a638d6b-9622-4b55-ad35-8ba0b158078a.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="MongoDB-for-VS-Code"><a href="#MongoDB-for-VS-Code" class="headerlink" title="MongoDB for VS Code"></a>MongoDB for VS Code</h4><p>VScode 插件<br>1、安装插件，创建连接，效果如下：<br><img src="/img/images/2024/1710401550131-c1037525-0cc7-4882-a88a-8eef66b9898d.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="mongodb-增删改查（TODO）"><a href="#mongodb-增删改查（TODO）" class="headerlink" title="mongodb 增删改查（TODO）"></a>mongodb 增删改查（TODO）</h3>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>7-2、nodejs 之 Koa2 + MongoDB 简单开发</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/7-2、nodejs 之 Koa2 + MongoDB 简单开发/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/8-1%E3%80%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="8-1、性能优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">8-1、性能优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/7-1%E3%80%81nodejs%20%E5%9F%BA%E7%A1%80/" title="7-1、nodejs 基础">
+                        <span class="hidden-mobile">7-1、nodejs 基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

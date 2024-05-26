@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/2%E3%80%81Github%20Actions%20+%20Github%20Pages%20%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%20Vue3%20+%20Vite%20%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597589857-a44b938d-7b5e-4f4c-9407-5ff7d4ba6f79.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597317822-1a922f53-d30f-48ea-bf6c-b1a82d1e71f9.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597268706-8aaa359d-ad95-4a62-9b91-b5042b378d27.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597419982-ba62aeb3-7038-4dda-bf26-e585d631a958.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597532311-514f8767-e0b5-4d7a-842f-8294f7821b63.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597898591-69265a8c-5274-401e-8810-68f7af5ca784.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710597795490-ac037232-0b58-4b73-8175-ba5bbb2997fd.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710598577857-8efcb19a-6547-4a61-9ba2-12d0bca0bdfd.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710598745761-87069eb6-355b-4274-a6ab-c566c22f5c70.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710598890183-2efdcd8c-0e87-4751-ba18-ae629830d6d3.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710598933216-5bba06f9-ee6e-4d0c-a9b2-6834ed405b8e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710599085621-14a9497b-7550-4886-a761-7d640c27c7ac.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710599172288-da099efc-55c9-4134-af29-3189da241c5e.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710599193430-999c43c8-0efc-4931-be09-211845eb0fb6.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710599253666-5a5a46ee-e12f-4cd6-b051-26459ba81223.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710599844812-e04ce46a-1d36-479f-8885-b5d0910d08f1.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710600221946-8d544556-3643-4af7-a7de-5df28b23eb99.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710600447256-a1d5d90e-b492-4d34-80b0-0f2109ba624b.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710602934264-4fdec3c4-4a96-4c6e-8bb3-e0cb1897bc5b.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710601675566-11beb7ea-bd96-43e0-bbc4-62f16de4e7a2.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710602432973-e2a8a88c-3baf-4be6-bd80-2af29b2d30e9.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710602840198-5225e39a-6df2-4738-a9d4-b178cd245091.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710603100510-1384e529-2ab2-48a0-9c62-d9f27a712d02.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710600476696-235208a7-9e0c-4ab1-9a8e-7720e6992d4a.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710600552403-7186eeff-912f-4197-bef1-6aeb34f625d5.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2024/1710600613320-f5e92dc3-8860-4ad8-8a7d-5564454c1fb5.png">
+<meta property="article:published_time" content="2024-01-13T23:32:07.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:34:07.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端实践">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2024/1710597589857-a44b938d-7b5e-4f4c-9407-5ff7d4ba6f79.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:34:07+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>目的：提交代码，自动触发构建，并发布到 Github Pages 上<br>不详细讲为什么，只讲在怎么做</p>
+</blockquote>
+<h1 id="项目准备"><a href="#项目准备" class="headerlink" title="项目准备"></a>项目准备</h1><ol>
+<li>先在<code>github</code>上准备一个前端项目，我使用<code>vue3</code>搭建了一个前端项目，技术栈为：<code>vue3、vite、element-plus、pinia、vue-router、headlessui、tailwindcss、typescript</code></li>
+</ol>
+<blockquote>
+<p>如何搭建可看这篇：<a target="_blank" rel="noopener" href="https://www.yuque.com/u53094/vd58kv/ylgafzvg8m3tgbo8?singleDoc#">《vue3 + vite + element-plus + tailwindcss + typescript 实战项目》</a></p>
+</blockquote>
+<ol start="2">
+<li>前端项目情况：只有<code>main</code>分支；项目文件如下图，代码<a target="_blank" rel="noopener" href="https://github.com/MrHzq/vue3-vite-element-plus-tailwindcss-typescript">在这</a></li>
+</ol>
+<p><img src="/img/images/2024/1710597589857-a44b938d-7b5e-4f4c-9407-5ff7d4ba6f79.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Github-Pages-配置"><a href="#Github-Pages-配置" class="headerlink" title="Github Pages 配置"></a>Github Pages 配置</h1><blockquote>
+<p>可以理解为免费的线上服务器，可展示 build 后的前端项目</p>
+</blockquote>
+<ol>
+<li>开启配置</li>
+</ol>
+<p><img src="/img/images/2024/1710597317822-1a922f53-d30f-48ea-bf6c-b1a82d1e71f9.png" srcset="/img/loading.gif" lazyload><img src="/img/images/2024/1710597268706-8aaa359d-ad95-4a62-9b91-b5042b378d27.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>开启配置后，再刷新下页面（没有的话可强刷、关闭重进），可以看到访问地址</li>
+</ol>
+<p><img src="/img/images/2024/1710597419982-ba62aeb3-7038-4dda-bf26-e585d631a958.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>访问下地址，发现页面是空白的，打开控制台，发现有 html 结构，原因是：会默认加载了该 github 项目下根目录的 index.html 文件</li>
+</ol>
+<p><img src="/img/images/2024/1710597532311-514f8767-e0b5-4d7a-842f-8294f7821b63.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>现在去改一下该 github 项目根目录的 index.html 文件，加个点文字，然后提交代码</li>
+</ol>
+<p><img src="/img/images/2024/1710597898591-69265a8c-5274-401e-8810-68f7af5ca784.png" srcset="/img/loading.gif" lazyload><br>等个 1、2 分钟，再刷新访问网址，就能看到最新的内容<br><img src="/img/images/2024/1710597795490-ac037232-0b58-4b73-8175-ba5bbb2997fd.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>至此简单的 github pages 配置完成，可以放只有一个 .html 的在线简历</li>
+</ol>
+<h1 id="Github-Actions-配置"><a href="#Github-Actions-配置" class="headerlink" title="Github Actions 配置"></a>Github Actions 配置</h1><blockquote>
+<p>可以理解为 CI、CD<br>入门文档可看这篇：<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html">GitHub Actions 入门教程 - 阮一峰的网络日志</a></p>
+</blockquote>
+<p>可以配合上面的 Github Pages，实现提交代码，自动构建并发布的效果。</p>
+<ol>
+<li>更改<code>Github Pages</code>配置，改为<code>Github Actions</code>形式</li>
+</ol>
+<p><img src="/img/images/2024/1710598577857-8efcb19a-6547-4a61-9ba2-12d0bca0bdfd.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>创建<code>Github Actions</code>的配置</li>
+</ol>
+<p><img src="/img/images/2024/1710598745761-87069eb6-355b-4274-a6ab-c566c22f5c70.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li>会帮我们生成了一个最基本的配置，然后我们提交到<code>mian</code>分支上</li>
+</ol>
+<p><img src="/img/images/2024/1710598890183-2efdcd8c-0e87-4751-ba18-ae629830d6d3.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710598933216-5bba06f9-ee6e-4d0c-a9b2-6834ed405b8e.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>提交后，我们进入<code>Actions</code>下，可看到第一个<code>workflows</code></li>
+</ol>
+<p><img src="/img/images/2024/1710599085621-14a9497b-7550-4886-a761-7d640c27c7ac.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>现在去改一下该 github 项目根目录的 index.html 文件，再加点文字，然后提交代码</li>
+</ol>
+<p><img src="/img/images/2024/1710599172288-da099efc-55c9-4134-af29-3189da241c5e.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="6">
+<li>然后去<code>Actions</code>下，看又有了一个<code>workflow</code></li>
+</ol>
+<p><img src="/img/images/2024/1710599193430-999c43c8-0efc-4931-be09-211845eb0fb6.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="7">
+<li>然后等它成功后，访问下该项目的 Github Pages，看到内容也变化了</li>
+</ol>
+<p><img src="/img/images/2024/1710599253666-5a5a46ee-e12f-4cd6-b051-26459ba81223.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="8">
+<li>至此简单的 github actions 配置完成，结合 github pages 可以放只有一个 .html 的在线简历，实现提交代码自动部署功能（虽然没啥用）</li>
+</ol>
+<h1 id="Vue3-Vite-项目接入"><a href="#Vue3-Vite-项目接入" class="headerlink" title="Vue3 + Vite 项目接入"></a>Vue3 + Vite 项目接入</h1><p>上面的流程比较简单，真正的项目是需要：提交代码后，触发构建、生成 dist、部署 dist，最终实现页面内容的更新</p>
+<blockquote>
+<p>本次项目的线上代码地址：<a target="_blank" rel="noopener" href="https://github.com/MrHzq/vue3-vite-element-plus-tailwindcss-typescript">在这</a></p>
+</blockquote>
+<ol>
+<li>将项目拉取到本地：<code>git clone xxx</code></li>
+<li>先在本地跑下构建命令，确定没得问题</li>
+<li>更改<code>vite.config.ts</code>配置，将打包目录改为 github 项目目录</li>
+</ol>
+<p><img src="/img/images/2024/1710599844812-e04ce46a-1d36-479f-8885-b5d0910d08f1.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>更改<code>.github/workflows/static.yml</code>配置，加入打包流程：</li>
+</ol>
+<p><img src="/img/images/2024/1710600221946-8d544556-3643-4af7-a7de-5df28b23eb99.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="5">
+<li>完整代码如下（pnpm 版）：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs c"># Simple workflow <span class="hljs-keyword">for</span> deploying <span class="hljs-type">static</span> content to GitHub Pages<br>name: Deploy <span class="hljs-type">static</span> content to Pages<br><br>on:<br>  # Runs on pushes targeting the <span class="hljs-keyword">default</span> branch<br>  push:<br>    branches: [<span class="hljs-string">&#x27;main&#x27;</span>]<br><br>  # Allows you to run this workflow manually from the Actions tab<br>  workflow_dispatch:<br><br># Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages<br>permissions:<br>  contents: read<br>  pages: write<br>  id-token: write<br><br># Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.<br># However, <span class="hljs-keyword">do</span> NOT cancel in-progress runs as we want to allow these production deployments to complete.<br>concurrency:<br>  group: <span class="hljs-string">&#x27;pages&#x27;</span><br>  cancel-in-progress: <span class="hljs-literal">false</span><br><br>jobs:<br>  # Single deploy job since we<span class="hljs-number">&#x27;</span>re just deploying<br>  deploy:<br>    environment:<br>      name: github-pages<br>      url: $&#123;&#123; steps.deployment.outputs.page_url &#125;&#125;<br>    runs-on: ubuntu-latest<br>    steps:<br>      - name: Checkout<br>        uses: actions/checkout@v4<br>      - uses: pnpm/action-setup@v2<br>        with:<br>          version: <span class="hljs-number">8</span><br>      - name: Setup Node<br>        uses: actions/setup-node@v3<br>        with:<br>          node-version: <span class="hljs-number">20</span><br>          cache: <span class="hljs-string">&#x27;pnpm&#x27;</span><br>      - name: Install dependencies<br>        run: pnpm install<br>      - name: Build<br>        run: pnpm run build<br>      - name: Setup Pages<br>        uses: actions/configure-pages@v4<br>      - name: Upload artifact<br>        uses: actions/upload-pages-artifact@v3<br>        with:<br>          # Upload entire repository<br>          path: <span class="hljs-string">&#x27;./dist&#x27;</span><br>      - name: Deploy to GitHub Pages<br>        id: deployment<br>        uses: actions/deploy-pages@v4<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>完整代码如下（npm 版）：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs c"># Simple workflow <span class="hljs-keyword">for</span> deploying <span class="hljs-type">static</span> content to GitHub Pages<br>name: Deploy <span class="hljs-type">static</span> content to Pages<br><br>on:<br>  # Runs on pushes targeting the <span class="hljs-keyword">default</span> branch<br>  push:<br>    branches: [<span class="hljs-string">&#x27;main&#x27;</span>]<br><br>  # Allows you to run this workflow manually from the Actions tab<br>  workflow_dispatch:<br><br># Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages<br>permissions:<br>  contents: read<br>  pages: write<br>  id-token: write<br><br># Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.<br># However, <span class="hljs-keyword">do</span> NOT cancel in-progress runs as we want to allow these production deployments to complete.<br>concurrency:<br>  group: <span class="hljs-string">&#x27;pages&#x27;</span><br>  cancel-in-progress: <span class="hljs-literal">false</span><br><br>jobs:<br>  # Single deploy job since we<span class="hljs-number">&#x27;</span>re just deploying<br>  deploy:<br>    environment:<br>      name: github-pages<br>      url: $&#123;&#123; steps.deployment.outputs.page_url &#125;&#125;<br>    runs-on: ubuntu-latest<br>    steps:<br>      - name: Checkout<br>        uses: actions/checkout@v4<br>      - name: Setup Node<br>        uses: actions/setup-node@v3<br>        with:<br>          node-version: <span class="hljs-number">20</span><br>          cache: <span class="hljs-string">&#x27;npm&#x27;</span><br>      - name: Install dependencies<br>        run: npm install<br>      - name: Build<br>        run: npm run build<br>      - name: Setup Pages<br>        uses: actions/configure-pages@v4<br>      - name: Upload artifact<br>        uses: actions/upload-pages-artifact@v3<br>        with:<br>          # Upload entire repository<br>          path: <span class="hljs-string">&#x27;./dist&#x27;</span><br>      - name: Deploy to GitHub Pages<br>        id: deployment<br>        uses: actions/deploy-pages@v4<br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>提交一下代码，然后去看<code>Actions</code>状态</li>
+</ol>
+<p><img src="/img/images/2024/1710600447256-a1d5d90e-b492-4d34-80b0-0f2109ba624b.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="8">
+<li>如果觉得频繁跳到 github 麻烦，可以安装 VScode 插件：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions">GitHub Actions</a>，然后在 VScode 里面直接看，并且还可点击直接打开网页的<code>github actions</code>内</li>
+</ol>
+<p><img src="/img/images/2024/1710602934264-4fdec3c4-4a96-4c6e-8bb3-e0cb1897bc5b.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="9">
+<li>actions 成功后，打开项目的 github pages 访问地址，看看是否对了，已经对了</li>
+</ol>
+<p><img src="/img/images/2024/1710601675566-11beb7ea-bd96-43e0-bbc4-62f16de4e7a2.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="10">
+<li>然后点点页面，跳转下路由，都是对的</li>
+<li>但是刷新下发现就 404 了，这不是浪费感情吗？</li>
+</ol>
+<p>别急，这个原因是前端项目采用了<code>history</code>的路由模式，对<code>github pages</code>来说，访问<code>https://mrhzq.github.io/vue3-vite-element-plus-tailwindcss-typescript/about</code>是访问<code>/about</code>目录下的<code>index.html</code><br>但我们哪有<code>/about</code>目录，所以就去找访问目录(我们配的<code>/dist</code>)下的<code>404.html</code>，没找到就显示官方的 404 页面</p>
+<h1 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h1><h2 id="Github-Pages-刷新后，页面-404"><a href="#Github-Pages-刷新后，页面-404" class="headerlink" title="Github Pages 刷新后，页面 404"></a>Github Pages 刷新后，页面 404</h2><blockquote>
+<p>原因上面一行就有写，不赘述；正确的处理方式是：配置 nginx，将其他路径的访问全部都指向 index.html。但 Github Pages 我们没法这样去处理，所以只能“取巧”</p>
+</blockquote>
+<p>1、前端项目采用<code>hash</code>模式，重新触发<code>actions</code>后，就完全正常了，但地址就不好看，看个人选择。只需改路由就行，然后提交代码，等<code>actions</code>成功，就可以任意刷新<br><img src="/img/images/2024/1710602432973-e2a8a88c-3baf-4be6-bd80-2af29b2d30e9.png" srcset="/img/loading.gif" lazyload></p>
+<p>2、在访问目录(我们配的<code>/dist</code>)下的创建一个<code>404.html</code>，内容跟<code>index.html</code>一模一样，这样显示<code>404.html</code>时也跟正常显示<code>index.html</code>一样</p>
+<blockquote>
+<p>我们可以在打包成功了，复制下<code>index.html</code>，命名为<code>404.html</code>就行</p>
+</blockquote>
+<p>a、<code>package.json</code>新增一个<code>404build</code>命令，用于生成<code>404.html</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">&#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-string">&quot;404build&quot;</span>: <span class="hljs-string">&quot;cp dist/index.html dist/404.html&quot;</span><br>  &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>b、<code>.github/workflows/static.yml</code>新增一个<code>404Build</code>步骤<br><img src="/img/images/2024/1710602840198-5225e39a-6df2-4738-a9d4-b178cd245091.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">- name: <span class="hljs-number">404B</span>uild<br>run: npm run <span class="hljs-number">404b</span>uild<br></code></pre></td></tr></table></figure>
+
+<p>c、提交代码，等<code>actions</code>成功，就可以任意刷新<br><img src="/img/images/2024/1710603100510-1384e529-2ab2-48a0-9c62-d9f27a712d02.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Github-Actions-失败处理"><a href="#Github-Actions-失败处理" class="headerlink" title="Github Actions 失败处理"></a>Github Actions 失败处理</h2><blockquote>
+<p>失败的，github 会发邮件给你哦</p>
+</blockquote>
+<ol>
+<li>找到失败的</li>
+</ol>
+<p><img src="/img/images/2024/1710600476696-235208a7-9e0c-4ab1-9a8e-7720e6992d4a.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li>进入详情</li>
+</ol>
+<p><img src="/img/images/2024/1710600552403-7186eeff-912f-4197-bef1-6aeb34f625d5.png" srcset="/img/loading.gif" lazyload><br><img src="/img/images/2024/1710600613320-f5e92dc3-8860-4ad8-8a7d-5564454c1fb5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="报错：Supported-file-patterns-package-lock-json-npm-shrinkwrap-json-yarn-lock"><a href="#报错：Supported-file-patterns-package-lock-json-npm-shrinkwrap-json-yarn-lock" class="headerlink" title="报错：Supported file patterns: package-lock.json,npm-shrinkwrap.json,yarn.lock"></a>报错：Supported file patterns: package-lock.json,npm-shrinkwrap.json,yarn.lock</h3><p>因为我使用的是 pnpm，所以项目中没有 package-lock.json 文件。<br>处理方式：<code>npm i</code>，生成一个<code>package-lock.json</code>然后提交代码</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" class="category-chain-item">前端实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" class="print-no-link">#前端实践</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端实践/2、Github Actions + Github Pages 自动发布 Vue3 + Vite 项目/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/0-1%E3%80%81%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" title="0-1、前端八股文">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">0-1、前端八股文</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/1%E3%80%81vue3%20+%20vite%20+%20element-plus%20+%20tailwindcss%20+%20typescript%20%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/" title="1、vue3 + vite + element-plus + tailwindcss + typescript 实战项目">
+                        <span class="hidden-mobile">1、vue3 + vite + element-plus + tailwindcss + typescript 实战项目</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

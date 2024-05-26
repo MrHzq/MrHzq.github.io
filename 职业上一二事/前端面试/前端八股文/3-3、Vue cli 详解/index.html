@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="黄智强">
+  <meta name="keywords" content="黄智强,个人博客,黄智强的博客,前端,理财,健康饮食,算命,养生,AIGC">
+  
+    <meta name="description" content="3-3、Vue cli 详解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3-3、Vue cli 详解">
+<meta property="og:url" content="https://mrhzq.github.io/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/3-3%E3%80%81Vue%20cli%20%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="黄智强的博客">
+<meta property="og:description" content="3-3、Vue cli 详解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1703603693629-dde0684b-9bbd-4f8c-afe1-545681df7c98.png">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1703689153892-fb66470d-ae26-4ab2-969d-0f4aa3bf34f3.jpeg">
+<meta property="og:image" content="https://mrhzq.github.io/img/images/2023/1703692005634-473ca13c-0f99-47bf-8b07-8d66e500aff6.jpeg">
+<meta property="article:published_time" content="2024-01-13T23:32:41.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:32:41.000Z">
+<meta property="article:author" content="黄智强">
+<meta property="article:tag" content="职业上一二事">
+<meta property="article:tag" content="前端面试">
+<meta property="article:tag" content="前端八股文">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mrhzq.github.io/img/images/2023/1703603693629-dde0684b-9bbd-4f8c-afe1-545681df7c98.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>3-3、Vue cli 详解 - 黄智强的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"mrhzq.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":["8d444eea7721c65dc4af82b3d51c7d57","ac7285ab2138ab848cf5d71468ec7743"],"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8d444eea7721c65dc4af82b3d51c7d57,ac7285ab2138ab848cf5d71468ec7743";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>黄智强的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>文章</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>更多</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://fluid.s3.bitiful.net/bg/vdysjx.png?w=1920&fmt=webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3-3、Vue cli 详解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        黄智强
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-13 23:32" pubdate>
+          2024年1月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">3-3、Vue cli 详解</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-03-22T23:32:41+00:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>前端脚手架：快速创建项目的基础代码框架和配置的工具</p>
+<p>Vue cli 目前处于<strong>维护状态</strong>：</p>
+<p>使用介绍：<a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/">介绍 | Vue CLI</a></p>
+<p>官方源码：<a target="_blank" rel="noopener" href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue">https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue</a></p>
+<p>Vue3.0 推荐使用 <a target="_blank" rel="noopener" href="https://github.com/vuejs/create-vue">create-vue</a> 来创建项目</p>
+<h1 id="Vue-cli-使用流程"><a href="#Vue-cli-使用流程" class="headerlink" title="Vue cli 使用流程"></a>Vue cli 使用流程</h1><p>创建项目 &#x3D;&gt; 选择配置 &#x3D;&gt; 安装依赖</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 创建项目</span><br>$ vue create yourProjectName<br><br><span class="hljs-comment">// 选择模板</span><br><span class="hljs-title class_">Vue</span> <span class="hljs-variable constant_">CLI</span> v5<span class="hljs-number">.0</span><span class="hljs-number">.8</span><br>? <span class="hljs-title class_">Please</span> pick a <span class="hljs-attr">preset</span>: (<span class="hljs-title class_">Use</span> arrow keys)<br>❯ <span class="hljs-title class_">Default</span> ([<span class="hljs-title class_">Vue</span> <span class="hljs-number">3</span>] babel, eslint)<br>  <span class="hljs-title class_">Default</span> ([<span class="hljs-title class_">Vue</span> <span class="hljs-number">2</span>] babel, eslint)<br>  <span class="hljs-title class_">Manually</span> select features<br><br><span class="hljs-comment">// 手动配置</span><br><span class="hljs-title class_">Vue</span> <span class="hljs-variable constant_">CLI</span> v5<span class="hljs-number">.0</span><span class="hljs-number">.8</span><br>? <span class="hljs-title class_">Please</span> pick a <span class="hljs-attr">preset</span>: <span class="hljs-title class_">Manually</span> select features<br>? <span class="hljs-title class_">Check</span> the features needed <span class="hljs-keyword">for</span> your <span class="hljs-attr">project</span>: (<span class="hljs-title class_">Press</span> &lt;space&gt; to select, &lt;a&gt; to<br>toggle all, &lt;i&gt; to invert selection, and &lt;enter&gt; to proceed)<br>❯◉ <span class="hljs-title class_">Babel</span><br> ◯ <span class="hljs-title class_">TypeScript</span><br> ◯ <span class="hljs-title class_">Progressive</span> <span class="hljs-title class_">Web</span> <span class="hljs-title class_">App</span> (<span class="hljs-variable constant_">PWA</span>) <span class="hljs-title class_">Support</span><br> ◯ <span class="hljs-title class_">Router</span><br> ◯ <span class="hljs-title class_">Vuex</span><br> ◯ <span class="hljs-variable constant_">CSS</span> <span class="hljs-title class_">Pre</span>-processors<br> ◉ <span class="hljs-title class_">Linter</span> / <span class="hljs-title class_">Formatter</span><br> ◯ <span class="hljs-title class_">Unit</span> <span class="hljs-title class_">Testing</span><br> ◯ <span class="hljs-variable constant_">E2E</span> <span class="hljs-title class_">Testing</span><br><br><span class="hljs-comment">// 拉取项目并安装依赖</span><br><span class="hljs-title class_">Vue</span> <span class="hljs-variable constant_">CLI</span> v5<span class="hljs-number">.0</span><span class="hljs-number">.8</span><br>✨  <span class="hljs-title class_">Creating</span> project <span class="hljs-keyword">in</span> /<span class="hljs-title class_">Users</span>/hzq/code/mianshi/<span class="hljs-number">3</span>-<span class="hljs-number">1</span> <span class="hljs-title class_">Vue</span> 基础/v2-project.<br>🗃  <span class="hljs-title class_">Initializing</span> git repository...<br>⚙️  <span class="hljs-title class_">Installing</span> <span class="hljs-variable constant_">CLI</span> plugins. <span class="hljs-title class_">This</span> might take a <span class="hljs-keyword">while</span>...<br><br>🚀  <span class="hljs-title class_">Invoking</span> generators...<br>📦  <span class="hljs-title class_">Installing</span> additional dependencies...<br><br>⚓  <span class="hljs-title class_">Running</span> completion hooks...<br><br>📄  <span class="hljs-title class_">Generating</span> <span class="hljs-variable constant_">README</span>.<span class="hljs-property">md</span>...<br><br>🎉  <span class="hljs-title class_">Successfully</span> created project v2-project.<br>👉  <span class="hljs-title class_">Get</span> started <span class="hljs-keyword">with</span> the following <span class="hljs-attr">commands</span>:<br><br> $ cd v2-project<br> $ pnpm run serve<br><br><span class="hljs-comment">// 运行项目</span><br> $ pnpm run serve<br></code></pre></td></tr></table></figure>
+
+<h1 id="Vue-cli-基础原理"><a href="#Vue-cli-基础原理" class="headerlink" title="Vue cli 基础原理"></a>Vue cli 基础原理</h1><blockquote>
+<p>vue 指令是如何提供的？<br>如何实现与用户交互的？<br>如何生成代码文件的？</p>
+</blockquote>
+<h2 id="Vue-cli-2-x-版本"><a href="#Vue-cli-2-x-版本" class="headerlink" title="Vue cli 2.x 版本"></a>Vue cli 2.x 版本</h2><p>项目目录：<br><img src="/img/images/2023/1703603693629-dde0684b-9bbd-4f8c-afe1-545681df7c98.png" srcset="/img/loading.gif" lazyload></p>
+<p>首先<code>vue</code>命令是在哪里注入到全局的呢？</p>
+<p><code>package.json</code>代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">&quot;bin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;vue&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bin/vue&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 这里将 vue 注入到全局</span><br>    <span class="hljs-attr">&quot;vue-init&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bin/vue-init&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;vue-list&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;bin/vue-list&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>所以我们才可以直接用<code>vue</code>命令，比如<code>vue -h、vue -V</code></p>
+<p>其次<code>bin/vue</code>里面定义了更多的子命令，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">#!/usr/bin/env node</span><br><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;commander&#x27;</span>)<br>  .<span class="hljs-title function_">version</span>(<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../package&#x27;</span>).<span class="hljs-property">version</span>)<br>  .<span class="hljs-title function_">usage</span>(<span class="hljs-string">&#x27;&lt;command&gt; [options]&#x27;</span>)<br>  .<span class="hljs-title function_">command</span>(<span class="hljs-string">&#x27;init&#x27;</span>, <span class="hljs-string">&#x27;generate a new project from a template&#x27;</span>)<br>  .<span class="hljs-title function_">command</span>(<span class="hljs-string">&#x27;list&#x27;</span>, <span class="hljs-string">&#x27;list available official templates&#x27;</span>)<br>  .<span class="hljs-title function_">command</span>(<span class="hljs-string">&#x27;build&#x27;</span>, <span class="hljs-string">&#x27;prototype a new project&#x27;</span>)<br>  .<span class="hljs-title function_">parse</span>(process.<span class="hljs-property">argv</span>)<br></code></pre></td></tr></table></figure>
+
+<p><code>bin/vue</code>代码解析：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-meta">#!/user/bin/env node // 特殊注释，告诉操作系统使用 node 来执行该文件</span><br><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;commander&#x27;</span>) <span class="hljs-comment">// 引入 commander 库，用于解析命令行参数</span><br> .<span class="hljs-title function_">version</span>(<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../package&#x27;</span>).<span class="hljs-property">version</span>) <span class="hljs-comment">// 设置版本</span><br> .<span class="hljs-title function_">usage</span>(<span class="hljs-string">&#x27;&lt;command&gt; [options]&#x27;</span>) <span class="hljs-comment">// 定义默认信息，用户输入 -h 时显示这个信息</span><br> .<span class="hljs-title function_">commnad</span>(<span class="hljs-string">&#x27;init&#x27;</span>, <span class="hljs-string">&#x27;generate a new project from a template&#x27;</span>) <span class="hljs-comment">// 定义 init 子命令，后面的是它的描述</span><br> .<span class="hljs-title function_">command</span>(<span class="hljs-string">&#x27;list&#x27;</span>, <span class="hljs-string">&#x27;list available official templates&#x27;</span>) <span class="hljs-comment">// 定义 list 子命令，后面的是它的描述</span><br>  .<span class="hljs-title function_">command</span>(<span class="hljs-string">&#x27;build&#x27;</span>, <span class="hljs-string">&#x27;prototype a new project&#x27;</span>) <span class="hljs-comment">// 定义 build 子命令，后面的是它的描述</span><br> .<span class="hljs-title function_">parse</span>(process.<span class="hljs-property">argv</span>) <span class="hljs-comment">// 使用 parse 解析命令行参数，process.argv 是包含命令行参数的数组</span><br><span class="hljs-comment">// 最后 commander 会设置全局变量来反映这些参数</span><br><br><span class="hljs-comment">// 总的来说，这段代码定义了一个简单的命令行工具，它有三个子命令：init, list, 和 build，</span><br><span class="hljs-comment">// 并为每个子命令提供了简短的描述。用户可以通过这些子命令和相关的选项与工具进行交互。</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="主流程"><a href="#主流程" class="headerlink" title="主流程"></a>主流程</h3><p>主流程代码是在<code>bin/vue-init</code>里面</p>
+<p>对应代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-meta">#!/usr/bin/env node</span><br><span class="hljs-comment">// npm 包依赖项 -- start</span><br><span class="hljs-comment">// download: 下载 git 仓库代码工具，类似于 git clone xxx</span><br><span class="hljs-keyword">const</span> download = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;download-git-repo&quot;</span>);<br><span class="hljs-comment">// program: 命令行工具: 定义命令和选项，并自动生成帮助和用法信息</span><br><span class="hljs-keyword">const</span> program = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;commander&quot;</span>);<br><span class="hljs-comment">// fs: 文件系统(File System)内置模块，可操作本地文件的读取、写入、创建、删除、复制等</span><br><span class="hljs-keyword">const</span> exists = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>).<span class="hljs-property">existsSync</span>;<br><span class="hljs-comment">// path: 内置模块，处理文件路径，可拼接、解析、转换和格式化文件路径</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);<br><span class="hljs-comment">// ora: 在命令行界面（CLI）中显示加载动画的</span><br><span class="hljs-keyword">const</span> ora = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ora&quot;</span>);<br><span class="hljs-comment">// user-home: 用于获取用户根目录</span><br><span class="hljs-keyword">const</span> home = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;user-home&quot;</span>);<br><span class="hljs-comment">// tildify: 用于将绝对路径转换为使用波浪符（~）表示的相对路径。</span><br><span class="hljs-keyword">const</span> tildify = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;tildify&quot;</span>);<br><span class="hljs-comment">// chalk: 命令行高亮工具</span><br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;chalk&quot;</span>);<br><span class="hljs-comment">// inquirer: 命令行交互式问答工具，可以用来向用户提问并获取输入。</span><br><span class="hljs-keyword">const</span> inquirer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;inquirer&quot;</span>);<br><span class="hljs-comment">// rm: 用于删除文件和目录</span><br><span class="hljs-keyword">const</span> rm = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;rimraf&quot;</span>).<span class="hljs-property">sync</span>;<br><span class="hljs-comment">// npm 包依赖项 -- end</span><br><br><span class="hljs-comment">// 本地依赖项 --  start</span><br><span class="hljs-comment">// logger: 打印工具</span><br><span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/logger&quot;</span>);<br><span class="hljs-comment">// generate: 代码生成工具: 基于模板生成本地代码/文件</span><br><span class="hljs-keyword">const</span> generate = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/generate&quot;</span>);<br><span class="hljs-comment">// check-version: 检测版本工具: 1、检查 node 版本；2、提示更新 cli 版本(通过拉取npm包的版本对比得出)</span><br><span class="hljs-keyword">const</span> checkVersion = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/check-version&quot;</span>);<br><span class="hljs-comment">// warnings: 警告提示工具</span><br><span class="hljs-keyword">const</span> warnings = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/warnings&quot;</span>);<br><span class="hljs-comment">// local-path: 路径工具</span><br><span class="hljs-keyword">const</span> localPath = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/local-path&quot;</span>);<br><span class="hljs-comment">// 是否为本地路径方法</span><br><span class="hljs-keyword">const</span> isLocalPath = localPath.<span class="hljs-property">isLocalPath</span>;<br><span class="hljs-comment">// 获取本地模板路径方法</span><br><span class="hljs-keyword">const</span> getTemplatePath = localPath.<span class="hljs-property">getTemplatePath</span>;<br><span class="hljs-comment">// 本地依赖项 -- end</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Usage.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-comment">// 定义该命令的使用格式，若用户只输入 vue init</span><br><span class="hljs-comment">// 则会提示：</span><br><span class="hljs-comment">// Usage: vue init &lt;template-name&gt; [project-name]</span><br><span class="hljs-comment">// Commands:</span><br><span class="hljs-comment">//  -c, --clone   use git clone</span><br><span class="hljs-comment">//  --offline    use cached template</span><br>program<br>  .<span class="hljs-title function_">usage</span>(<span class="hljs-string">&quot;&lt;template-name&gt; [project-name]&quot;</span>)<br>  .<span class="hljs-title function_">option</span>(<span class="hljs-string">&quot;-c, --clone&quot;</span>, <span class="hljs-string">&quot;use git clone&quot;</span>)<br>  .<span class="hljs-title function_">option</span>(<span class="hljs-string">&quot;--offline&quot;</span>, <span class="hljs-string">&quot;use cached template&quot;</span>);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Help.</span><br><span class="hljs-comment"> */</span><br><br>program.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;--help&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;  Examples:&quot;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    chalk.<span class="hljs-title function_">gray</span>(<span class="hljs-string">&quot;    # create a new project with an official template&quot;</span>)<br>  );<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;    $ vue init webpack my-project&quot;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>    chalk.<span class="hljs-title function_">gray</span>(<span class="hljs-string">&quot;    # create a new project straight from a github template&quot;</span>)<br>  );<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;    $ vue init username/repo my-project&quot;</span>);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>&#125;);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Help.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">help</span>(<span class="hljs-params"></span>) &#123;<br>  program.<span class="hljs-title function_">parse</span>(process.<span class="hljs-property">argv</span>);<br>  <span class="hljs-keyword">if</span> (program.<span class="hljs-property">args</span>.<span class="hljs-property">length</span> &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> program.<span class="hljs-title function_">help</span>();<br>&#125;<br><span class="hljs-title function_">help</span>();<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Settings.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// 根据输入的命令行，进行模板名称、文件名称等边缘检测与处理</span><br><span class="hljs-comment">// program.args 返回命令行输入的参数数组</span><br><span class="hljs-comment">// 模板名称</span><br><span class="hljs-keyword">let</span> template = program.<span class="hljs-property">args</span>[<span class="hljs-number">0</span>];<br><span class="hljs-comment">// hasSlash: 是否包含斜杠 =&gt; 模板名称是否包含路径层级 =&gt; 本质是判断是否为 github 的第三方模板</span><br><span class="hljs-comment">// 因为 github 的第三方模板名称格式为：username/repo</span><br><span class="hljs-keyword">const</span> hasSlash = template.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;/&quot;</span>) &gt; -<span class="hljs-number">1</span>;<br><span class="hljs-comment">// 项目名称</span><br><span class="hljs-keyword">const</span> rawName = program.<span class="hljs-property">args</span>[<span class="hljs-number">1</span>];<br><span class="hljs-comment">// 输入空的项目名称 =&gt; 表明创建的文件需要平铺在当前文件夹下</span><br><span class="hljs-keyword">const</span> inPlace = !rawName || rawName === <span class="hljs-string">&quot;.&quot;</span>;<br><span class="hljs-comment">// 文件夹名称：如果 inPlace 为 true，则 ../ 回退一级，否则继续使用 rawName</span><br><span class="hljs-keyword">const</span> name = inPlace ? path.<span class="hljs-title function_">relative</span>(<span class="hljs-string">&quot;../&quot;</span>, process.<span class="hljs-title function_">cwd</span>()) : rawName;<br><span class="hljs-comment">// 生成的文件夹路径</span><br><span class="hljs-keyword">const</span> to = path.<span class="hljs-title function_">resolve</span>(rawName || <span class="hljs-string">&quot;.&quot;</span>);<br><span class="hljs-keyword">const</span> clone = program.<span class="hljs-property">clone</span> || <span class="hljs-literal">false</span>;<br><br><span class="hljs-comment">// 拼接本地模板的存放路径，都放在本地根路径下的 .vue-templates 文件夹内</span><br><span class="hljs-keyword">const</span> tmp = path.<span class="hljs-title function_">join</span>(home, <span class="hljs-string">&quot;.vue-templates&quot;</span>, template.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\//g</span>, <span class="hljs-string">&quot;-&quot;</span>));<br><span class="hljs-keyword">if</span> (program.<span class="hljs-property">offline</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`&gt; Use cached template at <span class="hljs-subst">$&#123;chalk.yellow(tildify(tmp))&#125;</span>`</span>);<br>  template = tmp;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Padding.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>process.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;exit&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>&#125;);<br><span class="hljs-keyword">if</span> (<span class="hljs-title function_">exists</span>(to)) &#123;<br>  <span class="hljs-comment">// 要生成的项目名已存在时：</span><br>  inquirer<br>    .<span class="hljs-title function_">prompt</span>([<br>      &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;confirm&quot;</span>,<br>        <span class="hljs-attr">message</span>: inPlace<br>          ? <span class="hljs-string">&quot;Generate project in current directory?&quot;</span><br>          : <span class="hljs-string">&quot;Target directory exists. Continue?&quot;</span>,<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;ok&quot;</span>,<br>      &#125;,<br>    ])<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">answers</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (answers.<span class="hljs-property">ok</span>) &#123;<br>        <span class="hljs-title function_">run</span>();<br>      &#125;<br>    &#125;)<br>    .<span class="hljs-title function_">catch</span>(logger.<span class="hljs-property">fatal</span>);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-title function_">run</span>();<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Check, download and generate the project.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// 核心代码：处理使用本地还是远程模板</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">run</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">// isLocalPath：通过输入的模板名称来判断是否为本地的模板</span><br>  <span class="hljs-comment">// 比如输入的完整命令为：vue init ../.local/code/mianshi/vue-template vue2Project，则就是用本地的模板</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isLocalPath</span>(template)) &#123;<br>    <span class="hljs-comment">// 根据模板名称获取完整的模板地址</span><br>    <span class="hljs-keyword">const</span> templatePath = <span class="hljs-title function_">getTemplatePath</span>(template);<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">exists</span>(templatePath)) &#123;<br>      <span class="hljs-comment">// 存在该地址，则使用它去生成代码文件</span><br>      <span class="hljs-comment">// name: 命令行输入的项目名称</span><br>      <span class="hljs-comment">// templatePath: 本地模板的地址</span><br>      <span class="hljs-comment">// to: 项目生成的地址</span><br>      <span class="hljs-title function_">generate</span>(name, templatePath, to, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">if</span> (err) logger.<span class="hljs-title function_">fatal</span>(err);<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>        logger.<span class="hljs-title function_">success</span>(<span class="hljs-string">&#x27;Generated &quot;%s&quot;.&#x27;</span>, name);<br>      &#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 本地模板没找到</span><br>      logger.<span class="hljs-title function_">fatal</span>(<span class="hljs-string">&#x27;Local template &quot;%s&quot; not found.&#x27;</span>, template);<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 非本地模板时</span><br>   <span class="hljs-comment">// 比如输入的完整命令为：vue init vue-template vue2Project，则就是用远程的模板</span><br>    <span class="hljs-title function_">checkVersion</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (!hasSlash) &#123;<br>        <span class="hljs-comment">// 模板名不带/时，则代表使用的是官方模板</span><br>        <span class="hljs-comment">// 使用官方模板名称：vuejs-templates 开头</span><br>        <span class="hljs-keyword">const</span> officialTemplate = <span class="hljs-string">&quot;vuejs-templates/&quot;</span> + template;<br>        <span class="hljs-keyword">if</span> (template.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;#&quot;</span>) !== -<span class="hljs-number">1</span>) &#123;<br>          <span class="hljs-comment">// 模板名带#时，表明模板可用</span><br>          <span class="hljs-title function_">downloadAndGenerate</span>(officialTemplate);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-comment">// 模板名不带#时，可能是老版本、不可用、废弃等</span><br>          <span class="hljs-keyword">if</span> (template.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;-2.0&quot;</span>) !== -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-comment">// 模板名带-2.0时，会显示警告，该版本已被废弃等....</span><br>            warnings.<span class="hljs-title function_">v2SuffixTemplatesDeprecated</span>(template, inPlace ? <span class="hljs-string">&quot;&quot;</span> : name);<br>            <span class="hljs-keyword">return</span>;<br>          &#125;<br><br>          <span class="hljs-comment">// warnings.v2BranchIsNowDefault(template, inPlace ? &#x27;&#x27; : name)</span><br>          <span class="hljs-comment">// 表明不是废弃版本，即可能是老版本，就继续下载&amp;生成</span><br>          <span class="hljs-title function_">downloadAndGenerate</span>(officialTemplate);<br>        &#125;<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 模板名带/时，则代表使用的是 github 的第三方模板</span><br>        <span class="hljs-title function_">downloadAndGenerate</span>(template);<br>      &#125;<br>    &#125;);<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Download a generate from a template repo.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; <span class="hljs-variable">template</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// 核心代码：使用远程模板生成代码文件</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">downloadAndGenerate</span>(<span class="hljs-params">template</span>) &#123;<br>  <span class="hljs-comment">// 命令行 loading</span><br>  <span class="hljs-keyword">const</span> spinner = <span class="hljs-title function_">ora</span>(<span class="hljs-string">&quot;downloading template&quot;</span>);<br>  spinner.<span class="hljs-title function_">start</span>();<br>  <span class="hljs-comment">// Remove if local template exists</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">exists</span>(tmp)) <span class="hljs-title function_">rm</span>(tmp);<br>  <span class="hljs-comment">// download()：下载远程模板代码</span><br>  <span class="hljs-comment">// template：远程的模板名称</span><br>  <span class="hljs-comment">// tmp：官方模板本地存储位置</span><br>  <span class="hljs-title function_">download</span>(template, tmp, &#123; clone &#125;, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>    spinner.<span class="hljs-title function_">stop</span>();<br>    <span class="hljs-keyword">if</span> (err)<br>      logger.<span class="hljs-title function_">fatal</span>(<br>        <span class="hljs-string">&quot;Failed to download repo &quot;</span> + template + <span class="hljs-string">&quot;: &quot;</span> + err.<span class="hljs-property">message</span>.<span class="hljs-title function_">trim</span>()<br>      );<br>    <span class="hljs-comment">// generate()：生成代码文件</span><br>    <span class="hljs-comment">// name: 命令行输入的项目名称</span><br>    <span class="hljs-comment">// tmp: 刚刚下载的官方模板的本地地址</span><br>    <span class="hljs-comment">// to: 项目生成的地址</span><br>    <span class="hljs-title function_">generate</span>(name, tmp, to, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (err) logger.<span class="hljs-title function_">fatal</span>(err);<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>      logger.<span class="hljs-title function_">success</span>(<span class="hljs-string">&#x27;Generated &quot;%s&quot;.&#x27;</span>, name);<br>    &#125;);<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="/img/images/2023/1703689153892-fb66470d-ae26-4ab2-969d-0f4aa3bf34f3.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h3><h4 id="脚手架的版本检测"><a href="#脚手架的版本检测" class="headerlink" title="脚手架的版本检测"></a>脚手架的版本检测</h4><p>vue cli 的版本检测代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>)<br><span class="hljs-keyword">const</span> semver = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;semver&#x27;</span>) <span class="hljs-comment">// 用于处理和解析语义化版本号</span><br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;chalk&#x27;</span>)<br><span class="hljs-keyword">const</span> packageConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../package.json&#x27;</span>)<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function"><span class="hljs-params">done</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// --- 系统的 nodejs 版本与脚手架指定的版本比较 ---(标准版)</span><br>  <span class="hljs-comment">// semver.satisfies(): 是否满足</span><br>  <span class="hljs-comment">// process.version: 当前运行的 node 版本</span><br>  <span class="hljs-comment">// packageConfig.engines.node: cli 指定的 node 版本</span><br>  <span class="hljs-keyword">if</span> (!semver.<span class="hljs-title function_">satisfies</span>(process.<span class="hljs-property">version</span>, packageConfig.<span class="hljs-property">engines</span>.<span class="hljs-property">node</span>)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chalk.<span class="hljs-title function_">red</span>(<br>      <span class="hljs-string">&#x27;  You must upgrade node to &gt;=&#x27;</span> + packageConfig.<span class="hljs-property">engines</span>.<span class="hljs-property">node</span> + <span class="hljs-string">&#x27;.x to use vue-cli&#x27;</span><br>    ))<br>  &#125;<br><br>  <span class="hljs-comment">// --- 系统的脚手架版本与最新脚手架的版本比较 ---</span><br>  <span class="hljs-comment">// 请求远程 npmjs 上的 vue-cli 包的最新版本号</span><br>  <span class="hljs-comment">//         vs</span><br>  <span class="hljs-comment">// 当前系统已安装的 vue-cli 包源代码的 package.json 的版本</span><br>  <span class="hljs-title function_">request</span>(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://registry.npmjs.org/vue-cli&#x27;</span>,<br>    <span class="hljs-attr">timeout</span>: <span class="hljs-number">1000</span><br>  &#125;, <span class="hljs-function">(<span class="hljs-params">err, res, body</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (!err &amp;&amp; res.<span class="hljs-property">statusCode</span> === <span class="hljs-number">200</span>) &#123;<br>      <span class="hljs-keyword">const</span> latestVersion = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(body)[<span class="hljs-string">&#x27;dist-tags&#x27;</span>].<span class="hljs-property">latest</span><br>      <span class="hljs-keyword">const</span> localVersion = packageConfig.<span class="hljs-property">version</span><br>      <span class="hljs-comment">// semver.lt(): 是否低于</span><br>      <span class="hljs-keyword">if</span> (semver.<span class="hljs-title function_">lt</span>(localVersion, latestVersion)) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(chalk.<span class="hljs-title function_">yellow</span>(<span class="hljs-string">&#x27;  A newer version of vue-cli is available.&#x27;</span>))<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>()<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;  latest:    &#x27;</span> + chalk.<span class="hljs-title function_">green</span>(latestVersion))<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;  installed: &#x27;</span> + chalk.<span class="hljs-title function_">red</span>(localVersion))<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>()<br>      &#125;<br>    &#125;<br>    <span class="hljs-title function_">done</span>()<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="vue-list-命令"><a href="#vue-list-命令" class="headerlink" title="vue list 命令"></a>vue list 命令</h2><p><code>vue-list.js</code>对应代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-meta">#!/usr/bin/env node</span><br><br><span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;../lib/logger&quot;</span>); <span class="hljs-comment">// 自定义打印方法</span><br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;request&quot;</span>); <span class="hljs-comment">// HTTP 请求库</span><br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;chalk&quot;</span>); <span class="hljs-comment">// 命令行高亮工具</span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Padding.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>process.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;exit&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>&#125;);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * List repos.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-comment">// 通过 request 库，去拉取 github 上面的官方模板数据，不会展示本地缓存的模板数据</span><br><span class="hljs-title function_">request</span>(<br>  &#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&quot;https://api.github.com/users/vuejs-templates/repos&quot;</span>,<br>    <span class="hljs-attr">headers</span>: &#123;<br>      <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;vue-cli&quot;</span>,<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-function">(<span class="hljs-params">err, res, body</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) logger.<span class="hljs-title function_">fatal</span>(err); <span class="hljs-comment">// 请求有错误时，打印展示错误</span><br>    <span class="hljs-keyword">const</span> requestBody = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(body);<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(requestBody)) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;  Available official templates:&quot;</span>);<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>();<br>      requestBody.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">repo</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// 请求的模板数据循环，然后展示到命令行内</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>          <span class="hljs-string">&quot;  &quot;</span> +<br>          chalk.<span class="hljs-title function_">yellow</span>(<span class="hljs-string">&quot;★&quot;</span>) +<br>          <span class="hljs-string">&quot;  &quot;</span> +<br>          chalk.<span class="hljs-title function_">blue</span>(repo.<span class="hljs-property">name</span>) +<br>          <span class="hljs-string">&quot; - &quot;</span> +<br>          repo.<span class="hljs-property">description</span><br>        );<br>      &#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(requestBody.<span class="hljs-property">message</span>);<br>    &#125;<br>  &#125;<br>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="Vue-cli-进阶知识"><a href="#Vue-cli-进阶知识" class="headerlink" title="Vue cli 进阶知识"></a>Vue cli 进阶知识</h1><h2 id="代码生成逻辑"><a href="#代码生成逻辑" class="headerlink" title="代码生成逻辑"></a>代码生成逻辑</h2><p><code>generate.js</code>文件里面是最核心的生成逻辑，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// npm 包依赖项 -- start</span><br><span class="hljs-comment">// chalk: 命令行高亮工具</span><br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;chalk&quot;</span>);<br><span class="hljs-comment">// metalsmith: 一个静态内容生成器,用于处理文件和目录。</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Metalsmith</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;metalsmith&quot;</span>);<br><span class="hljs-comment">// handlebars: 基于 JavaScript 的模板引擎，用于生成动态 HTML 或其他格式的文本文件。</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Handlebars</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;handlebars&quot;</span>);<br><span class="hljs-comment">// async: 一个提供了许多异步操作辅助函数的库，如 eachSeries、waterfall 等。</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">async</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;async&quot;</span>);<br><span class="hljs-comment">// consolidate: 是一个用于在 Express 中使用多种模板引擎的库。导入了 consolidate 库中的 handlebars 渲染函数。</span><br><span class="hljs-keyword">const</span> render = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;consolidate&quot;</span>).<span class="hljs-property">handlebars</span>.<span class="hljs-property">render</span>;<br><span class="hljs-comment">// path: 内置模块，处理文件路径，可拼接、解析、转换和格式化文件路径</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);<br><span class="hljs-comment">// multimatch: 多条件匹配工具</span><br><span class="hljs-keyword">const</span> multimatch = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;multimatch&quot;</span>);<br><span class="hljs-comment">// npm 包依赖项 -- end</span><br><br><span class="hljs-comment">// 本地依赖项 --  start</span><br><span class="hljs-comment">// getOptions: 用于获取或解析命令行选项</span><br><span class="hljs-keyword">const</span> getOptions = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./options&quot;</span>);<br><span class="hljs-comment">// ask: 用于向用户提问并获取输入</span><br><span class="hljs-keyword">const</span> ask = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./ask&quot;</span>);<br><span class="hljs-comment">// filter: 过滤或处理文件列表</span><br><span class="hljs-keyword">const</span> filter = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./filter&quot;</span>);<br><span class="hljs-comment">// logger: 打印工具</span><br><span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./logger&quot;</span>);<br><span class="hljs-comment">// 本地依赖项 -- end</span><br><br><span class="hljs-comment">// register handlebars helper</span><br><span class="hljs-title class_">Handlebars</span>.<span class="hljs-title function_">registerHelper</span>(<span class="hljs-string">&quot;if_eq&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, opts</span>) &#123;<br>  <span class="hljs-keyword">return</span> a === b ? opts.<span class="hljs-title function_">fn</span>(<span class="hljs-variable language_">this</span>) : opts.<span class="hljs-title function_">inverse</span>(<span class="hljs-variable language_">this</span>);<br>&#125;);<br><br><span class="hljs-title class_">Handlebars</span>.<span class="hljs-title function_">registerHelper</span>(<span class="hljs-string">&quot;unless_eq&quot;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">a, b, opts</span>) &#123;<br>  <span class="hljs-keyword">return</span> a === b ? opts.<span class="hljs-title function_">inverse</span>(<span class="hljs-variable language_">this</span>) : opts.<span class="hljs-title function_">fn</span>(<span class="hljs-variable language_">this</span>);<br>&#125;);<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Generate a template given a `src` and `dest`.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; name 命令行输入的项目名称</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; src 下载的官方模板的本地地址(某个模板的线上地址: https://github.com/vuejs-templates/webpack)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; dest 项目生成的地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Function</span>&#125; done 完成的回调函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-keyword">function</span> <span class="hljs-title function_">generate</span>(<span class="hljs-params">name, src, dest, done</span>) &#123;<br>  <span class="hljs-comment">// 1. 读取配置项，读取模板内的 meta.json || meta.js</span><br>  <span class="hljs-keyword">const</span> opts = <span class="hljs-title function_">getOptions</span>(name, src);<br>  <span class="hljs-comment">// 2. 使用 Metalsmith 初始化数据，拿到模板里面的 template 文件(里面的内容就是生成出来的代码文件)</span><br>  <span class="hljs-keyword">const</span> metalsmith = <span class="hljs-title class_">Metalsmith</span>(path.<span class="hljs-title function_">join</span>(src, <span class="hljs-string">&quot;template&quot;</span>));<br>  <span class="hljs-comment">// 3. 配置项合并: metalsmith.metadata 的元数据 与 手动定义的数据 进行合并</span><br>  <span class="hljs-keyword">const</span> data = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(metalsmith.<span class="hljs-title function_">metadata</span>(), &#123;<br>    <span class="hljs-attr">destDirName</span>: name,<br>    <span class="hljs-attr">inPlace</span>: dest === process.<span class="hljs-title function_">cwd</span>(),<br>    <span class="hljs-attr">noEscape</span>: <span class="hljs-literal">true</span>,<br>  &#125;);<br>  <span class="hljs-comment">// 4. 注册 handlebars 的 helper</span><br>  opts.<span class="hljs-property">helpers</span> &amp;&amp;<br>    <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(opts.<span class="hljs-property">helpers</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>      <span class="hljs-title class_">Handlebars</span>.<span class="hljs-title function_">registerHelper</span>(key, opts.<span class="hljs-property">helpers</span>[key]);<br>    &#125;);<br><br>  <span class="hljs-keyword">const</span> helpers = &#123; chalk, logger &#125;;<br><br>  <span class="hljs-comment">// 5. 调用 before 钩子函数</span><br>  <span class="hljs-keyword">if</span> (opts.<span class="hljs-property">metalsmith</span> &amp;&amp; <span class="hljs-keyword">typeof</span> opts.<span class="hljs-property">metalsmith</span>.<span class="hljs-property">before</span> === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>    opts.<span class="hljs-property">metalsmith</span>.<span class="hljs-title function_">before</span>(metalsmith, opts, helpers);<br>  &#125;<br><br>  metalsmith<br>    .<span class="hljs-title function_">use</span>(<span class="hljs-title function_">askQuestions</span>(opts.<span class="hljs-property">prompts</span>)) <span class="hljs-comment">// 问询主流程: name|description|author|router|lint ...</span><br>    .<span class="hljs-title function_">use</span>(<span class="hljs-title function_">filterFiles</span>(opts.<span class="hljs-property">filters</span>)) <span class="hljs-comment">// 根据问询结果过滤掉不需要的文件</span><br>    .<span class="hljs-title function_">use</span>(<span class="hljs-title function_">renderTemplateFiles</span>(opts.<span class="hljs-property">skipInterpolation</span>)); <span class="hljs-comment">// 最后生成模板文件</span><br><br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> opts.<span class="hljs-property">metalsmith</span> === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>    <span class="hljs-comment">// 执行</span><br>    opts.<span class="hljs-title function_">metalsmith</span>(metalsmith, opts, helpers);<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (opts.<span class="hljs-property">metalsmith</span> &amp;&amp; <span class="hljs-keyword">typeof</span> opts.<span class="hljs-property">metalsmith</span>.<span class="hljs-property">after</span> === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>    <span class="hljs-comment">// 调用 after 钩子函数</span><br>    opts.<span class="hljs-property">metalsmith</span>.<span class="hljs-title function_">after</span>(metalsmith, opts, helpers);<br>  &#125;<br><br>  <span class="hljs-comment">// 结尾</span><br>  metalsmith<br>    .<span class="hljs-title function_">clean</span>(<span class="hljs-literal">false</span>)<br>    .<span class="hljs-title function_">source</span>(<span class="hljs-string">&quot;.&quot;</span>) <span class="hljs-comment">// start from template root instead of `./src` which is Metalsmith&#x27;s default for `source`</span><br>    .<span class="hljs-title function_">destination</span>(dest)<br>    .<span class="hljs-title function_">build</span>(<span class="hljs-function">(<span class="hljs-params">err, files</span>) =&gt;</span> &#123;<br>      <span class="hljs-title function_">done</span>(err);<br>      <span class="hljs-comment">// 调用 complete 钩子函数: 依赖排序、安装依赖、运行 lint、打印最终信息</span><br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> opts.<span class="hljs-property">complete</span> === <span class="hljs-string">&quot;function&quot;</span>) &#123;<br>        <span class="hljs-keyword">const</span> helpers = &#123; chalk, logger, files &#125;;<br>        opts.<span class="hljs-title function_">complete</span>(data, helpers);<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-title function_">logMessage</span>(opts.<span class="hljs-property">completeMessage</span>, data);<br>      &#125;<br>    &#125;);<br><br>  <span class="hljs-keyword">return</span> data;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Create a middleware for asking questions.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Object</span>&#125; <span class="hljs-variable">prompts</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">Function</span>&#125;</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">askQuestions</span>(<span class="hljs-params">prompts</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">files, metalsmith, done</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">ask</span>(prompts, metalsmith.<span class="hljs-title function_">metadata</span>(), done);<br>  &#125;;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Create a middleware for filtering files.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Object</span>&#125; <span class="hljs-variable">filters</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span> &#123;<span class="hljs-type">Function</span>&#125;</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">filterFiles</span>(<span class="hljs-params">filters</span>) &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">files, metalsmith, done</span>) =&gt;</span> &#123;<br>    <span class="hljs-title function_">filter</span>();<br>  &#125;;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Template in place plugin.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Object</span>&#125; <span class="hljs-variable">files</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Metalsmith</span>&#125; <span class="hljs-variable">metalsmith</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Function</span>&#125; <span class="hljs-variable">done</span></span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">renderTemplateFiles</span>(<span class="hljs-params">skipInterpolation</span>) &#123;<br>  skipInterpolation =<br>    <span class="hljs-keyword">typeof</span> skipInterpolation === <span class="hljs-string">&quot;string&quot;</span><br>      ? [skipInterpolation]<br>      : skipInterpolation;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">files, metalsmith, done</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> keys = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(files);<br>    <span class="hljs-keyword">const</span> metalsmithMetadata = metalsmith.<span class="hljs-title function_">metadata</span>();<br>    <span class="hljs-comment">// 异步处理[模板/template]下的每一个文件</span><br>    <span class="hljs-keyword">async</span>.<span class="hljs-title function_">each</span>(<br>      keys,<br>      <span class="hljs-function">(<span class="hljs-params">file, next</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// skipping files with skipInterpolation option</span><br>        <span class="hljs-keyword">if</span> (<br>          skipInterpolation &amp;&amp;<br>          <span class="hljs-title function_">multimatch</span>([file], skipInterpolation, &#123; <span class="hljs-attr">dot</span>: <span class="hljs-literal">true</span> &#125;).<span class="hljs-property">length</span> <span class="hljs-comment">// 多重匹配，满足 [file], skipInterpolation, &#123; dot: true &#125; 时</span><br>        ) &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>();<br>        &#125;<br>        <span class="hljs-comment">// 获取文件内容字符串</span><br>        <span class="hljs-keyword">const</span> str = files[file].<span class="hljs-property">contents</span>.<span class="hljs-title function_">toString</span>();<br>        <span class="hljs-comment">// do not attempt to render files that do not have mustaches</span><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-regexp">/&#123;&#123;([^&#123;&#125;]+)&#125;&#125;/g</span>.<span class="hljs-title function_">test</span>(str)) &#123;<br>          <span class="hljs-comment">// 当文件内容字符串里面没有 &#123;&#123;&#125;&#125; 时，直接跳过</span><br>          <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>();<br>        &#125;<br><br>        <span class="hljs-comment">// 结合模板文件内容、元数据 完成自定义的改造渲染</span><br>        <span class="hljs-title function_">render</span>(str, metalsmithMetadata, <span class="hljs-function">(<span class="hljs-params">err, res</span>) =&gt;</span> &#123;<br>          <span class="hljs-keyword">if</span> (err) &#123;<br>            err.<span class="hljs-property">message</span> = <span class="hljs-string">`[<span class="hljs-subst">$&#123;file&#125;</span>] <span class="hljs-subst">$&#123;err.message&#125;</span>`</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>(err);<br>          &#125;<br>          files[file].<span class="hljs-property">contents</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Buffer</span>(res);<br>          <span class="hljs-title function_">next</span>();<br>        &#125;);<br>      &#125;,<br>      done<br>    );<br>  &#125;;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Display template complete message.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">String</span>&#125; <span class="hljs-variable">message</span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> &#123;<span class="hljs-type">Object</span>&#125; <span class="hljs-variable">data</span></span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">logMessage</span>(<span class="hljs-params">message, data</span>) &#123;<br>  <span class="hljs-keyword">if</span> (!message) <span class="hljs-keyword">return</span>;<br>  <span class="hljs-title function_">render</span>(message, data, <span class="hljs-function">(<span class="hljs-params">err, res</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (err) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<br>        <span class="hljs-string">&quot;\n   Error when rendering template complete message: &quot;</span> +<br>          err.<span class="hljs-property">message</span>.<span class="hljs-title function_">trim</span>()<br>      );<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<br>        <span class="hljs-string">&quot;\n&quot;</span> +<br>          res<br>            .<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/\r?\n/g</span>)<br>            .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">line</span>) =&gt;</span> <span class="hljs-string">&quot;   &quot;</span> + line)<br>            .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;\n&quot;</span>)<br>      );<br>    &#125;<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/img/images/2023/1703692005634-473ca13c-0f99-47bf-8b07-8d66e500aff6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h1><h2 id="语义化版本号"><a href="#语义化版本号" class="headerlink" title="语义化版本号"></a>语义化版本号</h2><p>语义化版本号：Semantic Versioning，简称 SemVer，是一种版本控制规范，它定义了版本号的格式和版本间的兼容性规则。</p>
+<p>SemVer 版本号通常由三部分组成：主版本号、次版本号和补丁版本号，格式为<code>MAJOR.MINOR.PATCH</code></p>
+<p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/semver">semver 库</a>提供了一系列函数和方法来比较、解析、验证和操作 SemVer 版本号。</p>
+<h1 id="面试点"><a href="#面试点" class="headerlink" title="面试点"></a>面试点</h1><h2 id="命令配置"><a href="#命令配置" class="headerlink" title="命令配置"></a>命令配置</h2><p>主命令：在<code>package.json</code>的<code>bin</code>配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vue-cli&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-comment">// ....</span><br><br>  <span class="hljs-attr">&quot;bin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;vue-init&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./bin/vue-init.js&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>副命令：在对应的 JS 代码里面通过<code>commander 库</code>实现</p>
+<p><code>/bin/vue-init.js</code>代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-meta">#! /usr/bin/env node</span><br><span class="hljs-keyword">const</span> program = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;commander&#x27;</span>)<br>program.<span class="hljs-title function_">version</span>(<span class="hljs-string">&#x27;1.0&#x27;</span>)<br>  .<span class="hljs-title function_">usage</span>(<span class="hljs-string">&quot;&lt;template-name&gt; [project-name]&quot;</span>)<br> .<span class="hljs-title function_">option</span>(<span class="hljs-string">&#x27;-c, --clone&#x27;</span>, <span class="hljs-string">&#x27;use git clone&quot;&#x27;</span>)<br> .<span class="hljs-title function_">parse</span>(program.<span class="hljs-property">argv</span>)<br></code></pre></td></tr></table></figure>
+
+<p><code>vue-init vue-template vue2Project --clone</code>：将进行初始化项目</p>
+<h2 id="命令行参数获取"><a href="#命令行参数获取" class="headerlink" title="命令行参数获取"></a>命令行参数获取</h2><p>命令行输入：<code>vue-init vue-template vue2Project --clone</code></p>
+<ul>
+<li><code>option</code>定义命令行参数<ul>
+<li>可以通过<code>program.key</code>获取</li>
+<li>比如：<ul>
+<li><code>program.clone</code>返回为<code>boolean 的 true</code>，判断是否输入了<code>clone</code>，</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>非<code>option</code>定义命令行参数<ul>
+<li>可以通过<code>program.args[index]</code>获取，<code>index</code>为数组下标</li>
+<li>比如：<ul>
+<li><code>program.args[0]</code>返回<code>vue-init</code>后的第一个，即<code>vue-template</code></li>
+<li><code>program.args[1]</code>返回<code>vue-init</code>后的第二个，即<code>vue2Project</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="命令行交互"><a href="#命令行交互" class="headerlink" title="命令行交互"></a>命令行交互</h2><p>可以通过<code>inquirer 库</code>实现命令行的各种问询、选择等交互</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> inquirer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;inquirer&#x27;</span>)<br><br><br><span class="hljs-keyword">const</span> promatList = [<br>  &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-comment">// 输入类型的交互</span><br>    <span class="hljs-attr">messgae</span>: <span class="hljs-string">&#x27;项目名称&#x27;</span>, <span class="hljs-comment">// 提示信息</span><br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-comment">// 输入的值存的 key</span><br>    <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;project&#x27;</span> <span class="hljs-comment">// 默认值</span><br>  &#125;,<br>  &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;list&#x27;</span>, <span class="hljs-comment">//  单选选择类型的交互</span><br>    <span class="hljs-attr">messgae</span>: <span class="hljs-string">&#x27;构建工具&#x27;</span>, <span class="hljs-comment">// 提示信息</span><br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-comment">// 输入的值存的 key</span><br>    <span class="hljs-attr">choices</span>: [<span class="hljs-string">&#x27;cli2&#x27;</span>, <span class="hljs-string">&#x27;cli3&#x27;</span>], <span class="hljs-comment">// 可选项</span><br>    <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;cli2&#x27;</span> <span class="hljs-comment">// 默认值</span><br>  &#125;<br>]<br>inquirer.<span class="hljs-title function_">promat</span>(promatList) <span class="hljs-comment">// 进行交互</span><br>  .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">answerObj</span> =&gt;</span> &#123;<br>  <span class="hljs-comment">// answerObj：返回用户输入的答案对象，其中的 key 为 promatList 里面的 name</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="脚手架版本检测"><a href="#脚手架版本检测" class="headerlink" title="脚手架版本检测"></a>脚手架版本检测</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 脚手架与 nodejs 的版本检测，一般用满足(类似于&gt;=)</span><br><span class="hljs-keyword">const</span> semver = <span class="hljs-title function_">reqiure</span>(<span class="hljs-string">&#x27;semver&#x27;</span>)<br><br><span class="hljs-keyword">const</span> baseNodejsVersion = <span class="hljs-string">&quot;&gt;=6.0&quot;</span><br><br><span class="hljs-keyword">if</span>(!semver.<span class="hljs-title function_">satisfies</span>(process.<span class="hljs-property">version</span>, baseNodejsVersion)) &#123;<br>  consoe.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;当前 nodejs 的版本不满足该脚手架，最低版本为&#x27;</span> + baseNodejsVersion)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="category-chain-item">前端八股文</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/" class="print-no-link">#职业上一二事</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/" class="print-no-link">#前端面试</a>
+      
+        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/" class="print-no-link">#前端八股文</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>3-3、Vue cli 详解</div>
+      <div>https://mrhzq.github.io/职业上一二事/前端面试/前端八股文/3-3、Vue cli 详解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>黄智强</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/3-4%E3%80%81Vue2%20%E6%A0%B8%E5%BF%83%E6%BA%90%E7%A0%81%E8%AE%B2%E8%A7%A3/" title="3-4、Vue2-核心源码讲解">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">3-4、Vue2-核心源码讲解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E8%81%8C%E4%B8%9A%E4%B8%8A%E4%B8%80%E4%BA%8C%E4%BA%8B/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%85%AB%E8%82%A1%E6%96%87/3-2%E3%80%81Vue%20%E8%BF%9B%E9%98%B6/" title="3-2、Vue 进阶">
+                        <span class="hidden-mobile">3-2、Vue 进阶</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="/" rel="nofollow noopener"><span>黄智强</span></a> <i class="iconfont icon-love"></i> <a href="/about" rel="nofollow noopener"><span>关于我</span></a>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/openVScode.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
